@@ -10,19 +10,15 @@ module.exports = {
       colors: {
         primary: {
           blue: "#74BDE8",
-          purple: "#FF526F",
-        },
-        neutral: {
-          background: "#050505",
-          gray: "#121212",
-          lighter_gray: "#1e1e1e",
-          lightest_gray: "#191919",
-        },
+          white: "#FFFFFF",
+          black: "#000000",
+          pink: "#FF526F"
+        }
       },
       backgroundImage: {
-        atvGradient: "linear-gradient(149deg, #2272b5 -10.8%, #005195 37.95%, #004582 100%)",
-      },
+        'login-background': "url('/images/Fundo_Login.png')", // Corrigido o nome da chave
+      } 
     },
   },
   plugins: [],
-};
+}
