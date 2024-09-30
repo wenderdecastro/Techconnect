@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import ProfilePic from "@/components/profilepic";
+import ProfileInfo from "@/components/profileinfo";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +25,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+
+        <ProfileInfo className="flex -space-x-2 justify-center  overflow-hidden" >
+
+        </ProfileInfo>
+   
+
+       
+
       </body>
     </html>
   );
