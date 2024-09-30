@@ -1,5 +1,5 @@
 import next from "next";
-import {Text, userInfo}  from "../texts";
+import {ProfileName, Text}  from "../texts";
 
 export const Post = () => {
   return (
@@ -11,7 +11,7 @@ export const Post = () => {
           src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
           alt="imagem de perfil do usuário logado"
         />
-        <userInfo />  
+        <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"}/>
       </div>
 
       {/* post content */}

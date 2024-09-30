@@ -4,10 +4,10 @@ export const Text = (props) => {
   return <p className={` ${props.children}`}>{props.children}</p>;
 };
 
-export const userInfo = ({nomeExibicao, nomeUsuario}) => {
+export const ProfileName = ({nomeExibicao, nomeUsuario}) => {
   return (
-    <div className={`flex flex-col ${style.children}`}>
-      <h2 className={`size-3`}>{nomeExibicao}</h2>
+    <div className={`flex flex-col px-2`}>
+      <h2 className={``}>{nomeExibicao}</h2>
       <p className={``}>{nomeUsuario}</p>
     </div>
   );
