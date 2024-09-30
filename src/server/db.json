@@ -1,0 +1,43 @@
+{
+    "ImagemPost": [
+      {
+        "ID": "00000000-0000-0000-0000-000000000000",
+        "ImgURL": "string_or_null",
+        "Post_ID": "00000000-0000-0000-0000-000000000000"
+      }
+    ],
+    "Posts": [
+      {
+        "ID": "00000000-0000-0000-0000-000000000000",
+        "Texto": "string_or_null",
+        "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+        "Post_Principal_ID": "00000000-0000-0000-0000-000000000000",
+        "Encadeado": false
+      }
+    ],
+    "PostsLikes": [
+      {
+        "ID": "00000000-0000-0000-0000-000000000000",
+        "Post_ID": "00000000-0000-0000-0000-000000000000",
+        "Usuario_ID": "00000000-0000-0000-0000-000000000000"
+      }
+    ],
+    "Usuario": [
+      {
+        "ID": "00000000-0000-0000-0000-000000000000",
+        "NomeExibicao": "string_or_null",
+        "NomeUsuario": "string_or_null",
+        "Email": "string_or_null",
+        "Senha": "string_or_null",
+        "FotoPerfilURL": "string_or_null",
+        "FotoBannerURL": "string_or_null"
+      }
+    ],
+    "UsuarioSeguidores": [
+      {
+        "ID": "00000000-0000-0000-0000-000000000000",
+        "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+        "Seguidor_ID": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
