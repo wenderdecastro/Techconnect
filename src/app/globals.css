@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 *{
-  @apply text-neutral-100
+  @apply text-neutral-50 bg-gray-950
 }
 
 .dev{
   border: 1px dashed red;
 }
+
+
