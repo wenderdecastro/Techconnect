@@ -1,4 +1,5 @@
 import { PostInput } from "@/components/input";
+import { Post } from "@/components/post";
 
 export default function Home() {
     return (
@@ -12,7 +13,8 @@ export default function Home() {
 
                 <div class="grid grid-cols-[28%,44%,28%] h-[90%] ">
                     <div className="h-full dev" >30%</div>
-                    <div className="overflow-y-scroll dev">40%</div>
+                    <div className="overflow-y-scroll dev">40%
+                    <Post/></div>
                     <div className="h-full dev">30%</div>
                 </div>
 

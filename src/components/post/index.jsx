@@ -1,17 +1,32 @@
 import next from "next";
-import {ProfileName, Text}  from "../texts";
+import { FaRegClock } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa";
+import { FiTrash } from "react-icons/fi";
+import { ProfileName, Text } from "../texts";
+import { PostButton } from "../postButton";
 
-export const Post = () => {
+export const Post = (props) => {
   return (
-    <section className="w-[35%] h-3/5 px-5 py-5 flex flex-col gap-7 bg-neutral-lighter_gray">
+    <article className="w-[85%] h-[45%] px-5 py-5 flex flex-col justify-between rounded-2xl bg-neutral-900 bg-opacity-50 dev">
       {/* user infos */}
-      <div className="h-5 w-80 flex flex-row">
+      <div className="h-[10%] w-[100%] flex">
         <img
-          className="w-16 rounded size-12"
+          className="w-16 rounded-full size-16"
           src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
           alt="imagem de perfil do usuário logado"
         />
-        <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"}/>
+        <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} />
+
+        <PostButton fieldStyle="w-[25%] ">
+          <FiTrash style={{ scale: "130%", paddingTop: "2%" }} />
+          Deletar
+        </PostButton>
+
+        <span className=" flex text-center gap-2 opacity-50 text-sm py-1">
+          <FaRegClock style={{ scale: "130%", paddingTop: "2.5%" }} />
+          32 seg atras
+        </span>
       </div>
 
       {/* post content */}
@@ -25,7 +40,17 @@ export const Post = () => {
       </div>
 
       {/* likes-comentarios */}
-      <div className=""></div>
-    </section>
+      <div className="flex w-[80%] gap-5 ">
+        <PostButton fieldStyle="w-[25%]">
+          <FaRegHeart style={{ scale: "150%", paddingTop: "5%" }} />
+          Curtir
+        </PostButton>
+
+        <PostButton fieldStyle="w-[45%]">
+          <FaRegComment style={{ scale: "150%", paddingTop: "1%" }} />
+          777 Comentarios
+        </PostButton>
+      </div>
+    </article>
   );
 };
