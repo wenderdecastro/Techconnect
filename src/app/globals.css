@@ -2,10 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  @apply text-neutral-100
-}
+@layer utilities {
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
 
-.dev{
-  border: 1px dashed red;
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .flip-card {
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  .flip-front,
+  .flip-back {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+  }
+
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+
+  .custom-datepicker::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(1) brightness(2) grayscale(1); /* Torna o ícone branco */
+  }
 }

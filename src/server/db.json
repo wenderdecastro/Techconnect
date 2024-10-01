@@ -1,43 +1,68 @@
 {
-    "ImagemPost": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "ImgURL": "string_or_null",
-        "Post_ID": "00000000-0000-0000-0000-000000000000"
-      }
-    ],
-    "Posts": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "Texto": "string_or_null",
-        "Usuario_ID": "00000000-0000-0000-0000-000000000000",
-        "Post_Principal_ID": "00000000-0000-0000-0000-000000000000",
-        "Encadeado": false
-      }
-    ],
-    "PostsLikes": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "Post_ID": "00000000-0000-0000-0000-000000000000",
-        "Usuario_ID": "00000000-0000-0000-0000-000000000000"
-      }
-    ],
-    "Usuario": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "NomeExibicao": "string_or_null",
-        "NomeUsuario": "string_or_null",
-        "Email": "string_or_null",
-        "Senha": "string_or_null",
-        "FotoPerfilURL": "string_or_null",
-        "FotoBannerURL": "string_or_null"
-      }
-    ],
-    "UsuarioSeguidores": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "Usuario_ID": "00000000-0000-0000-0000-000000000000",
-        "Seguidor_ID": "00000000-0000-0000-0000-000000000000"
-      }
-    ]
-  }
+  "ImagemPost": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "ImgURL": "string_or_null",
+      "Post_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "5a69"
+    }
+  ],
+  "Posts": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "Texto": "string_or_null",
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+      "Post_Principal_ID": "00000000-0000-0000-0000-000000000000",
+      "Encadeado": false,
+      "id": "b304"
+    }
+  ],
+  "PostsLikes": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "Post_ID": "00000000-0000-0000-0000-000000000000",
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "7329"
+    }
+  ],
+  "Usuario": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "NomeExibicao": "string_or_null",
+      "NomeUsuario": "string_or_null",
+      "Email": "string_or_null",
+      "Senha": "string_or_null",
+      "FotoPerfilURL": "string_or_null",
+      "FotoBannerURL": "string_or_null",
+      "id": "1f2a"
+    },
+    {
+      "id": "9fc1",
+      "ID": "14f0ec0a-7d51-447b-8b09-596ccbeea7f5",
+      "NomeExibicao": "",
+      "NomeUsuario": "",
+      "Email": "",
+      "Senha": "",
+      "FotoPerfilURL": null,
+      "FotoBannerURL": null
+    },
+    {
+      "id": "5b40",
+      "ID": "12cd4c08-ec1d-4daf-8a70-4dddfd7f5288",
+      "NomeExibicao": "",
+      "NomeUsuario": "",
+      "Email": "",
+      "Senha": "",
+      "FotoPerfilURL": null,
+      "FotoBannerURL": null
+    }
+  ],
+  "UsuarioSeguidores": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+      "Seguidor_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "e0e2"
+    }
+  ]
+}
