@@ -5,17 +5,18 @@ import logoImg from "./../../../public/images/AppLogo.png";
 import Link from "next/link";
 import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
+import { Menu_textProfile } from "../text";
 
 const MenuBar = () => {
   //useState para verficar se está selecionado ou não
   const [isClicked, setIsClicked] = useState("");
 
   return (
-    <div class="w-1/3 h-screen bg-black border-red-700 border-2 pr-10 py-2 flex justify-between flex-col">
+    <div class="w-1/3 h-screen bg-black py-2 flex justify-between flex-col">
       <aside class="flex flex-col gap-5">
         <Image src={logoImg} width={100} height={100} alt="Imagem do logo" />
 
-        <section class="flex flex-col gap-3">
+        <section class="flex flex-col gap-3 pr-10">
           <div
             // Aqui a gente seleciona pelo título da página, dessa forma ao clicar ná página ele não seleciona todos
             onClick={() => setIsClicked("feed")}
@@ -82,20 +83,27 @@ const MenuBar = () => {
         </section>
       </aside>
 
-      <div>
-        <Image />
+      {/* Perfil */}
+      <section class=" w-full pl-20 py-10 ">
+        <div class=" flex flex-row border-[#74BDE8] border-2 w-5/6 h-full rounded-2xl bg-white bg-opacity-5 justify-between px-3 py-3">
+          <div className="flex flex-row gap-2">
+            <Image
+              src={logoImg}
+              width={50}
+              height={50}
+              alt="Imagem de perfil"
+              class="rounded-full "
+            />
+            <div class="flex-col flex gap-2">
+              <Menu_textProfile styles="text-white">NoNameUser</Menu_textProfile>
 
-        <div>
-          <p></p>
+              <Menu_textProfile styles="text-gray-500"> @NoNameUser</Menu_textProfile>
+            </div>
+          </div>
+
+          <FiLogOut class="" />
         </div>
-
-        <div>
-          <p></p>
-        </div>
-
-        <FiLogOut />
-
-      </div>
+      </section>
     </div>
   );
 };

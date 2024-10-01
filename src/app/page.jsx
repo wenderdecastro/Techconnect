@@ -1,3 +1,4 @@
+
 import MenuBar from "@/components/menuBar";
 
 export default function Home() {
