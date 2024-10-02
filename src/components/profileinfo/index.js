@@ -16,7 +16,7 @@ export default function ProfileInfo() {
 
         {/* Parte pro numero de seguidores , likes e posts */}
 
-        <BlueBtn></BlueBtn>
+
 
 
 

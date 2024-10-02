@@ -25,7 +25,7 @@ const MenuBar = () => {
             class={
               // Se o useState está setado com o título da página ele ativa o 'CSS' dele caso não, deixa como o estilo padrão
               isClicked === "feed"
-                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center `
+                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center w-5/6 `
                 : `flex items-center`
             }
           >
@@ -46,7 +46,7 @@ const MenuBar = () => {
             onClick={() => setIsClicked("comunidade")}
             class={
               isClicked === "comunidade"
-                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center `
+                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center w-5/6`
                 : `flex items-center`
             }
           >
@@ -66,7 +66,7 @@ const MenuBar = () => {
             onClick={() => setIsClicked("perfil")}
             class={
               isClicked === "perfil"
-                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center`
+                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center w-5/6`
                 : `flex items-center`
             }
           >

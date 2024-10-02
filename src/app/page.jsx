@@ -6,6 +6,7 @@ import { EditModal } from "@/components/modal/editModal";
 export default function Home() {
   return (
     <>
+
       <EditModal/>
     </>
   );

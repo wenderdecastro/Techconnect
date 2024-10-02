@@ -1,43 +1,77 @@
 {
-    "ImagemPost": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "ImgURL": "string_or_null",
-        "Post_ID": "00000000-0000-0000-0000-000000000000"
-      }
-    ],
-    "Posts": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "Texto": "string_or_null",
-        "Usuario_ID": "00000000-0000-0000-0000-000000000000",
-        "Post_Principal_ID": "00000000-0000-0000-0000-000000000000",
-        "Encadeado": false
-      }
-    ],
-    "PostsLikes": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "Post_ID": "00000000-0000-0000-0000-000000000000",
-        "Usuario_ID": "00000000-0000-0000-0000-000000000000"
-      }
-    ],
-    "Usuario": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "NomeExibicao": "string_or_null",
-        "NomeUsuario": "string_or_null",
-        "Email": "string_or_null",
-        "Senha": "string_or_null",
-        "FotoPerfilURL": "string_or_null",
-        "FotoBannerURL": "string_or_null"
-      }
-    ],
-    "UsuarioSeguidores": [
-      {
-        "ID": "00000000-0000-0000-0000-000000000000",
-        "Usuario_ID": "00000000-0000-0000-0000-000000000000",
-        "Seguidor_ID": "00000000-0000-0000-0000-000000000000"
-      }
-    ]
-  }
+  "Posts": [
+    {
+      "id": "4c39777b-f471-4e07-b99f-2b6b7b438210",
+      "date": 1727788854265,
+      "userId": 0,
+      "text": "",
+      "imagesURL": [],
+      "encadeado": false
+    },
+    {
+      "id": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
+      "date": 1727868080959,
+      "userId": 0,
+      "text": "teste",
+      "imagesURL": [],
+      "encadeado": false
+    },
+    {
+      "id": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16",
+      "date": 1727868120824,
+      "userId": 0,
+      "text": "teste",
+      "imagesURL": [],
+      "encadeado": false
+    },
+    {
+      "id": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "date": 1727868268682,
+      "userId": 0,
+      "text": "teste post",
+      "imagesURL": [
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.780Z.png",
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.781Z.png",
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.779Z.png",
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.773Z.png"
+      ],
+      "encadeado": false
+    },
+    {
+      "id": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "date": 1727868832204,
+      "userId": 0,
+      "text": "teste",
+      "imagesURL": [],
+      "encadeado": false
+    }
+  ],
+  "PostsLikes": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "Post_ID": "00000000-0000-0000-0000-000000000000",
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "e6fa"
+    }
+  ],
+  "Usuario": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "NomeExibicao": "string_or_null",
+      "NomeUsuario": "string_or_null",
+      "Email": "string_or_null",
+      "Senha": "string_or_null",
+      "FotoPerfilURL": "string_or_null",
+      "FotoBannerURL": "string_or_null",
+      "id": "ae5f"
+    }
+  ],
+  "UsuarioSeguidores": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+      "Seguidor_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "fe58"
+    }
+  ]
+}

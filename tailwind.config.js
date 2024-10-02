@@ -13,13 +13,14 @@ module.exports = {
       colors: {
         primary: {
           blue: "#74BDE8",
-          purple: "#FF526F",
+          red: "#FF526F",
         },
         neutral: {
           background: "#050505",
           gray: "#121212",
-          lighter_gray: "#1e1e1e",
-          lightest_gray: "#191919",
+          lighter_gray: "#191919",
+          lightest_gray: "#1e1e1e",
+          light_gray: "#727272"
         },
       },
       backgroundImage: {

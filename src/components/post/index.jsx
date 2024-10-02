@@ -9,8 +9,8 @@ import Image from "next/image";
 
 export const Post = (props) => {
   const imageLoader = ({ src, width, quality }) => {
-  return `https://example.com/${src}?w=${width}&q=${quality || 75}`
-}
+    return `https://example.com/${src}?w=${width}&q=${quality || 75}`
+  }
   return (
     <article className="w-[85%] h-fit px-5 py-5 flex flex-col justify-between rounded-2xl bg-neutral-900 bg-opacity-50 dev">
       {/* user infos */}
@@ -22,7 +22,7 @@ export const Post = (props) => {
         />
         <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} />
 
-        <span className=" flex text-center gap-2 opacity-50 text-sm py-1">
+        <span className="flex gap-2 py-1 text-sm text-center opacity-50 ">
           <FaRegClock style={{ scale: "130%", paddingTop: "2.5%" }} />
           32 seg atras
         </span>
@@ -43,11 +43,11 @@ export const Post = (props) => {
         </Text>
 
         <div className="w-[70%] h-[70%]">
-        <img
-          className="w-[60%] h-[70%] rounded-2xl"
-          src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
-          alt="imagem de perfil do usuário logado"
-        />
+          <img
+            className="w-[60%] h-[70%] rounded-2xl"
+            src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
+            alt="imagem de perfil do usuário logado"
+          />
         </div>
       </div>
 
