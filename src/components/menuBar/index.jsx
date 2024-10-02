@@ -7,17 +7,18 @@ import Link from "next/link";
 import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
 import { Menu_textProfile } from "../text";
+import { ProfileName } from "../texts";
 
 const MenuBar = () => {
   //useState para verficar se está selecionado ou não
   const [isClicked, setIsClicked] = useState("");
 
   return (
-    <div class="w-1/3 h-screen bg-black py-2 flex justify-between flex-col">
+    <div class=" h-full py-2 flex justify-between flex-col">
       <aside class="flex flex-col gap-5">
-        <Image src={logoImg} width={100} height={100} alt="Imagem do logo" />
+        {/* <Image src={logoImg} width={100} height={100} alt="Imagem do logo" /> */}
 
-        <section class="flex flex-col gap-3 pr-10">
+        <section class="flex flex-col gap-3">
           <div
             // Aqui a gente seleciona pelo título da página, dessa forma ao clicar ná página ele não seleciona todos
             onClick={() => setIsClicked("feed")}
@@ -45,7 +46,7 @@ const MenuBar = () => {
             onClick={() => setIsClicked("comunidade")}
             class={
               isClicked === "comunidade"
-                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center`
+                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center `
                 : `flex items-center`
             }
           >
@@ -85,25 +86,18 @@ const MenuBar = () => {
       </aside>
 
       {/* Perfil */}
-      <section class=" w-full pl-20 py-10 ">
-        <div class=" flex flex-row border-[#74BDE8] border-2 w-5/6 h-full rounded-2xl bg-white bg-opacity-5 justify-between px-3 py-3">
+      <section class=" w-3/4 py-12">
+        <div class=" flex flex-row items-center border-[#74BDE8] border-2 w-4/4 h-full rounded-2xl bg-white bg-opacity-5 justify-between py-3">
           <div className="flex flex-row gap-2">
             <Image
               src={profilePicture}
               width={50}
               height={50}
               alt="Imagem de perfil"
-              class="rounded-full cursor-pointer "
+              class=" aspect-square rounded-full cursor-pointer "
             />
             <div class="flex-col flex gap-1">
-              <Menu_textProfile styles="text-white">
-                NoNameUser
-              </Menu_textProfile>
-
-              <Menu_textProfile styles="text-gray-500">
-                {" "}
-                @NoNameUser
-              </Menu_textProfile>
+              <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} userStyle="w-auto"/>
             </div>
           </div>
 
