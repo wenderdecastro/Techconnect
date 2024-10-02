@@ -2,8 +2,9 @@
 import { v4 as uuid } from 'uuid';
 import { PostInput } from "@/components/input";
 import React, { useEffect, useState } from "react";
-import { CreateImageFile } from '@/utils/azure/config';
+import { CreateImagePost } from '@/utils/azure/config';
 import { Post } from "@/components/post";
+import moment from 'moment';
 
 export default function Home() {
 
@@ -13,8 +14,10 @@ export default function Home() {
     const [postText, setPostText] = useState();
 
     useEffect(() => {
-        console.log("Selected images updated:", selectedImages);
-    }, [selectedImages]);
+
+        console.log(moment().toDate());
+
+    }, [])
 
     const createPost = async (e) => {
 
@@ -26,7 +29,7 @@ export default function Home() {
 
 
         await Promise.all(selectedImages.map(async (image) => {
-            const urlImage = await CreateImageFile(image);
+            const urlImage = await CreateImagePost(image);
             console.log(urlImage);
             postsUrl.push(urlImage);
         }));
@@ -37,7 +40,7 @@ export default function Home() {
 
         const newPost = {
             id: uuid(),
-            date: Date.now(),
+            date: moment().toDate(),
             userId: 0,
             text: postText,
             imagesURL: postsUrl,
@@ -76,23 +79,26 @@ export default function Home() {
 
 
         <div className="flex justify-center w-screen bg-neutral-background">
-            <div className="w-[90%] h-screen " >
-                <header className=" grid grid-cols-[28%,44%,28%] h-[15%] ">
+            <div className="w-[90%] h-screen overflow-hidden " >
+                <header className=" grid grid-cols-[30%,40%,30%] h-[12.5%] ">
                     <div className="">27,5%</div>
                     <div className="">45%</div>
                     <div className="">30%</div>
                 </header>
 
-                <div className="grid grid-cols-[28%,44%,28%] h-[90%] ">
-                    <div className="h-full " >30%</div>
-                    <div >
+                <div className="grid grid-cols-[30%,40%,30%] h-[90%] ">
+                    <div className="h-fill" >30%</div>
+
+                    <div className="flex flex-col overflow-y-scroll h-[97.5%] gap-y-6 ">
                         <PostInput onSubmit={createPost} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
 
-                        <div className="overflow-y-scroll ">
-
-                        </div>
-
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <div className='mb-12' />
                     </div>
+
                     <div className="h-full ">30%</div>
                 </div>
 

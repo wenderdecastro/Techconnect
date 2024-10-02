@@ -5,9 +5,8 @@ import React, { useState, useRef } from "react";
 
 export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
     const [selectedImages, setSelectedImages] = useState([]);
-    const textareaRef = useRef(null); // Create a ref for the textarea
+    const textareaRef = useRef(null);
 
-    // Handle image selection
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
 
@@ -40,10 +39,9 @@ export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
         props.text = "";
     }
 
-    // Function to handle textarea resizing
     const handleInput = () => {
-        textareaRef.current.style.height = 'auto'; // Reset height
-        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Set to scroll height
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     };
 
     return (
