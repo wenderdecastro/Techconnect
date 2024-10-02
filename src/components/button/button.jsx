@@ -1,11 +1,21 @@
-const { Children } = require("react")
+import { FiLogOut } from "react-icons/fi";
 
-const BlueBtn = () => {
-    <button className="bg-blue-500">
-        <title className="text-black">
-            texto butão
-        </title>
+export const BlueBtn = ({ onclick, text, style }) => {
+  return (
+    <button
+      type="button"
+      onClick={onclick}
+      className={`bg-primary-blue ${style} w-fit rounded-full font-medium text-sm text-black`}
+    >
+      {text}
     </button>
-}
+  );
+};
 
-export default BlueBtn
+export const Exit = ({ onclick, img, style }) => {
+  return (
+    <button type="button" onClick={onclick}>
+      <FiLogOut className=" size-5 bg-neutral-background" />
+    </button>
+  );
+};

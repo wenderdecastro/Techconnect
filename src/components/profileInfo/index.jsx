@@ -1,31 +1,50 @@
-import BlueBtn from "../button/button";
+import next from "next";
 
-const ProfileInfo = () => {
+import { ProfileName, Text } from "../texts";
+import { BlueBtn, Exit } from "../button/button";
+
+const ProfileInfo = (props) => {
   return (
-    <div className=" bg-red-600 flex justify-center">
-      
-      <div className="w-3/5 h-96 rounded-2xl">
-
+    <div className="  bg-gray-900 flex justify-center w-screen h-screen">
+      <div className="w-[45%] h-[60%] my-[5%] rounded-2xl bg-neutral-background absolute">
         <img
-          alt=""
-          src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          className=" my-24 ml-[345px] h-12 w-12 rounded-full ring-2 ring-white"
+          className="w-screen h-[35%]"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqBtrIXtWRlH8-_PiILF6vcX4g35parF770can3nunijYw3g_"
+          alt="Banner do perfil do usuário"
         />
 
-            <div className=" h-7 ml-5 ">
-                <h1 className="w-auto size-14">Nome do Perfil</h1>
-            </div>
+        <img
+          className="relative -top-10  z-50 ml-[45%] h-20 w-20 rounded-full ring-2  "
+          src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
+          alt="imagem de perfil do usuário logado"
+        />
 
-            <div className="h-7 ml-5 ">
-                <h1 className="w-auto size-10">@Perfil</h1>
-            </div>
+        <div className="flex justify-between bg-neutral-background">
+          <ProfileName
+            fieldStyle="bg-neutral-background ml-[3%]"
+            nameStyle="bg-neutral-background text-lg "
+            nomeExibicao={"Fulano da Silva"}
+            nomeUsuario={"@Fulano"}
+          />
 
-            <BlueBtn/> 
+          <div className=" flex w-[30%] h-[15%]  bg-neutral-background">
+            <BlueBtn
+              style={"mr-[10%] h-[5%] px-1 py-1 "}
+              text={"Editar Perfil"}
+            />
 
+            <Exit />
+          </div>
+        </div>
 
-          
-
-
+        <div className="flex justify-between w-[40%] my-[5%] ml-[5%] bg-neutral-background">
+          <Text style="bg-neutral-background ">0</Text>
+          <Text style="bg-neutral-background opacity-50">Seguidores</Text>
+          <Text style="bg-neutral-background ">0</Text>
+          <Text style="bg-neutral-background opacity-50">Likes</Text>
+          <Text style="bg-neutral-background ">0</Text>
+          <Text style="bg-neutral-background opacity-50">Posts</Text>
+        </div>
       </div>
     </div>
   );
