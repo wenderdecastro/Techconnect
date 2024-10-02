@@ -2,8 +2,8 @@
 import { v4 as uuid } from 'uuid';
 import { PostInput } from "@/components/input";
 import React, { useEffect, useState } from "react";
-import { CreateImageFile } from '@/utils/azure/config';
 import { Post } from "@/components/post";
+import { CreateImagePost } from '../utils/azure/config';
 
 export default function Home() {
 
@@ -26,7 +26,7 @@ export default function Home() {
 
 
         await Promise.all(selectedImages.map(async (image) => {
-            const urlImage = await CreateImageFile(image);
+            const urlImage = await CreateImagePost(image);
             console.log(urlImage);
             postsUrl.push(urlImage);
         }));
