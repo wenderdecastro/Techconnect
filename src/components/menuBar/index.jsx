@@ -2,6 +2,7 @@
 import next from "next";
 import Image from "next/image";
 import logoImg from "./../../../public/images/AppLogo.png";
+import profilePicture from "./../../../public/images/MessiProfilePicture.jpg";
 import Link from "next/link";
 import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
@@ -88,20 +89,27 @@ const MenuBar = () => {
         <div class=" flex flex-row border-[#74BDE8] border-2 w-5/6 h-full rounded-2xl bg-white bg-opacity-5 justify-between px-3 py-3">
           <div className="flex flex-row gap-2">
             <Image
-              src={logoImg}
+              src={profilePicture}
               width={50}
               height={50}
               alt="Imagem de perfil"
-              class="rounded-full "
+              class="rounded-full cursor-pointer "
             />
-            <div class="flex-col flex gap-2">
-              <Menu_textProfile styles="text-white">NoNameUser</Menu_textProfile>
+            <div class="flex-col flex gap-1">
+              <Menu_textProfile styles="text-white">
+                NoNameUser
+              </Menu_textProfile>
 
-              <Menu_textProfile styles="text-gray-500"> @NoNameUser</Menu_textProfile>
+              <Menu_textProfile styles="text-gray-500">
+                {" "}
+                @NoNameUser
+              </Menu_textProfile>
             </div>
           </div>
 
-          <FiLogOut class="" />
+          <div class=" flex flex-col justify-center pr-5 cursor-pointer">
+            <FiLogOut class="w-6 h-6" />
+          </div>
         </div>
       </section>
     </div>
