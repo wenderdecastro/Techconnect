@@ -56,14 +56,13 @@
   ],
   "Usuario": [
     {
-      "ID": "00000000-0000-0000-0000-000000000000",
-      "NomeExibicao": "string_or_null",
-      "NomeUsuario": "string_or_null",
-      "Email": "string_or_null",
-      "Senha": "string_or_null",
+      "ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "NomeExibicao": "Fulando da Silva Jr",
+      "NomeUsuario": "Fuimuleke",
+      "Email": "naymar@gamail.com",
+      "Senha": "123",
       "FotoPerfilURL": "string_or_null",
-      "FotoBannerURL": "string_or_null",
-      "id": "ae5f"
+      "FotoBannerURL": "string_or_null"
     }
   ],
   "UsuarioSeguidores": [
