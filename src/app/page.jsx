@@ -5,18 +5,15 @@ import { EditModal } from "@/components/modal/editModal";
 import { LargeButton } from "@/components/button";
 import { useState } from "react";
 
+import ProfileInfo from "@/components/profileInfo";
+
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      
-      <LargeButton onClick={() => setIsModalOpen(true)} Text="Abrir o modal"> </LargeButton>
-
-      <EditModal
-      
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      />
+      <div className="bg-black flex-row mx-auto my-0">
+        <ProfileInfo />
+      </div>
     </>
   );
 }
