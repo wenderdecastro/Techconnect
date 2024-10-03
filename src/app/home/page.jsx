@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { CreateImagePost } from '@/utils/azure/config';
 import { Post } from "@/components/post";
 import moment from 'moment';
+import Link from 'next/link';
 
 export default function Home() {
 
@@ -84,7 +85,7 @@ export default function Home() {
             }
 
             const data = await response.json();
-            setPosts((prevPosts) => [...prevPosts, data]);
+            setPosts((prevPosts) => [data, ...prevPosts]);
         } catch (error) {
             console.error("Error creating post:", error);
         }
@@ -110,11 +111,12 @@ export default function Home() {
                 <div className="grid grid-cols-[30%,40%,30%] h-[90%] ">
                     <div className="h-fill" >30%</div>
 
-                    <div className="flex flex-col overflow-y-scroll h-[97.5%] gap-y-6 ">
-                        <PostInput onSubmit={createPost} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
+                    <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
+                        <PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
 
                         {posts.map((post, index) => {
                             return <Post text={post.text} imagesURL={post.imagesURL} id={post.id} encadeado={post.encadeado} key={post.id} userId={post.userId} date={post.date} />
+
                         })}
                         <div className='mb-12' />
                     </div>

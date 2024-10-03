@@ -32,11 +32,11 @@ export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        onSubmit(e);
         setSelectedImages([]);
-        onSubmit()
-        props.text = "";
+        text = "";
     }
 
     const handleInput = () => {
@@ -45,7 +45,7 @@ export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-full h-fit rounded-2xl bg-neutral-gray">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-[90%] h-fit rounded-2xl bg-neutral-gray">
             <div className="w-[92.5%] flex flex-col gap-4 py-6">
                 <textarea
                     ref={textareaRef} // Attach the ref

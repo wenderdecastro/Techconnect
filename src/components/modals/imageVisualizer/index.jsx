@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 const ImageModal = ({ images, currentIndex, onClose }) => {
+    const [index, setIndex] = useState(currentIndex);
+
+    useEffect(() => {
+        setIndex(currentIndex);
+        console.log(index);
+        console.log(currentIndex);
+
+        // Update the modal's index when a new image is clicked
+    }, [currentIndex]);
+
     const handlePrev = () => {
-        if (currentIndex > 0) {
-            onChangeIndex(currentIndex - 1);
+        if (index > 0) {
+            setIndex(index - 1);
         }
     };
 
     const handleNext = () => {
-        if (currentIndex < images.length - 1) {
-            onChangeIndex(currentIndex + 1);
+        if (index < images.length - 1) {
+            setIndex(index + 1);
         }
-    };
-
-    const [index, setIndex] = useState(currentIndex);
-
-    const onChangeIndex = (newIndex) => {
-        setIndex(newIndex);
     };
 
     return (
@@ -28,15 +32,16 @@ const ImageModal = ({ images, currentIndex, onClose }) => {
                 </button>
 
                 <button onClick={handlePrev} disabled={index === 0} className="w-1/4 p-16 text-left text-white">
-                    Previous
+                    {index === 0 ? "" : "Previous"}
                 </button>
-                <img className="object-contain w-2/4 h-auto rounded-lg" src={images[0]} alt={`Image ${index + 1}`} />
+
+                <img className="object-contain w-2/4 h-auto rounded-lg" src={images[index]} alt={`Image ${index + 1}`} />
 
                 <button onClick={handleNext} disabled={index === images.length - 1} className="w-1/4 p-16 text-right text-white">
-                    Next
+                    {index === images.length - 1 ? "" : "Next"}
                 </button>
             </div>
-        </div>
+        </div >
     );
 };
 
