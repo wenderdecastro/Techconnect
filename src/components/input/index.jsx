@@ -1,7 +1,8 @@
 "use client";
 
-import { LargeButton, SmallButton } from "../button";
+
 import React, { useState, useRef } from "react";
+import { SmallButton } from "../button";
 
 export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
     const [selectedImages, setSelectedImages] = useState([]);
@@ -37,7 +38,7 @@ export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
         e.preventDefault();
         setSelectedImages([]);
         onSubmit()
-        props.text = "";
+        text = "";
     }
 
     // Function to handle textarea resizing

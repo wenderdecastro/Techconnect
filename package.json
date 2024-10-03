@@ -12,10 +12,10 @@
     "@azure/storage-blob": "^12.25.0",
     "install": "^0.13.0",
     "json-server": "^1.0.0-beta.3",
-    "next": "14.2.13",
+    "next": "^14.2.14",
     "octokit": "^4.0.2",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
     "uuid": "^10.0.0"
   },

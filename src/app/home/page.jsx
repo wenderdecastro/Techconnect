@@ -1,9 +1,10 @@
 "use client";
 import { v4 as uuid } from 'uuid';
-import { PostInput } from "@/components/input";
-import React, { useEffect, useState } from "react";
-import { Post } from "@/components/post";
-import { CreateImagePost } from '../utils/azure/config';
+import { useEffect, useState } from "react";
+import { PostInput } from '@/components/input';
+import MenuBar from '@/components/menuBar';
+import { CreateImagePost } from '@/utils/azure/config';
+
 
 export default function Home() {
 
@@ -84,7 +85,9 @@ export default function Home() {
                 </header>
 
                 <div className="grid grid-cols-[28%,44%,28%] h-[90%] ">
-                    <div className="h-full " >30%</div>
+                    <div className="h-full " >30%
+                    <MenuBar/>
+                    </div>
                     <div >
                         <PostInput onSubmit={createPost} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
 
