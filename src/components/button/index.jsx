@@ -19,3 +19,11 @@ export function SmallButton({ onClick, Text, Inverse = false, Style }) {
         </button>
     )
 } 
+
+export function Link({onClick, Text, style}){
+    return(
+        <p onClick={onClick} className={`cursor-pointer text-primary-red`}>
+            {Text}
+        </p>
+    )
+}

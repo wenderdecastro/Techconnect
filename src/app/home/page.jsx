@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { PostInput } from '@/components/input';
 import MenuBar from '@/components/menuBar';
 import { CreateImagePost } from '@/utils/azure/config';
-// import PostInput from '../../components/input/index';
+
 
 export default function Home() {
 

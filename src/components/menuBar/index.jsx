@@ -14,7 +14,7 @@ const MenuBar = () => {
   const [isClicked, setIsClicked] = useState("");
 
   return (
-    <div class=" h-full py-2 flex justify-between flex-col">
+    <div class=" h-5/6 py-2 flex flex-col justify-between ">
       <aside class="flex flex-col gap-5">
         {/* <Image src={logoImg} width={100} height={100} alt="Imagem do logo" /> */}
 
@@ -88,13 +88,13 @@ const MenuBar = () => {
       {/* Perfil */}
       <section class=" w-3/4 py-12">
         <div class=" flex flex-row items-center border-[#74BDE8] border-2 w-4/4 h-full rounded-2xl bg-white bg-opacity-5 justify-between py-3">
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 pl-2">
             <Image
               src={profilePicture}
               width={50}
               height={50}
               alt="Imagem de perfil"
-              class=" aspect-square rounded-full cursor-pointer "
+              class="  aspect-square rounded-full cursor-pointer "
             />
             <div class="flex-col flex gap-1">
               <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} userStyle="w-auto"/>
