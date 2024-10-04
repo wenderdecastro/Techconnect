@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import axios from "axios"; // Importando axios para fazer requisições HTTP
+import { useEffect, useState } from "react";
 import CustomInput from "@/components/input/input"; // Componente customizado de input
 import Text from "@/components/text/text"; // Componente customizado de texto
 import Title from "@/components/title/title"; // Componente customizado de título
@@ -17,18 +16,13 @@ export default function Home() {
     FotoPerfilURL: null,
     FotoBannerURL: null,
   });
-  const [isUserCreated, setIsUserCreated] = useState(false); // Novo estado para controle do toggle
+  const [isUserCreated, setIsUserCreated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Adiciona um estado para gerenciar mensagens de erro
 
   const toggleForm = () => {
     setIsSignIn((prevState) => !prevState);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
   };
 
   const handleSubmit = async (e) => {
@@ -36,12 +30,12 @@ export default function Home() {
 
     // Verifica se os campos necessários estão preenchidos
     if (!userData.NomeExibicao || !userData.NomeUsuario || !userData.Email || !userData.Senha) {
-      alert("Por favor, preencha todos os campos!");
+      setErrorMessage("Por favor, preencha todos os campos!");
       return;
     }
 
     const usuario = {
-      ID: UUID(),  // O ID do usuário será gerado automaticamente
+      ID: UUID(),
       NomeExibicao: userData.NomeExibicao,
       NomeUsuario: userData.NomeUsuario,
       Email: userData.Email,
@@ -50,9 +44,28 @@ export default function Home() {
       FotoBannerURL: null,
     };
 
-    console.log("Objeto usuário enviado:", usuario);
-
     try {
+      // Verifica se já existe um usuário com o mesmo nome de exibição ou email
+      const checkUserExists = async () => {
+        const response = await fetch('http://localhost:3001/Usuario', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+        const existingUser = data.find(
+          (user) => user.NomeExibicao === usuario.NomeExibicao || user.Email === usuario.Email
+        );
+
+        if (existingUser) {
+          throw new Error('Usuário já cadastrado');
+        }
+      };
+
+      await checkUserExists();
+
       const response = await fetch('http://localhost:3001/Usuario', {
         method: 'POST',
         headers: {
@@ -62,13 +75,11 @@ export default function Home() {
       });
 
       const data = await response.json();
-      console.log("Resposta recebida:", data);
 
       if (!response.ok) {
         throw new Error(data.message || 'Erro ao cadastrar o usuário');
       }
 
-      console.log("Usuário cadastrado com sucesso!");
       setUserData({
         NomeExibicao: "",
         NomeUsuario: "",
@@ -78,13 +89,48 @@ export default function Home() {
         FotoBannerURL: null,
       });
       setIsUserCreated(true);
-      alert("Usuário cadastrado com sucesso!");
+      setErrorMessage(""); // Limpa a mensagem de erro
+      alert("Usuário cadastrado com sucesso!", userData);
     } catch (error) {
       console.error("Erro ao cadastrar o usuário:", error);
-      alert("Erro ao cadastrar o usuário.");
+      setErrorMessage(error.message || "Erro ao cadastrar o usuário.");
     }
   };
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    // Verifica se os campos de login estão preenchidos
+    if (!userData.Email || !userData.Senha) {
+      alert("Por favor, preencha todos os campos!");
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3001/Usuario?Email=${userData.Email}&Senha=${userData.Senha}`);
+      const data = await response.json();
+
+      if (data.length > 0) {
+        // Se o usuário for encontrado
+        setIsAuthenticated(true);
+        setLoginError("");
+        alert("Login bem-sucedido!");
+      } else {
+        setLoginError("Email ou senha inválidos!");
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert("Erro ao fazer login.");
+    }
+  };
+
+  useEffect(() => {
+    if (isSignIn == true) {
+
+      setErrorMessage("");
+    }
+
+  }, [isSignIn])
 
   return (
     <div className="flex items-center justify-center h-screen bg-login-background bg-cover perspective">
@@ -95,44 +141,64 @@ export default function Home() {
           <Title>{isSignIn ? "Sign in" : "Create account"}</Title>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={isSignIn ? handleLogin : handleSubmit}>
           <div className="relative w-full h-[200px]">
             <div className={`flip-card ${isSignIn ? "rotate-y-180" : ""}`}>
               <div className="flip-front">
                 <div className="flex space-x-4 mb-4">
                   <CustomInput
                     type="text"
-                    name="NomeExibicao" // Mudança aqui para usar o nome correto
-                    placeholder="Nome de Exibição"
+                    name="NomeExibicao"
+                    placeholder="NickName"
                     size="lg"
-                    inputvalue={userData.NomeExibicao}
-                    onChange={(e) => handleChange(e, "NomeExibicao")}
+                    value={userData.NomeExibicao}
+                    onChange={(e) =>
+                      setUserData((prevState) => ({
+                        ...prevState,
+                        NomeExibicao: e.target.value,
+                      }))
+                    }
                   />
                   <CustomInput
                     type="text"
-                    name="NomeUsuario" // Mudança aqui para usar o nome correto
-                    placeholder="Nome de Usuário"
+                    name="NomeUsuario"
+                    placeholder="Nome"
                     size="lg"
-                    inputvalue={userData.NomeUsuario}
-                    onChange={(e) => handleChange(e, 'NomeUsuario')}
+                    value={userData.NomeUsuario}
+                    onChange={(e) =>
+                      setUserData((prevState) => ({
+                        ...prevState,
+                        NomeUsuario: e.target.value,
+                      }))
+                    }
                   />
                 </div>
                 <div className="space-y-4">
                   <CustomInput
                     type="email"
-                    name="Email" // Mudança aqui para usar o nome correto
+                    name="Email"
                     placeholder="Email"
                     size="lg"
-                    inputvalue={userData.Email}
-                    onChange={(e) => handleChange(e, 'Email')}
+                    value={userData.Email}
+                    onChange={(e) =>
+                      setUserData((prevState) => ({
+                        ...prevState,
+                        Email: e.target.value,
+                      }))
+                    }
                   />
                   <CustomInput
                     type="password"
-                    name="Senha" // Mudança aqui para usar o nome correto
+                    name="Senha"
                     placeholder="Password"
                     size="lg"
-                    inputvalue={userData.Senha}
-                    onChange={(e) => handleChange(e, "Senha")}
+                    value={userData.Senha}
+                    onChange={(e) =>
+                      setUserData((prevState) => ({
+                        ...prevState,
+                        Senha: e.target.value,
+                      }))
+                    }
                   />
                 </div>
               </div>
@@ -140,19 +206,31 @@ export default function Home() {
               <div className="flip-back">
                 <div className="space-y-4">
                   <CustomInput
-                    type="text"
-                    name="Email" // Mudança aqui para usar o nome correto
+                    type="email"
+                    name="Email"
                     placeholder="Email"
                     size="lg"
-                    inputvalue={userData.Email}
-                    onChange={(e) => handleChange(e, "Email")} />
+                    value={userData.Email}
+                    onChange={(e) =>
+                      setUserData((prevState) => ({
+                        ...prevState,
+                        Email: e.target.value,
+                      }))
+                    }
+                  />
                   <CustomInput
                     type="password"
-                    name="Senha" // Mudança aqui para usar o nome correto
+                    name="Senha"
                     placeholder="Password"
                     size="lg"
-                    inputvalue={userData.Senha}
-                    onChange={(e) => handleChange(e, "Senha")} />
+                    value={userData.Senha}
+                    onChange={(e) =>
+                      setUserData((prevState) => ({
+                        ...prevState,
+                        Senha: e.target.value,
+                      }))
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -179,13 +257,24 @@ export default function Home() {
                 </>
               )}
             </Text>
-            {/* Toggle de sucesso após a criação do usuário */}
-            {isUserCreated && (
-              <div className="w-[50%] items-center justify-center text-center mt-4 p-2 text-primary-white rounded-full transition duration-300">
+
+            {!isSignIn && isUserCreated && (
+              <div className="w-[50%] text-center mt-4 p-2 text-[#55ff2e] rounded-full transition duration-300">
                 Usuário criado com sucesso!
               </div>
             )}
+            {loginError && (
+              <div className="w-[50%] text-center mt-4 p-2 text-red-500 rounded-full transition duration-300">
+                {loginError}
+              </div>
+            )}
+            {errorMessage && (
+              <div className="w-[50%] text-center mt-4 p-2 text-red-500 rounded-full transition duration-300">
+                {errorMessage}
+              </div>
+            )}
           </div>
+
         </form>
       </div>
     </div>
