@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Remove the @import statement and handle fonts separately */
 
 /* Fixing other utilities */
 @layer utilities {
-  /* .rotate-y-180 {
+  .rotate-y-180 {
     transform: rotateY(180deg);
   }
 
@@ -33,7 +32,7 @@
   .custom-datepicker::-webkit-calendar-picker-indicator {
     cursor: pointer;
     filter: invert(1) brightness(2) grayscale(1);
-  } */
+  }
 
 /* ::-webkit-scrollbar {
   width: 2px;
