@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove the @import statement and handle fonts separately */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+/* Fixing other utilities */
 @layer utilities {
-  .rotate-y-180 {
+  /* .rotate-y-180 {
     transform: rotateY(180deg);
   }
 
@@ -32,46 +32,33 @@
 
   .custom-datepicker::-webkit-calendar-picker-indicator {
     cursor: pointer;
-    filter: invert(1) brightness(2) grayscale(1); /* Torna o ícone branco */
-  }
-}
+    filter: invert(1) brightness(2) grayscale(1);
+  } */
 
-*{
-  @apply text-neutral-50 bg-gray-950
-}
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-/* Add this to your global CSS file (e.g., styles.css) */
-
-::-webkit-scrollbar {
-  width: 2px; /* Adjust the width of the scrollbar */
+/* ::-webkit-scrollbar {
+  width: 2px;
   height: 4px;
-  padding: 5px;
-  margin:5px;
-
 }
 
 ::-webkit-scrollbar-track {
   background: #050505;
-  border-radius: 99px; /* Color of the scrollbar track */
+  border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #121212; /* Color of the scrollbar handle */
-  border-radius: 10px; /* Round corners of scrollbar handle */
-  border: 2px solid transparent; /* Adds space around the handle */
+  background-color: #121212;
+  border-radius: 10px;
+  border: 2px solid transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Color of the scrollbar handle on hover */
+  background-color: #555;
 }
 
-
-.dev{
+.dev {
   border: 1px dashed red;
+} */
+
 }
 
 
