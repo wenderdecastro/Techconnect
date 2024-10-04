@@ -146,16 +146,16 @@ export default function Home() {
       <div className="flex items-center justify-center h-screen bg-cover bg-login-background perspective">
         <div className="p-6 rounded-lg space-y-4 w-[35%]">
           <div className="flex flex-col items-center justify-center">
-            <img src={"/images/AppLogo.png"} className="w-[80px]" alt="Logo" />
-            <Text className="mt-1">{isSignIn ? "Welcome back!" : "Join Techconnection?"}</Text>
-            <Title>{isSignIn ? "Sign in" : "Create account"}</Title>
+            <img src={"/images/AppLogo.png"} className="lg:w-[80px] w-[44px]" alt="Logo" />
+            <Text className="lg:text-center  mt-1">{isSignIn ? "Welcome back!" : "Join Techconnection?"}</Text>
+            <Title style={`lg:text-4xl text-2xl w-max-content`}>{isSignIn ? "Sign in" : "Create account"}</Title>
           </div>
 
           <form onSubmit={isSignIn ? handleLogin : handleSubmit}>
             <div className="relative w-full h-[200px]">
               <div className={`flip-card ${isSignIn ? "rotate-y-180" : ""}`}>
                 <div className="flip-front">
-                  <div className="flex mb-4 space-x-4">
+                  <div className="flex lg:flex-row flex-col  mb-4 space-x-4">
                     <CustomInput
                       type="text"
                       name="NomeExibicao"

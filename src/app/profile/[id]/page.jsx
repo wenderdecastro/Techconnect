@@ -1,5 +1,6 @@
 "use client";
 
+import { SmallButton } from "@/components/button";
 // import { FollowButton, SmallButton } from "@/components/button";
 // import { BlueBtn, Exit } from "@/components/button/button";
 import { Post } from "@/components/post";
@@ -110,7 +111,7 @@ const OtherPerfil = ({ params }) => {
             <SmallButton
               Inverse={followed === false}
               Style={`mr-[10%] h-[5%] px-1 py-1 hover:border-[#2b95d2] `}
-              Text={followed === false ? "Seguir Perfil" : "seguindo"}
+              Text={followed === false ? "Seguir Perfil" : "Seguindo"}
               onClick={() => Follow()}
             />
 
