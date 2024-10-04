@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "ImagemPost": [
     {
       "ID": "00000000-0000-0000-0000-000000000000",
@@ -15,6 +16,61 @@
       "Post_Principal_ID": "00000000-0000-0000-0000-000000000000",
       "Encadeado": false,
       "id": "b304"
+=======
+  "Posts": [
+    {
+      "id": "4c39777b-f471-4e07-b99f-2b6b7b438210",
+      "date": 1727788854265,
+      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "text": "SIUUUUUUUU",
+      "imagesURL": [],
+      "encadeado": false
+    },
+    {
+      "id": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
+      "date": 1727868080959,
+      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "text": "teste",
+      "imagesURL": [],
+      "encadeado": false
+    },
+    {
+      "id": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
+      "date": 1727868080959,
+      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "text": "teste",
+      "imagesURL": [],
+      "encadeado": false
+    },
+    {
+      "id": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16",
+      "date": 1727868120824,
+      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "text": "teste",
+      "imagesURL": [],
+      "encadeado": false
+    },
+    {
+      "id": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "date": 1727868268682,
+      "userId": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "text": "teste post",
+      "imagesURL": [
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.780Z.png",
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.781Z.png",
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.779Z.png",
+        "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-02T11:24:27.773Z.png"
+      ],
+      "encadeado": false
+    },
+    {
+      "id": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "date": 1727868832204,
+      "userId": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "text": "teste",
+      "imagesURL": [],
+      "encadeado": false
+>>>>>>> c349b7825569d0f0c9b2e6b99182730fa9dbdb9f
     }
   ],
   "PostsLikes": [
@@ -22,11 +78,16 @@
       "ID": "00000000-0000-0000-0000-000000000000",
       "Post_ID": "00000000-0000-0000-0000-000000000000",
       "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+<<<<<<< HEAD
       "id": "7329"
+=======
+      "id": "e6fa"
+>>>>>>> c349b7825569d0f0c9b2e6b99182730fa9dbdb9f
     }
   ],
   "Usuario": [
     {
+<<<<<<< HEAD
       "ID": "00000000-0000-0000-0000-000000000000",
       "NomeExibicao": "string_or_null",
       "NomeUsuario": "string_or_null",
@@ -125,14 +186,53 @@
       "Senha": "123",
       "FotoPerfilURL": null,
       "FotoBannerURL": null
+=======
+      "ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "NomeExibicao": "Fulando da Silva Jr",
+      "NomeUsuario": "Fuimuleke",
+      "Email": "naymar@gamail.com",
+      "Senha": "123",
+      "FotoPerfilURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCUfOsPXOHePMligBo807OXSDQtV464DQWXg&s",
+      "FotoBannerURL": "https://i.imgflip.com/2deouj.jpg?a479208"
+    },
+    {
+      "ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "NomeExibicao": "Fulanão da silva",
+      "NomeUsuario": "Siuuu",
+      "Email": "cristiano@gamail.com",
+      "Senha": "123",
+      "FotoPerfilURL": "https://i.pinimg.com/originals/fe/41/df/fe41df0ca7a89acf158d313264785c94.jpg",
+      "FotoBannerURL": "https://www.indy100.com/media-library/image.jpg?id=52539297&width=800&quality=85"
+>>>>>>> c349b7825569d0f0c9b2e6b99182730fa9dbdb9f
     }
   ],
   "UsuarioSeguidores": [
     {
+<<<<<<< HEAD
       "ID": "00000000-0000-0000-0000-000000000000",
       "Usuario_ID": "00000000-0000-0000-0000-000000000000",
       "Seguidor_ID": "00000000-0000-0000-0000-000000000000",
       "id": "e0e2"
+=======
+      "ID": "3bc3c009-874d-4b82-93d7-8520920xm9c5",
+      "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "Seguidor_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7"
+    },
+    {
+      "ID": "4bc3c009-874d-4035-93d7-e871a4cf12eb",
+      "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "Seguidor_ID": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16"
+    },
+    {
+      "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
+      "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "Seguidor_ID": "606407ba-9dc9-4fe9-9a16-764faa81bab8"
+    },
+    {
+      "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
+      "Usuario_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "Seguidor_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb"
+>>>>>>> c349b7825569d0f0c9b2e6b99182730fa9dbdb9f
     }
   ]
 }
