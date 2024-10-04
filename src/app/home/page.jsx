@@ -1,11 +1,11 @@
 "use client";
 import { v4 as uuid } from 'uuid';
-import { PostInput } from "@/components/input";
 import React, { useEffect, useState } from "react";
-import { CreateImagePost } from '@/utils/azure/config';
-import { Post } from "@/components/post";
 import moment from 'moment';
-import Link from 'next/link';
+import { CreateImagePost } from '@/utils/azure/config';
+import { Post } from '@/components/post';
+import PostInput from '@/components/postInput';
+import TrendingTopics from '@/components/trendingTopics';
 
 export default function Home() {
 
@@ -28,7 +28,10 @@ export default function Home() {
                 }
 
                 const data = await response.json();
-                setPosts(data);
+                const sortedData = data.sort((a, b) => moment(b.date).valueOf() - moment(a.date).valueOf());
+
+
+                setPosts(sortedData);
 
             } catch (error) {
                 console.error("Erro ao buscar os posts:", error);
@@ -122,8 +125,7 @@ export default function Home() {
                     </div>
 
                     <div className="h-full ">
-                        <>
-                        </>
+                        <TrendingTopics />
                     </div>
                 </div>
 

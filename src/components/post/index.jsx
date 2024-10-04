@@ -54,7 +54,7 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
         {/* post content */}
         <div className="flex flex-col gap-4">
           <Text>{text}</Text>
-          {!detailed ? (<>
+          {!detailed && imagesURL ? (<>
             {
               imagesURL.length > 0 && (
                 <>
@@ -71,7 +71,11 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
           </>
           ) :
             (
-              <ImageDisplay onClick={openModal} src={imagesURL[currentImageIndex]} />
+              <>
+                {imagesURL && <ImageDisplay onClick={openModal} src={imagesURL[currentImageIndex]} />}
+              </>
+
+
             )
           }
 
@@ -125,7 +129,7 @@ const TwoImagesDisplay = ({ images, onClick }) => (
 
 const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
   <div className="flex w-full h-full gap-4">
-    <div className="z-50 h-full cursor-pointer">
+    <div className="z-50 w-1/2 h-full cursor-pointer">
       <img
         className="object-cover w-full h-full rounded-2xl"
         src={images[0]}
@@ -133,7 +137,7 @@ const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
         onClick={() => onClick(0)}
       />
     </div>
-    <div className="flex flex-col h-full gap-4 ">
+    <div className="flex flex-col w-1/2 h-full gap-4">
       <div className="z-50 h-[50%] cursor-pointer">
 
         <img

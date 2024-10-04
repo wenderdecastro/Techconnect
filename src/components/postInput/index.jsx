@@ -3,7 +3,7 @@
 import { LargeButton, SmallButton } from "../button";
 import React, { useState, useRef } from "react";
 
-export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
+export default function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
     const [selectedImages, setSelectedImages] = useState([]);
     const textareaRef = useRef(null);
 
