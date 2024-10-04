@@ -9,12 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^1.7.7",
-=======
     "@azure/storage-blob": "^12.25.0",
     "install": "^0.13.0",
->>>>>>> c349b7825569d0f0c9b2e6b99182730fa9dbdb9f
     "json-server": "^1.0.0-beta.3",
     "moment": "^2.30.1",
     "next": "14.2.13",
