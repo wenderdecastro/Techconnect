@@ -1,8 +1,6 @@
 "use client";
 import { v4 as uuid } from 'uuid';
-import { PostInput } from "@/components/input";
 import React, { useEffect, useState } from "react";
-import { CreateImagePost } from '@/utils/azure/config';
 import { Post } from "@/components/post";
 import moment from 'moment';
 import Link from 'next/link';

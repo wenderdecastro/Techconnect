@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Text } from '../texts';
 
 export default function TrendingTopics() {
     const [posts, setPosts] = useState([]);
@@ -8,7 +9,7 @@ export default function TrendingTopics() {
     const getPosts = async () => {
         try {
             const response = await fetch("http://localhost:3001/Posts", {
-                method: "POST",
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -30,20 +31,26 @@ export default function TrendingTopics() {
         const countWords = {};
 
         posts.forEach((post) => {
-            const words = post.text.split(/\s+/); // Divide o texto em palavras
-            const hashtagsUnicas = new Set(); // Set para garantir contagem única de hashtags por post
+            // Verifica se post.text está definido e não é nulo
+            if (post.text) {
+                // Use a regex para extrair todas as hashtags diretamente do texto
+                const words = post.text.match(/#\w+/g); // Captura todas as palavras que começam com '#'
 
-            words.forEach((word) => {
-                if (word.startsWith('#')) {
+                // Se não houver hashtags, continue
+                if (!words) return;
+
+                const hashtagsUnicas = new Set(); // Set para garantir contagem única de hashtags por post
+
+                words.forEach((word) => {
                     const lowerCaseWord = word.toLowerCase(); // Converte para minúsculas
                     hashtagsUnicas.add(lowerCaseWord); // Adiciona ao Set (elimina duplicatas no mesmo post)
-                }
-            });
+                });
 
-            // Conta as hashtags únicas encontradas neste post
-            hashtagsUnicas.forEach((hashtag) => {
-                countWords[hashtag] = (countWords[hashtag] || 0) + 1;
-            });
+                // Conta as hashtags únicas encontradas neste post
+                hashtagsUnicas.forEach((hashtag) => {
+                    countWords[hashtag] = (countWords[hashtag] || 0) + 1;
+                });
+            }
         });
 
         // Ordena as hashtags por frequência e limita a 10 tópicos
@@ -53,6 +60,8 @@ export default function TrendingTopics() {
 
         setTopics(orderedWords);
     };
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -65,15 +74,13 @@ export default function TrendingTopics() {
     }, []);
 
     return (
-        <div className="w-full h-full p-4 bg-neutral-gray rounded-2xl">
-            <h2 className="mb-4 text-xl font-bold">Trending Topics</h2>
-            {topics.length > 0 ? (
+        <div className="w-full h-full p-6 bg-neutral-gray rounded-2xl">
+            <Text className="mb-4 text-xl font-bold">Trending Topics</Text>
+            {
                 topics.map(([word, count], index) => (
                     <Topic key={index} word={word} count={count} />
                 ))
-            ) : (
-                <p>Carregando tópicos...</p>
-            )}
+            }
         </div>
     );
 }
