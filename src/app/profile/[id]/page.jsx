@@ -1,7 +1,7 @@
 "use client";
 
-import { FollowButton, SmallButton } from "@/components/button";
-import { BlueBtn, Exit } from "@/components/button/button";
+// import { FollowButton, SmallButton } from "@/components/button";
+// import { BlueBtn, Exit } from "@/components/button/button";
 import { Post } from "@/components/post";
 import { ProfileName, Text } from "@/components/texts";
 import React, { useEffect, useState } from "react";
@@ -84,7 +84,7 @@ const OtherPerfil = ({ params }) => {
 
 
   return (
-    <div className="  bg-gray-900 flex justify-center w-screen h-screen">
+    <div className="flex justify-center w-screen h-screen bg-gray-900 ">
       <div className="w-[45%] h-[60%] my-[5%] rounded-2xl bg-neutral-background absolute">
         <img
           className="w-screen h-[35%]"
@@ -137,19 +137,19 @@ const OtherPerfil = ({ params }) => {
 
         </div>
 
-        
-          {post.length > 0 ? (
-            post.map(() => (
-              <div className="flex justify-center flex-col items-center border-t-2 border-primary-blue py-10">
 
-                <Post />
+        {post.length > 0 ? (
+          post.map(() => (
+            <div className="flex flex-col items-center justify-center py-10 border-t-2 border-primary-blue">
 
-              </div>
-            ))
-          ) : (
-            <Text style="bg-neutral-background">Nenhum post encontrado.</Text>
-          )}
-        
+              <Post />
+
+            </div>
+          ))
+        ) : (
+          <Text style="bg-neutral-background">Nenhum post encontrado.</Text>
+        )}
+
 
       </div>
     </div>
