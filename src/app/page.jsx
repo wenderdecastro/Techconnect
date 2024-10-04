@@ -109,23 +109,23 @@ export default function Home() {
   
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     if (!userData.Email || !userData.Senha) {
       alert("Por favor, preencha todos os campos!");
       return;
     }
-
+  
     try {
-      const response = await fetch(`http://localhost:3001/Usuario?Email=${userData.Email}&Senha=${userData.Senha}`);
+      const response = await fetch(`http://localhost:3001/Usuario?Email=${encodeURIComponent(userData.Email)}&Senha=${encodeURIComponent(userData.Senha)}`);
       const data = await response.json();
-
+  
       if (data.length > 0) {
-        // Armazenar informações do usuário no localStorage
-        localStorage.setItem("user", JSON.stringify(data[0]));
-
+        // Armazenar informações do usuário em um estado local
+        setUserData(data[0]);
+        
         // Redirecionar para a página Home (ou outra rota)
         router.push("/home");
-
+        
         setIsAuthenticated(true);
         setLoginError("");
       } else {
@@ -136,7 +136,6 @@ export default function Home() {
       alert("Erro ao fazer login.");
     }
   };
-
 
   useEffect(() => {
     if (isSignIn == true) {
