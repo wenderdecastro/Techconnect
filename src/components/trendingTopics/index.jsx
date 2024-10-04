@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text } from '../texts';
+import { MediumText, Text } from '../texts';
 
 export default function TrendingTopics() {
     const [posts, setPosts] = useState([]);
@@ -74,8 +74,8 @@ export default function TrendingTopics() {
     }, []);
 
     return (
-        <div className="w-full h-full p-6 bg-neutral-gray rounded-2xl">
-            <Text className="mb-4 text-xl font-bold">Trending Topics</Text>
+        <div className="w-full h-full p-6">
+            <Text className="mb-4 text-xl font-bold">Em alta</Text>
             {
                 topics.map(([word, count], index) => (
                     <Topic key={index} word={word} count={count} />
@@ -87,9 +87,9 @@ export default function TrendingTopics() {
 
 export function Topic({ word, count }) {
     return (
-        <div className="flex justify-between mb-2">
-            <span>{word}</span>
-            <span className="text-gray-500">{count} mentions</span>
+        <div className="flex flex-col justify-between p-6 my-4 mb-2 bg-neutral-gray rounded-2xl">
+            <Text style={""}>{word}</Text>
+            <MediumText style={"opacity-50"} className="text-gray-500">{count} posts</MediumText>
         </div>
     );
 }

@@ -9,12 +9,12 @@ import { FiLogOut } from "react-icons/fi";
 import { Menu_textProfile } from "../text";
 import { ProfileName } from "../texts";
 
-const MenuBar = () => {
+const MenuBar = ({ selected }) => {
   //useState para verficar se está selecionado ou não
-  const [isClicked, setIsClicked] = useState("");
+  const [isClicked, setIsClicked] = useState(selected);
 
   return (
-    <div class=" h-5/6 py-2 flex flex-col justify-between ">
+    <div class=" h-full py-2 flex flex-col justify-between ">
       <aside class="flex flex-col gap-5">
         {/* <Image src={logoImg} width={100} height={100} alt="Imagem do logo" /> */}
 
@@ -35,14 +35,14 @@ const MenuBar = () => {
                   ? `text-[#74BDE8] w-auto px-10`
                   : `text-white w-auto px-10`
               }
-              href=""
+              href="/home"
             >
               {" "}
               Feed{" "}
             </Link>
           </div>
 
-          <div
+          {/* <div
             onClick={() => setIsClicked("comunidade")}
             class={
               isClicked === "comunidade"
@@ -61,7 +61,7 @@ const MenuBar = () => {
               {" "}
               Comunidade{" "}
             </Link>
-          </div>
+          </div> */}
           <div
             onClick={() => setIsClicked("perfil")}
             class={
@@ -76,7 +76,7 @@ const MenuBar = () => {
                   ? `text-[#74BDE8] w-auto px-10`
                   : `text-white w-auto px-10`
               }
-              href=""
+              href="/profile"
             >
               {" "}
               Perfil{" "}
@@ -87,20 +87,20 @@ const MenuBar = () => {
 
       {/* Perfil */}
       <section class=" w-3/4 py-12">
-        <div class=" flex flex-row items-center border-[#74BDE8] border-2 w-4/4 h-full rounded-2xl bg-white bg-opacity-5 justify-between py-3">
-          <div className="flex flex-row gap-2 pl-2">
+        <div class=" flex flex-row items-center border-[#74BDE8] border-2 w-full h-full rounded-2xl bg-white bg-opacity-5 gap-3 p-4">
+          <div className="">
             <Image
               src={profilePicture}
-              width={50}
-              height={50}
+              width={75}
+              height={75}
               alt="Imagem de perfil"
-              class="  aspect-square rounded-full cursor-pointer "
+              className="h-full rounded-full cursor-pointer aspect-square"
             />
-            <div class="flex-col flex gap-1">
-              <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} userStyle="w-auto"/>
-            </div>
-          </div>
 
+          </div>
+          <div class="flex-col flex gap-1 w-full">
+            <ProfileName fieldStyle={"gap-0"} nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} userStyle="w-auto" />
+          </div>
           <div class=" flex flex-col justify-center pr-5 cursor-pointer">
             <FiLogOut class="w-6 h-6" />
           </div>

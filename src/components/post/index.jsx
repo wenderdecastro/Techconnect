@@ -30,13 +30,13 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
 
     <>
 
-      <article className={` relative flex flex-col justify-between gap-6 px-5 py-5  transition-all ease-in-out w-[90%] h-fit rounded-2xl bg-neutral-gray ${detailed ? "" : "hover:bg-neutral-lighter_gray hover:scale-105"}  `}>
+      <article className={` relative flex flex-col justify-between gap-6 p-6  transition-all ease-in-out w-[90%] h-fit rounded-2xl bg-neutral-gray ${detailed ? "" : "hover:bg-neutral-lighter_gray hover:scale-105"}  `}>
         {!detailed && <Link href={`/post/${id}`} className="absolute top-0 left-0 z-0 w-full h-full cursor-default "></Link>}
         {/* user infos */}
 
         <div className="h-fit w-[100%] flex gap-2">
           <img
-            className="w-16 rounded-full size-16"
+            className="rounded-full size-12 aspect-square"
             src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
             alt="imagem de perfil do usuário logado"
           />
@@ -45,7 +45,7 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
           <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} />
 
           <span className="flex gap-2 text-sm text-center opacity-50 ">
-            <FaRegClock style={{ scale: "130%", paddingTop: "4.5%" }} />
+            <FaRegClock style={{ scale: "130%", paddingTop: "3.5%" }} />
             {moment(date).fromNow()}
           </span>
 

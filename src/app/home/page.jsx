@@ -6,6 +6,7 @@ import { CreateImagePost } from '@/utils/azure/config';
 import { Post } from '@/components/post';
 import PostInput from '@/components/postInput';
 import TrendingTopics from '@/components/trendingTopics';
+import MenuBar from '@/components/menuBar';
 
 export default function Home() {
 
@@ -112,7 +113,10 @@ export default function Home() {
                 </header>
 
                 <div className="grid grid-cols-[30%,40%,30%] h-[90%] ">
-                    <div className="h-fill" >30%</div>
+                    <div className="h-fill" >
+
+                        <MenuBar selected={"feed"} />
+                    </div>
 
                     <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
                         <PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
