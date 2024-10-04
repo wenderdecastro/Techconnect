@@ -121,7 +121,10 @@ export default function Home() {
                         <div className='mb-12' />
                     </div>
 
-                    <div className="h-full ">30%</div>
+                    <div className="h-full ">
+                        <>
+                        </>
+                    </div>
                 </div>
 
             </div>
