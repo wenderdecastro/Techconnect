@@ -1,14 +1,12 @@
 "use client";
 
-
+import { LargeButton, SmallButton } from "../button";
 import React, { useState, useRef } from "react";
-import { SmallButton } from "../button";
 
 export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
     const [selectedImages, setSelectedImages] = useState([]);
-    const textareaRef = useRef(null); // Create a ref for the textarea
+    const textareaRef = useRef(null);
 
-    // Handle image selection
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
 
@@ -34,21 +32,20 @@ export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        onSubmit(e);
         setSelectedImages([]);
-        onSubmit()
         text = "";
     }
 
-    // Function to handle textarea resizing
     const handleInput = () => {
-        textareaRef.current.style.height = 'auto'; // Reset height
-        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Set to scroll height
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-full h-fit rounded-2xl bg-neutral-gray">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-[90%] h-fit rounded-2xl bg-neutral-gray">
             <div className="w-[92.5%] flex flex-col gap-4 py-6">
                 <textarea
                     ref={textareaRef} // Attach the ref

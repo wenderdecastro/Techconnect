@@ -1,10 +1,11 @@
 "use client";
 import { v4 as uuid } from 'uuid';
-import { useEffect, useState } from "react";
-import { PostInput } from '@/components/input';
-import MenuBar from '@/components/menuBar';
+import { PostInput } from "@/components/input";
+import React, { useEffect, useState } from "react";
 import { CreateImagePost } from '@/utils/azure/config';
-
+import { Post } from "@/components/post";
+import moment from 'moment';
+import Link from 'next/link';
 
 export default function Home() {
 
@@ -13,9 +14,30 @@ export default function Home() {
     const [selectedImages, setSelectedImages] = useState([]);
     const [postText, setPostText] = useState();
 
+
     useEffect(() => {
-        console.log("Selected images updated:", selectedImages);
-    }, [selectedImages]);
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch("http://localhost:3001/Posts", {
+                    method: "GET"
+                });
+
+                if (!response.ok) {
+                    console.log("Erro ao carregar os posts.");
+                    return;
+                }
+
+                const data = await response.json();
+                setPosts(data);
+
+            } catch (error) {
+                console.error("Erro ao buscar os posts:", error);
+            }
+        };
+
+        fetchPosts();
+
+    }, []);
 
     const createPost = async (e) => {
 
@@ -38,7 +60,7 @@ export default function Home() {
 
         const newPost = {
             id: uuid(),
-            date: Date.now(),
+            date: moment().toDate(),
             userId: 0,
             text: postText,
             imagesURL: postsUrl,
@@ -63,7 +85,7 @@ export default function Home() {
             }
 
             const data = await response.json();
-            setPosts((prevPosts) => [...prevPosts, data]);
+            setPosts((prevPosts) => [data, ...prevPosts]);
         } catch (error) {
             console.error("Error creating post:", error);
         }
@@ -77,26 +99,32 @@ export default function Home() {
 
 
         <div className="flex justify-center w-screen bg-neutral-background">
-            <div className="w-[90%] h-screen " >
-                <header className=" grid grid-cols-[28%,44%,28%] h-[15%] ">
-                    <div className="">27,5%</div>
+            <div className="w-[90%] h-screen overflow-hidden " >
+                <header className=" grid grid-cols-[30%,40%,30%] h-[12.5%] ">
+                    <div className="h-[30%]">
+                        <img src='/images/AppLogo.png' className='h-full' />
+                    </div>
                     <div className="">45%</div>
                     <div className="">30%</div>
                 </header>
 
-                <div className="grid grid-cols-[28%,44%,28%] h-[90%] ">
-                    <div className="h-full " >30%
-                    <MenuBar/>
+                <div className="grid grid-cols-[30%,40%,30%] h-[90%] ">
+                    <div className="h-fill" >30%</div>
+
+                    <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
+                        <PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
+
+                        {posts.map((post, index) => {
+                            return <Post text={post.text} imagesURL={post.imagesURL} id={post.id} encadeado={post.encadeado} key={post.id} userId={post.userId} date={post.date} />
+
+                        })}
+                        <div className='mb-12' />
                     </div>
-                    <div >
-                        <PostInput onSubmit={createPost} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
 
-                        <div className="overflow-y-scroll ">
-
-                        </div>
-
+                    <div className="h-full ">
+                        <>
+                        </>
                     </div>
-                    <div className="h-full ">30%</div>
                 </div>
 
             </div>

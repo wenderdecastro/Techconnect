@@ -1,9 +1,12 @@
 import next from "next";
 
 import { ProfileName, Text } from "../texts";
-import { BlueBtn, Exit } from "../button/button";
+import { BlueBtn, Exit } from "../button/index";
+import { EditModal } from "../modal/editModal";
+import { useState } from "react";
 
 const ProfileInfo = (props) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="  bg-gray-900 flex justify-center w-screen h-screen">
       <div className="w-[45%] h-[60%] my-[5%] rounded-2xl bg-neutral-background absolute">
@@ -14,7 +17,7 @@ const ProfileInfo = (props) => {
         />
 
         <img
-          className="relative -top-10  z-50 ml-[45%] h-20 w-20 rounded-full ring-2  "
+          className="relative -top-10  ml-[45%] h-20 w-20 rounded-full ring-2  "
           src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
           alt="imagem de perfil do usuário logado"
         />
@@ -31,6 +34,7 @@ const ProfileInfo = (props) => {
             <BlueBtn
               style={"mr-[10%] h-[5%] px-1 py-1 "}
               text={"Editar Perfil"}
+              onclick={() => setIsModalOpen(true)}
             />
 
             <Exit />
@@ -46,6 +50,7 @@ const ProfileInfo = (props) => {
           <Text style="bg-neutral-background opacity-50">Posts</Text>
         </div>
       </div>
+      <EditModal isOpen={isModalOpen} onClose={setIsModalOpen} />
     </div>
   );
 };

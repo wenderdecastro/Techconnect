@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { CgProfile } from "react-icons/cg";
-import Image from "next/image";
 import { PostInput } from "../input";
 import { Link, SmallButton } from "../button";
 import { Text } from "../texts";
@@ -63,7 +62,7 @@ export const EditModal = ({
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center w-[50%] h-fit rounded-2xl bg-neutral-gray "
+        className="flex flex-col items-center justify-center w-[50%] h-fit rounded-2xl "
       >
         <div className="w-[50%] flex flex-col gap-5 py-16 ">
           <Text style="text-3xl"> Editar Perfil </Text>
@@ -141,8 +140,10 @@ export const EditModal = ({
             </div>
 
             <div className="flex flex-row  items-center gap-3 ">
-              <SmallButton Text={"Salvar"} />
-              <Link Text={"Cancelar"} onClick={onClose} />
+              <SmallButton Text={"Salvar"} Inverse={true} Style={'border-2'}/>
+              <Link Text={"Cancelar"} 
+              Style={'text-opacity-75'}
+              onClick={() => onClose(false)} />
             </div>
           </div>
 

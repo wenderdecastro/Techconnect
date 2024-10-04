@@ -1,4 +1,8 @@
 "use client";
+import { Post } from "@/components/post";
+import MenuBar from "@/components/menuBar";
+import { EditModal } from "@/components/modal/editModal";
+import { LargeButton } from "@/components/button";
 
 import { useEffect, useState } from "react";
 import CustomInput from "@/components/input/input"; // Componente customizado de input
