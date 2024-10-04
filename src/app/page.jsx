@@ -9,7 +9,7 @@ import CustomInput from "@/components/input/input"; // Componente customizado de
 import Text from "@/components/text/text"; // Componente customizado de texto
 import Title from "@/components/title/title"; // Componente customizado de título
 import { v4 as UUID } from "uuid";
-import { ProfileInfo } from "@/components/text";
+
 
 export default function Home() {
   const [isSignIn, setIsSignIn] = useState(false);
@@ -289,7 +289,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex-row mx-auto my-0 bg-black">
-        <ProfileInfo />
+      
       </div>
     </>
 

@@ -6,7 +6,6 @@ import profilePicture from "./../../../public/images/MessiProfilePicture.jpg";
 import Link from "next/link";
 import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
-import { Menu_textProfile } from "../text";
 import { ProfileName } from "../texts";
 
 const MenuBar = () => {

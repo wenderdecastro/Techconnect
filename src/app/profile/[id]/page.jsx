@@ -1,5 +1,6 @@
 "use client";
 
+import { SmallButton } from "@/components/button";
 // import { FollowButton, SmallButton } from "@/components/button";
 // import { BlueBtn, Exit } from "@/components/button/button";
 import { Post } from "@/components/post";
