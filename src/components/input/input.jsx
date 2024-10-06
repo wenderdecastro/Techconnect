@@ -50,7 +50,7 @@ const CustomInput = ({ type = 'text', placeholder, size = 'md', value, onChange 
         value={inputValue}
         onChange={handleChange}
         placeholder={placeholder}
-        className={`w-full bg-[#191919] text-white border border-[#74BDE8] rounded-full focus:outline-none focus:ring-2 focus:ring-[#74BDE8] ${sizeClasses[size]} placeholder-white ${type === "date" ? "custom-datepicker" : ""
+        className={`w-full bg-[#191919] text-white border border-[#74BDE8] rounded-full focus:outline-none focus:ring-2 focus:ring-[#74BDE8] lg:${sizeClasses[size]} p-2 text-sm placeholder-white ${type === "date" ? "custom-datepicker" : ""
           }`}
       />
       {showSuggestions && suggestions.length > 0 && (

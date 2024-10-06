@@ -147,8 +147,8 @@ export default function Home() {
         <div className="p-6 rounded-lg space-y-4 w-[35%]">
           <div className="flex flex-col items-center justify-center">
             <img src={"/images/AppLogo.png"} className="lg:w-[80px] w-[44px]" alt="Logo" />
-            <Text className="lg:text-center  mt-1">{isSignIn ? "Welcome back!" : "Join Techconnection?"}</Text>
-            <Title style={`lg:text-4xl text-2xl w-max-content`}>{isSignIn ? "Sign in" : "Create account"}</Title>
+            <Text className="text-center  mt-1">{isSignIn ? "Welcome back!" : "Join Techconnection?"}</Text>
+            <Title style={`lg:text-4xl text-2xl w-max`}>{isSignIn ? "Sign in" : "Create account"}</Title>
           </div>
 
           <form onSubmit={isSignIn ? handleLogin : handleSubmit}>
