@@ -16,6 +16,14 @@ export default function Home() {
 
 
     useEffect(() => {
+        const userLogged = JSON.parse(localStorage.getItem('user'));
+        if (userLogged) {
+            setUser(userLogged); // Define o estado do usuário com as informações armazenadas
+        }
+    }, []);
+    
+
+    useEffect(() => {
         const fetchPosts = async () => {
             try {
                 const response = await fetch("http://localhost:3001/Posts", {

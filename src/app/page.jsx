@@ -122,6 +122,8 @@ export default function Home() {
       if (data.length > 0) {
         // Armazenar informações do usuário em um estado local
         setUserData(data[0]);
+        localStorage.setItem('user', JSON.stringify(data[0])); // Armazena as informações no localStorage
+
         
         // Redirecionar para a página Home (ou outra rota)
         router.push("/home");
