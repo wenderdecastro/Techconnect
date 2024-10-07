@@ -107,6 +107,17 @@
       "FotoBannerURL": "string_or_null",
       "id": "1f2a"
     },
+
+    {
+      "ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "NomeExibicao": "Paulo",
+      "NomeUsuario": "paulocezar",
+      "Email": "paulo@gmail.com",
+      "Senha": "Luva",
+      "FotoPerfilURL": "string_or_null",
+      "FotoBannerURL": "string_or_null"
+    },
+
     {
       "id": "9fc1",
       "ID": "14f0ec0a-7d51-447b-8b09-596ccbeea7f5",
