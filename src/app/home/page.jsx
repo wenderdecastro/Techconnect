@@ -1,7 +1,7 @@
 "use client";
 import { v4 as uuid } from 'uuid';
+import { PostInput } from "@/components/input";
 import React, { useEffect, useState } from "react";
-import moment from 'moment';
 import { CreateImagePost } from '@/utils/azure/config';
 import { Post } from '@/components/post';
 import PostInput from '@/components/postInput';
@@ -17,6 +17,14 @@ export default function Home() {
 
 
     useEffect(() => {
+        const userLogged = JSON.parse(localStorage.getItem('user'));
+        if (userLogged) {
+            setUser(userLogged); // Define o estado do usuário com as informações armazenadas
+        }
+    }, []);
+
+
+    useEffect(() => {
         const fetchPosts = async () => {
             try {
                 const response = await fetch("http://localhost:3001/Posts", {
@@ -29,10 +37,7 @@ export default function Home() {
                 }
 
                 const data = await response.json();
-                const sortedData = data.sort((a, b) => moment(b.date).valueOf() - moment(a.date).valueOf());
-
-
-                setPosts(sortedData);
+                setPosts(data);
 
             } catch (error) {
                 console.error("Erro ao buscar os posts:", error);
@@ -129,7 +134,8 @@ export default function Home() {
                     </div>
 
                     <div className="h-full ">
-                        <TrendingTopics />
+                        <>
+                        </>
                     </div>
                 </div>
 

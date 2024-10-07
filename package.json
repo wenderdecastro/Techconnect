@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^1.7.7",
     "@azure/storage-blob": "^12.25.0",
+    "axios": "^1.7.7",
     "install": "^0.13.0",
     "json-server": "^1.0.0-beta.3",
     "moment": "^2.30.1",
@@ -19,6 +19,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
+    "react-router-dom": "^6.26.2",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

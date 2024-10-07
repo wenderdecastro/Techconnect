@@ -166,16 +166,7 @@
     }
   ],
   "Usuario": [
-    {
-      "ID": "00000000-0000-0000-0000-000000000000",
-      "NomeExibicao": "string_or_null",
-      "NomeUsuario": "string_or_null",
-      "Email": "string_or_null",
-      "Senha": "string_or_null",
-      "FotoPerfilURL": "string_or_null",
-      "FotoBannerURL": "string_or_null",
-      "id": "1f2a"
-    },
+   
     {
       "id": "9fc1",
       "ID": "14f0ec0a-7d51-447b-8b09-596ccbeea7f5",

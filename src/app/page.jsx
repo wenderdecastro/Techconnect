@@ -1,8 +1,5 @@
 "use client";
-import { Post } from "@/components/post";
-import MenuBar from "@/components/menuBar";
-import { EditModal } from "@/components/modal/editModal";
-import { LargeButton } from "@/components/button";
+
 
 import { useEffect, useState } from "react";
 import CustomInput from "@/components/input/input"; // Componente customizado de input
@@ -10,6 +7,8 @@ import Text from "@/components/text/text"; // Componente customizado de texto
 import Title from "@/components/title/title"; // Componente customizado de título
 import { v4 as UUID } from "uuid";
 import { ProfileInfo } from "@/components/text";
+import { useRouter } from 'next/navigation'
+
 
 export default function Home() {
   const [isSignIn, setIsSignIn] = useState(false);
@@ -25,6 +24,7 @@ export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Adiciona um estado para gerenciar mensagens de erro
+  const router = useRouter();
 
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,24 +105,31 @@ export default function Home() {
     }
   };
 
+
+  
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Verifica se os campos de login estão preenchidos
+  
     if (!userData.Email || !userData.Senha) {
       alert("Por favor, preencha todos os campos!");
       return;
     }
-
+  
     try {
-      const response = await fetch(`http://localhost:3001/Usuario?Email=${userData.Email}&Senha=${userData.Senha}`);
+      const response = await fetch(`http://localhost:3001/Usuario?Email=${encodeURIComponent(userData.Email)}&Senha=${encodeURIComponent(userData.Senha)}`);
       const data = await response.json();
-
+  
       if (data.length > 0) {
-        // Se o usuário for encontrado
+        // Armazenar informações do usuário em um estado local
+        setUserData(data[0]);
+        localStorage.setItem('user', JSON.stringify(data[0])); // Armazena as informações no localStorage
+
+        
+        // Redirecionar para a página Home (ou outra rota)
+        router.push("/home");
+        
         setIsAuthenticated(true);
         setLoginError("");
-        alert("Login bem-sucedido!");
       } else {
         setLoginError("Email ou senha inválidos!");
       }
