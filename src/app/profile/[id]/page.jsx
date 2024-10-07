@@ -8,7 +8,6 @@ import { ProfileName, Text } from "@/components/texts";
 import React, { useEffect, useState } from "react";
 
 const OtherPerfil = ({ params }) => {
-  const lista = document.getElementById("lista");
   const [seguidores, setSeguidores] = useState([])
   const [post, setPost] = useState([])
   const [followed, setFollowed] = useState(false)
@@ -18,7 +17,7 @@ const OtherPerfil = ({ params }) => {
     fotoUrlPerfil: "",
     FotoBannerURL: ""
   });
-
+  const [imagePost, setImagePost] = useState([])
 
   const getUser = async () => {
     try {
@@ -66,6 +65,9 @@ const OtherPerfil = ({ params }) => {
     try {
       const response = await fetch("http://localhost:3000/Posts?userId=" + params.id);
       const data = await response.json();
+
+      
+
       setPost(data)
     } catch (error) {
       console.log(error);
@@ -74,15 +76,11 @@ const OtherPerfil = ({ params }) => {
 
   }
 
-
-
   useEffect(() => {
     getUser()
     getFollow()
     getPost()
   }, [])
-
-
 
   return (
     <div className="flex justify-center w-screen h-screen bg-gray-900 ">
@@ -143,12 +141,20 @@ const OtherPerfil = ({ params }) => {
           post.map(() => (
             <div className="flex flex-col items-center justify-center py-10 border-t-2 border-primary-blue">
 
-              <Post />
+              <Post
+                text={post.text}
+                imagesURL={post.imagesURL}
+                id={post.id}
+                encadeado={post.encadeado}
+                key={post.id}
+                userId={post.userId}
+                date={post.date}
+              />
 
             </div>
           ))
         ) : (
-          <Text style="bg-neutral-background">Nenhum post encontrado.</Text>
+          <Text style="gap-3 bg-neutral-background">Nenhum post encontrado.</Text>
         )}
 
 

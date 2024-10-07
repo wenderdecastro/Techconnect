@@ -56,7 +56,7 @@
     {
       "id": "dc070c92-9fd2-41b9-b2cb-34b3bbce1eb6",
       "date": "2024-10-03T13:17:28.490Z",
-      "userId": 0,
+      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
       "text": "sadasdfasdf",
       "imagesURL": [],
       "encadeado": false
@@ -64,7 +64,7 @@
     {
       "id": "adf745fe-216f-4e96-885a-5c0cea01534e",
       "date": "2024-10-03T13:17:39.025Z",
-      "userId": 0,
+      "userId": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
       "imagesURL": [
         "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-03T13:17:38.094Z.png"
       ],
@@ -73,7 +73,7 @@
     {
       "id": "fe98399c-facc-4fb0-a351-09e70f09fe10",
       "date": "2024-10-03T13:18:10.662Z",
-      "userId": 0,
+      "userId": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
       "imagesURL": [
         "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-03T13:18:09.586Z.png",
         "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-03T13:18:09.590Z.png"
@@ -83,7 +83,7 @@
     {
       "id": "83cd2391-3783-4a20-98d8-e60e28c7196d",
       "date": "2024-10-03T13:20:04.071Z",
-      "userId": 0,
+      "userId": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
       "text": "teste",
       "imagesURL": [],
       "encadeado": false
@@ -128,13 +128,23 @@
       "FotoBannerURL": null
     },
     {
+      "id": "5b40",
+      "ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "NomeExibicao": "Crisitano",
+      "NomeUsuario": "Cristiano",
+      "Email": "fulanão@gmail.com",
+      "Senha": "123",
+      "FotoPerfilURL": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F304555993563105792%2F&psig=AOvVaw1ndA9oV2rJUvhcfq8Dd2HR&ust=1728248547189000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMDM7t6R-IgDFQAAAAAdAAAAABAE",
+      "FotoBannerURL": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.si.com%2Fsoccer%2F2016%2F05%2F28%2Fvideo-cristiano-ronaldo-yells-si-champions-league-final&psig=AOvVaw0GzXtC8tE0pkBHRauZIZ2s&ust=1728248574645000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjsnu-R-IgDFQAAAAAdAAAAABAE"
+    },
+    {
       "id": "7e63",
       "ID": "838bac4c-5625-4ef5-8ecf-3950e2d10975",
       "NomeExibicao": "coisa loka ",
       "NomeUsuario": "coisinha fofa",
       "Email": "coisinhafofa@gmail.com",
       "Senha": "coisinhafofa@gmail.com",
-      "FotoPerfilURL": null,
+      "FotoPerfilURL": "",
       "FotoBannerURL": null
     },
     {

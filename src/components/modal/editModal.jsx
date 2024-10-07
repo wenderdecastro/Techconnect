@@ -60,11 +60,12 @@ export const EditModal = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center w-[50%] h-fit rounded-2xl "
       >
-        <div className="w-[50%] flex flex-col gap-5 py-16 ">
+        <div className="w-[50%] flex flex-col gap-5 py-16">
           <Text style="text-3xl"> Editar Perfil </Text>
 
           <textarea

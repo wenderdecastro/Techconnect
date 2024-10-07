@@ -8,6 +8,12 @@ import React, { useState } from "react";
 
 const Profile = (props) => {
     const [posts, setPosts] = useState([]);
+
+    const getFollowed = () => {
+
+    }
+
+    
   return (
     <div className="flex justify-center w-screen bg-neutral-background ">
       <div className="w-[90%] h-screen overflow-hidden">
