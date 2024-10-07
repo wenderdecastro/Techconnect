@@ -5,9 +5,14 @@ export function IsAuthenticated() {
     return !user;
 }
 
+export function RedirectIfNotAuthenticated() {
+    var route = useRouter();
+    if (IsAuthenticated()) return null;
+    else route.push("/login")
+}
+
 export function ExecuteIfIsAuthenticated(action) {
     var route = useRouter();
-    var user = localStorage.getItem('user');
-    if (user) action();
+    if (IsAuthenticated()) action();
     else route.push("/login")
 }
