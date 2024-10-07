@@ -17,6 +17,7 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
 
+
   const openModal = (index) => {
     setCurrentImageIndex(index);
     setIsModalOpen(true);

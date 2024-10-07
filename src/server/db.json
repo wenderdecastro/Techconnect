@@ -1,4 +1,12 @@
 {
+  "ImagemPost": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "ImgURL": "string_or_null",
+      "Post_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "5a69"
+    }
+  ],
   "Posts": [
     {
       "id": "4c39777b-f471-4e07-b99f-2b6b7b438210",
@@ -69,18 +77,6 @@
       "encadeado": false
     },
     {
-      "id": "d2bc"
-    },
-    {
-      "id": "e636"
-    },
-    {
-      "id": "c525"
-    },
-    {
-      "id": "7f9e"
-    },
-    {
       "id": "10ee9599-bf63-41b8-bccc-7779d11eed4a",
       "date": "2024-10-04T13:36:55.790Z",
       "userId": 0,
@@ -141,14 +137,11 @@
     {
       "ID": "00000000-0000-0000-0000-000000000000",
       "Post_ID": "00000000-0000-0000-0000-000000000000",
-      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
-      "id": "30a9"
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000"
     }
   ],
   "Usuario": [
-   
     {
-      "id": "9fc1",
       "ID": "14f0ec0a-7d51-447b-8b09-596ccbeea7f5",
       "NomeExibicao": "",
       "NomeUsuario": "",
@@ -158,7 +151,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "5b40",
       "ID": "12cd4c08-ec1d-4daf-8a70-4dddfd7f5288",
       "NomeExibicao": "",
       "NomeUsuario": "",
@@ -168,7 +160,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "7e63",
       "ID": "838bac4c-5625-4ef5-8ecf-3950e2d10975",
       "NomeExibicao": "coisa loka ",
       "NomeUsuario": "coisinha fofa",
@@ -178,7 +169,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "8087",
       "ID": "8c92ccb0-153e-4de4-b950-83ef86b03b5e",
       "NomeExibicao": "joao",
       "NomeUsuario": "oliveira",
@@ -188,7 +178,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "04f0",
       "ID": "3129c3e8-b3c0-410b-94f6-0192df92e484",
       "NomeExibicao": "joao",
       "NomeUsuario": "joao",
@@ -198,7 +187,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "8cbc",
       "ID": "588cdd8f-f506-4481-b465-99071f40d3a8",
       "NomeExibicao": "joao",
       "NomeUsuario": "oliveira",
@@ -208,7 +196,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "2dcd",
       "ID": "5a634f80-5933-42c1-b5cd-22b075f1b2c0",
       "NomeExibicao": "zinnn",
       "NomeUsuario": "joao",
@@ -218,7 +205,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "1d52",
       "ID": "affbd439-a3c8-4e02-9258-c3aefdb62ee9",
       "NomeExibicao": "edu",
       "NomeUsuario": "dudu",
@@ -228,7 +214,6 @@
       "FotoBannerURL": null
     },
     {
-      "id": "f77a",
       "ID": "c8cac05b-dd49-43dd-a023-4b8de5fb679d",
       "NomeExibicao": "teste15",
       "NomeUsuario": "teste",
@@ -242,26 +227,22 @@
     {
       "ID": "3bc3c009-874d-4b82-93d7-8520920xm9c5",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
-      "id": "d9cd"
+      "Seguidor_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7"
     },
     {
       "ID": "4bc3c009-874d-4035-93d7-e871a4cf12eb",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16",
-      "id": "8826"
+      "Seguidor_ID": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16"
     },
     {
       "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
-      "id": "9327"
+      "Seguidor_ID": "606407ba-9dc9-4fe9-9a16-764faa81bab8"
     },
     {
       "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
       "Usuario_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
-      "Seguidor_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "id": "d517"
+      "Seguidor_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb"
     }
   ]
 }

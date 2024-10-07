@@ -16,15 +16,15 @@ const MenuBar = ({ selected }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(IsAuthenticated())
 
   return (
-    <div class=" h-full py-2 flex flex-col justify-between ">
-      <aside class="flex flex-col gap-5">
+    <div className="flex flex-col justify-between h-full py-2 ">
+      <aside className="flex flex-col gap-5">
         {/* <Image src={logoImg} width={100} height={100} alt="Imagem do logo" /> */}
 
-        <section class="flex flex-col gap-3">
+        <section className="flex flex-col gap-3">
           <div
             // Aqui a gente seleciona pelo título da página, dessa forma ao clicar ná página ele não seleciona todos
             onClick={() => setIsClicked("feed")}
-            class={
+            className={
               // Se o useState está setado com o título da página ele ativa o 'CSS' dele caso não, deixa como o estilo padrão
               isClicked === "feed"
                 ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center w-5/6 `
@@ -32,7 +32,7 @@ const MenuBar = ({ selected }) => {
             }
           >
             <Link
-              class={
+              className={
                 isClicked === "feed"
                   ? `text-[#74BDE8] w-auto px-10`
                   : `text-white w-auto px-10`
@@ -46,14 +46,14 @@ const MenuBar = ({ selected }) => {
 
           {isAuthenticated ? (<div
             onClick={() => setIsClicked("perfil")}
-            class={
+            className={
               isClicked === "perfil"
                 ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center w-5/6`
                 : `flex items-center`
             }
           >
             <Link
-              class={
+              className={
                 isClicked === "perfil"
                   ? `text-[#74BDE8] w-auto px-10`
                   : `text-white w-auto px-10`
@@ -69,8 +69,8 @@ const MenuBar = ({ selected }) => {
         </section>
       </aside>
 
-      {isAuthenticated ? (<section class=" w-3/4 py-12">
-        <div class=" flex flex-row items-center border-[#74BDE8] border-2 w-full h-full rounded-2xl bg-white bg-opacity-5 gap-3 p-4">
+      {isAuthenticated ? (<section className="w-3/4 py-12 ">
+        <div className=" flex flex-row items-center border-[#74BDE8] border-2 w-full h-full rounded-2xl bg-white bg-opacity-5 gap-3 p-4">
           <div className="">
             <Image
               src={profilePicture}
@@ -81,11 +81,11 @@ const MenuBar = ({ selected }) => {
             />
 
           </div>
-          <div class="flex-col flex gap-1 w-full">
+          <div className="flex flex-col w-full gap-1">
             <ProfileName fieldStyle={"gap-0"} nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} userStyle="w-auto" />
           </div>
-          <div class=" flex flex-col justify-center pr-5 cursor-pointer">
-            <FiLogOut class="w-6 h-6" />
+          <div className="flex flex-col justify-center pr-5 cursor-pointer ">
+            <FiLogOut className="w-6 h-6" />
           </div>
         </div>
       </section>) : (<></>)}
