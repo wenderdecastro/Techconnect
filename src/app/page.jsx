@@ -1,11 +1,19 @@
-import { IsAuthenticated } from "@/utils/authentication";
-import { useRouter } from "next/router";
+"use client";
 
-export function Home() {
+import { IsAuthenticated } from "@/utils/authentication";
+import { useRouter } from "next/navigation";
+
+export default function Home() {
   const router = useRouter();
 
-  if (IsAuthenticated) {
+  if (!IsAuthenticated()) {
+
     router.push("/home")
   }
-  else router.push("/login")
+  else { router.push("/login") }
+
+  return (
+    <div className="bg-neutral-background">
+    </div>
+  )
 }
