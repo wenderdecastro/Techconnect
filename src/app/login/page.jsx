@@ -151,7 +151,7 @@ export default function Home() {
             <div className="flex items-center justify-center h-screen bg-cover bg-login-background perspective">
                 <div className="p-6 rounded-lg space-y-4 w-[35%]">
                     <div className="flex flex-col items-center justify-center">
-                        <img src={"/images/AppLogo.png"} className="w-[80px]" alt="Logo" />
+                        <img src={"/images/AppLogo.png"} className="w-[80px] mix-blend-lighten" alt="Logo" />
                         <Text className="mt-1">{isSignIn ? "Welcome back!" : "Join Techconnection?"}</Text>
                         <Title>{isSignIn ? "Sign in" : "Create account"}</Title>
                     </div>
@@ -164,7 +164,7 @@ export default function Home() {
                                         <CustomInput
                                             type="text"
                                             name="NomeExibicao"
-                                            placeholder="NickName"
+                                            placeholder="Nome"
                                             size="lg"
                                             value={userData.NomeExibicao}
                                             onChange={(e) =>
@@ -177,7 +177,7 @@ export default function Home() {
                                         <CustomInput
                                             type="text"
                                             name="NomeUsuario"
-                                            placeholder="Nome"
+                                            placeholder="Username"
                                             size="lg"
                                             value={userData.NomeUsuario}
                                             onChange={(e) =>
@@ -187,6 +187,7 @@ export default function Home() {
                                                 }))
                                             }
                                         />
+
                                     </div>
                                     <div className="space-y-4">
                                         <CustomInput
