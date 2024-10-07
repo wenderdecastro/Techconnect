@@ -1,8 +1,16 @@
 import { useRouter } from "next/router";
 
 export function IsAuthenticated() {
-    var user = localStorage.getItem('user');
-    return !user;
+    if (typeof window !== "undefined") {
+        const user = localStorage.getItem('user');
+        return !!user;
+    }
+    return false;
+}
+export function getUser() {
+    if (IsAuthenticated()) {
+        return localStorage.getItem('user');
+    }
 }
 
 export function RedirectIfNotAuthenticated() {

@@ -8,10 +8,12 @@ import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
 import { Menu_textProfile } from "../text";
 import { ProfileName } from "../texts";
+import { IsAuthenticated } from "@/utils/authentication";
 
 const MenuBar = ({ selected }) => {
   //useState para verficar se está selecionado ou não
   const [isClicked, setIsClicked] = useState(selected);
+  const [isAuthenticated, setIsAuthenticated] = useState(IsAuthenticated())
 
   return (
     <div class=" h-full py-2 flex flex-col justify-between ">
@@ -42,27 +44,7 @@ const MenuBar = ({ selected }) => {
             </Link>
           </div>
 
-          {/* <div
-            onClick={() => setIsClicked("comunidade")}
-            class={
-              isClicked === "comunidade"
-                ? `border-r-2 border-[#74BDE8] bg-white bg-opacity-5 h-16 flex items-center w-5/6`
-                : `flex items-center`
-            }
-          >
-            <Link
-              class={
-                isClicked === "comunidade"
-                  ? `text-[#74BDE8] w-auto px-10`
-                  : `text-white w-auto px-10`
-              }
-              href=""
-            >
-              {" "}
-              Comunidade{" "}
-            </Link>
-          </div> */}
-          <div
+          {isAuthenticated ? (<div
             onClick={() => setIsClicked("perfil")}
             class={
               isClicked === "perfil"
@@ -81,12 +63,13 @@ const MenuBar = ({ selected }) => {
               {" "}
               Perfil{" "}
             </Link>
-          </div>
+          </div>) : (<></>)}
+
+
         </section>
       </aside>
 
-      {/* Perfil */}
-      <section class=" w-3/4 py-12">
+      {isAuthenticated ? (<section class=" w-3/4 py-12">
         <div class=" flex flex-row items-center border-[#74BDE8] border-2 w-full h-full rounded-2xl bg-white bg-opacity-5 gap-3 p-4">
           <div className="">
             <Image
@@ -105,7 +88,9 @@ const MenuBar = ({ selected }) => {
             <FiLogOut class="w-6 h-6" />
           </div>
         </div>
-      </section>
+      </section>) : (<></>)}
+      {/* Perfil */}
+
     </div>
   );
 };

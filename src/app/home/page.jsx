@@ -6,10 +6,11 @@ import { Post } from '@/components/post';
 import PostInput from '@/components/postInput';
 import TrendingTopics from '@/components/trendingTopics';
 import MenuBar from '@/components/menuBar';
+import { getUser, IsAuthenticated } from '@/utils/authentication';
 
 export default function Home() {
 
-    const [user, setUser] = useState();
+    const user = getUser();
     const [posts, setPosts] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
     const [postText, setPostText] = useState();
@@ -123,7 +124,8 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
-                        <PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
+                        {IsAuthenticated() ? (<><PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} /></>) : null}
+
 
                         {posts.map((post, index) => {
                             return <Post text={post.text} imagesURL={post.imagesURL} id={post.id} encadeado={post.encadeado} key={post.id} userId={post.userId} date={post.date} />

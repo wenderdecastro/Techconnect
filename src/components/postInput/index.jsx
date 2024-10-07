@@ -1,5 +1,6 @@
 "use client";
 
+import { RedirectIfNotAuthenticated } from "@/utils/authentication";
 import { LargeButton, SmallButton } from "../button";
 import React, { useState, useRef } from "react";
 
@@ -34,6 +35,8 @@ export default function PostInput({ text, onChange, onSubmit, onImagesSelected }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        RedirectIfNotAuthenticated();
+
         onSubmit(e);
         setSelectedImages([]);
         text = "";

@@ -11,7 +11,7 @@ import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
 
-export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false }) => {
+export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false, loggedId = null }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -150,7 +150,7 @@ const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
 
       <div className="w-full h-[50%] relative ">
         <img
-          className="object-cover w-full h-full rounded-2xl "
+          className="object-cover w-full h-full cursor-pointer rounded-2xl "
           src={images[2]}
           alt=""
           onClick={() => onClick(2)}
