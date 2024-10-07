@@ -83,7 +83,7 @@ const OtherPerfil = ({ params }) => {
 
   return (
     <div className="flex justify-center w-screen h-screen bg-black">
-      <div className="  w-[100%] h-[60%]  rounded-2xl bg-[#050505] absolute">
+      <div className=" md:md:w-[45%]  md:md:my-[5%]  w-[100%] h-[60%]  rounded-2xl bg-[#050505] absolute">
         <img
           className="w-screen h-[35%]"
           src={user.FotoBannerURL}
@@ -91,14 +91,14 @@ const OtherPerfil = ({ params }) => {
         />
 
         <img
-          class="relative -top-10 z-45 mx-[40%] h-20 w-20 rounded-full ring-2  "
+          class="relative -top-10 z-45 md:md:mx-[45%] mx-[40%] h-20 w-20 rounded-full ring-2  "
           src={user.fotoUrlPerfil}
           alt="imagem de perfil do usuário logado"
         />
 
-        <div className="flex flex-col items-center gap-5 bg-neutral-background">
+        <div className="flex md:md:flex-row md:md:justify-between flex-col items-center gap-5 bg-neutral-background">
           <ProfileName
-            fieldStyle="bg-neutral-background items-center"
+            fieldStyle="bg-neutral-background md:md:items-start md:md:ml-[5%] items-center"
             nameStyle="bg-neutral-background text-xl "
             nomeExibicao={`${user.nomeExibicao}`}
             nomeUsuario={`@${user.nomeUsuario}`}
@@ -114,7 +114,7 @@ const OtherPerfil = ({ params }) => {
           </div>
         </div>
 
-        <div className="flex justify-between w-[40%] my-[5%] ml-[16%] bg-neutral-background gap-4">
+        <div className="flex justify-between w-[40%] my-[5%] md:md:ml-[5%] ml-[16%] bg-neutral-background gap-4">
           <div className="flex flex-row gap-2 ">
             <Text style="bg-neutral-background ">{seguidores}</Text>
             <Text style="bg-neutral-background opacity-50">Seguidores</Text>
