@@ -83,8 +83,8 @@ const OtherPerfil = ({ params }) => {
   }, [])
 
   return (
-    <div className="flex justify-center w-screen h-screen bg-gray-900 ">
-      <div className="w-[45%] h-[60%] my-[5%] rounded-2xl bg-neutral-background absolute">
+    <div className="flex justify-center w-screen h-screen bg-black overflow-visible ">
+      <div className="w-[45%] h-[60%] my-[5%] rounded-2xl bg-[#0D0D0D] absolute">
         <img
           className="w-screen h-[35%]"
           src={user.FotoBannerURL}
@@ -92,45 +92,45 @@ const OtherPerfil = ({ params }) => {
         />
 
         <img
-          className="relative -top-10  z-50 ml-[45%] h-20 w-20 rounded-full ring-2  "
+          className="relative -top-10 z-50 ml-[45%] h-20 w-20 rounded-full ring-2  "
           src={user.fotoUrlPerfil}
           alt="imagem de perfil do usuário logado"
         />
 
-        <div className="flex justify-between bg-neutral-background">
+        <div className="flex justify-between bg-[#0D0D0D]">
           <ProfileName
-            fieldStyle="bg-neutral-background ml-[3%]"
-            nameStyle="bg-neutral-background text-4xl "
+            fieldStyle="ml-[3%]"
+            nameStyle="text-xl "
             nomeExibicao={`${user.nomeExibicao}`}
             nomeUsuario={`@${user.nomeUsuario}`}
           />
 
-          <div className="flex justify-center w-[35%] h-[15%] bg-neutral-background ">
+          <div className="flex justify-center w-[35%] h-[15%]  ">
             <SmallButton
               Inverse={followed === false}
               Style={`mr-[10%] h-[5%] px-1 py-1 hover:border-[#2b95d2] `}
-              Text={followed === false ? "Seguir Perfil" : "seguindo"}
+              Text={followed === false ? "Seguir Perfil" : "Seguindo"}
               onClick={() => Follow()}
             />
 
           </div>
         </div>
 
-        <div className="flex justify-between w-[40%] my-[5%] ml-[5%] bg-neutral-background">
+        <div className="flex justify-between w-[40%] my-[5%] ml-[5%]">
 
           <div className="flex flex-row gap-2 ">
-            <Text style="bg-neutral-background ">{seguidores}</Text>
-            <Text style="bg-neutral-background opacity-50">Seguidores</Text>
+            <Text >{seguidores}</Text>
+            <Text style="opacity-50">Seguidores</Text>
           </div>
 
           <div className="flex flex-row gap-2 ">
-            <Text style="bg-neutral-background ">0</Text>
-            <Text style="bg-neutral-background opacity-50">Likes</Text>
+            <Text >0</Text>
+            <Text style="opacity-50">Likes</Text>
           </div>
 
           <div className="flex flex-row gap-2 ">
-            <Text style="bg-neutral-background ">{post.length}</Text>
-            <Text style="bg-neutral-background opacity-50">Posts</Text>
+            <Text >{post.length}</Text>
+            <Text style="bg-[#0D0D0D] opacity-50">Posts</Text>
           </div>
 
 
@@ -138,8 +138,8 @@ const OtherPerfil = ({ params }) => {
 
 
         {post.length > 0 ? (
-          post.map(() => (
-            <div className="flex flex-col items-center justify-center py-10 border-t-2 border-primary-blue">
+          post.map((post, index) => (
+            <div className="flex flex-col items-center justify-center py-10 border-t-2 bg-[#0D0D0D] border-opacity-30 border-primary-blue">
 
               <Post
                 text={post.text}
@@ -154,7 +154,7 @@ const OtherPerfil = ({ params }) => {
             </div>
           ))
         ) : (
-          <Text style="gap-3 bg-neutral-background">Nenhum post encontrado.</Text>
+          <Text style="gap-3 bg-neutral-background "> Você possui nenhum post</Text>
         )}
 
 

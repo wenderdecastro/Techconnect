@@ -13,7 +13,7 @@ const MenuBar = () => {
   const [isClicked, setIsClicked] = useState("");
 
   return (
-    <div class=" h-5/6 py-2 flex flex-col justify-between ">
+    <div class={`h-5/6 py-2 flex flex-col justify-between max-sm:hidden`}>
       <aside class="flex flex-col gap-5">
         {/* <Image src={logoImg} width={100} height={100} alt="Imagem do logo" /> */}
 

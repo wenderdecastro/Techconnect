@@ -17,20 +17,21 @@ const Profile = (props) => {
   return (
     <div className="flex justify-center w-screen bg-neutral-background ">
       <div className="w-[90%] h-screen overflow-hidden">
-        <header className=" grid grid-cols-[30%,40%,30%] h-[12.5%] ">
-          <div className="h-[30%]  ">
+        <header className=" max-sm:hidden grid grid-cols-[30%,40%,30%] h-[12.5%] ">
+          <div className="max-sm:hidden h-[30%]  ">
             <img src="/images/AppLogo.png" className="h-full" />
           </div>
           <div className="">45%</div>
           <div className="">30%</div>
         </header>
 
-        <div className="grid grid-cols-[30%,40%,30%] h-[100%]  ">
-          <div className="h-fill">
-            <MenuBar/>
+        <div className={`grid grid-cols-[30%,40%,30%] h-[100%]  `}>
+          <div className="  h-fill">
+
+            <MenuBar />
           </div>
 
-          <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6   ">
+          <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
             <ProfileInfo/>
 
             {posts.map((post, index) => {
@@ -49,7 +50,7 @@ const Profile = (props) => {
             <div className="mb-12" />
           </div>
 
-          <div className="h-full ">
+          <div className=" max-sm:hidden h-full ">
             <></>
           </div>
         </div>

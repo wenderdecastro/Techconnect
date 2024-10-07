@@ -24,7 +24,7 @@ export function SmallButton({ onClick, Text, Inverse = false, Style }) {
     <button
       onClick={onClick}
       className={`flex items-center justify-center px-6 py-[0.36rem] rounded-full ${Inverse
-          ? "border border-primary-blue bg-neutral-background hover:border-[#2b95d2]"
+          ? "border border-primary-blue hover:border-[#2b95d2]"
           : "bg-primary-blue hover:border-[#2b95d2]"
         } ${Style} `}
     >
@@ -59,7 +59,7 @@ export const BlueBtn = ({ onclick, text, style }) => {
 
 export const Exit = ({ onclick, img, style }) => {
   return (
-    <button type="button" onClick={onclick}>
+    <button className={`${style}`} type="button" onClick={onclick}>
       <FiLogOut className=" size-5 bg-neutral-background" />
     </button>
   );
