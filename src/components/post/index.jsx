@@ -11,7 +11,7 @@ import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
 
-export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false }) => {
+export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false , nomeExibicao, nomeUsuario}) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -42,7 +42,7 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
           />
 
 
-          <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} />
+          <ProfileName nomeExibicao={nomeExibicao} nomeUsuario={nomeUsuario} />
 
           <span className="flex gap-2 text-sm text-center opacity-50 ">
             <FaRegClock style={{ scale: "130%", paddingTop: "3.5%" }} />

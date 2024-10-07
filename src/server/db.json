@@ -11,7 +11,7 @@
     {
       "id": "4c39777b-f471-4e07-b99f-2b6b7b438210",
       "date": 1727788854265,
-      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "userId": "838bac4c-5625-4ef5-8ecf-3950e2d10975",
       "text": "SIUUUUUUUU",
       "imagesURL": [],
       "encadeado": false
@@ -167,26 +167,6 @@
   ],
   "Usuario": [
    
-    {
-      "id": "9fc1",
-      "ID": "14f0ec0a-7d51-447b-8b09-596ccbeea7f5",
-      "NomeExibicao": "",
-      "NomeUsuario": "",
-      "Email": "",
-      "Senha": "",
-      "FotoPerfilURL": null,
-      "FotoBannerURL": null
-    },
-    {
-      "id": "5b40",
-      "ID": "12cd4c08-ec1d-4daf-8a70-4dddfd7f5288",
-      "NomeExibicao": "",
-      "NomeUsuario": "",
-      "Email": "",
-      "Senha": "",
-      "FotoPerfilURL": null,
-      "FotoBannerURL": null
-    },
     {
       "id": "7e63",
       "ID": "838bac4c-5625-4ef5-8ecf-3950e2d10975",
