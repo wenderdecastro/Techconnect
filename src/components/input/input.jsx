@@ -6,7 +6,7 @@ const CustomInput = ({ type = 'text', placeholder, size = 'md', value, onChange 
   const sizeClasses = {
     sm: 'p-2 text-sm',
     md: 'p-3 text-base',
-    lg: 'p-4 text-lg',
+    lg: 'lg:p-4 lg:text-lg',
   };
 
   const [inputValue, setInputValue] = useState(value || ''); // Inicializa com o valor passado
@@ -44,13 +44,13 @@ const CustomInput = ({ type = 'text', placeholder, size = 'md', value, onChange 
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative lg:w-full w-max lg:left-0 md:left-[12%] -left-[40%]">
       <input
         type={type}
         value={inputValue}
         onChange={handleChange}
         placeholder={placeholder}
-        className={`w-full bg-[#191919] text-white border border-[#74BDE8] rounded-full focus:outline-none focus:ring-2 focus:ring-[#74BDE8] lg:${sizeClasses[size]} p-2 text-sm placeholder-white ${type === "date" ? "custom-datepicker" : ""
+        className={`w-full max-md:w-[125%] bg-[#191919] text-white border border-[#74BDE8] rounded-full focus:outline-none focus:ring-2 focus:ring-[#74BDE8] ${sizeClasses[size]} p-3 text-sm placeholder-white ${type === "date" ? "custom-datepicker" : ""
           }`}
       />
       {showSuggestions && suggestions.length > 0 && (

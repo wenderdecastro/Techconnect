@@ -26,7 +26,6 @@ export default function Home() {
   const [loginError, setLoginError] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Adiciona um estado para gerenciar mensagens de erro
 
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleForm = () => {
@@ -37,7 +36,12 @@ export default function Home() {
     e.preventDefault();
 
     // Verifica se os campos necessários estão preenchidos
-    if (!userData.NomeExibicao || !userData.NomeUsuario || !userData.Email || !userData.Senha) {
+    if (
+      !userData.NomeExibicao ||
+      !userData.NomeUsuario ||
+      !userData.Email ||
+      !userData.Senha
+    ) {
       setErrorMessage("Por favor, preencha todos os campos!");
       return;
     }
@@ -55,29 +59,31 @@ export default function Home() {
     try {
       // Verifica se já existe um usuário com o mesmo nome de exibição ou email
       const checkUserExists = async () => {
-        const response = await fetch('http://localhost:3001/Usuario', {
-          method: 'GET',
+        const response = await fetch("http://localhost:3001/Usuario", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         });
 
         const data = await response.json();
         const existingUser = data.find(
-          (user) => user.NomeExibicao === usuario.NomeExibicao || user.Email === usuario.Email
+          (user) =>
+            user.NomeExibicao === usuario.NomeExibicao ||
+            user.Email === usuario.Email
         );
 
         if (existingUser) {
-          throw new Error('Usuário já cadastrado');
+          throw new Error("Usuário já cadastrado");
         }
       };
 
       await checkUserExists();
 
-      const response = await fetch('http://localhost:3001/Usuario', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3001/Usuario", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(usuario),
       });
@@ -85,7 +91,7 @@ export default function Home() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Erro ao cadastrar o usuário');
+        throw new Error(data.message || "Erro ao cadastrar o usuário");
       }
 
       setUserData({
@@ -115,7 +121,9 @@ export default function Home() {
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/Usuario?Email=${userData.Email}&Senha=${userData.Senha}`);
+      const response = await fetch(
+        `http://localhost:3001/Usuario?Email=${userData.Email}&Senha=${userData.Senha}`
+      );
       const data = await response.json();
 
       if (data.length > 0) {
@@ -134,28 +142,33 @@ export default function Home() {
 
   useEffect(() => {
     if (isSignIn == true) {
-
       setErrorMessage("");
     }
-
-  }, [isSignIn])
+  }, [isSignIn]);
 
   return (
-
     <>
       <div className="flex items-center justify-center h-screen bg-cover bg-login-background perspective">
-        <div className="p-6 rounded-lg space-y-4 w-[35%]">
+        <div className="lg:p-6 rounded-lg lg:space-y-4  w-[35%]">
           <div className="flex flex-col items-center justify-center">
-            <img src={"/images/AppLogo.png"} className="lg:w-[80px] w-[44px]" alt="Logo" />
-            <Text className="text-center  mt-1">{isSignIn ? "Welcome back!" : "Join Techconnection?"}</Text>
-            <Title style={`lg:text-4xl text-2xl w-max`}>{isSignIn ? "Sign in" : "Create account"}</Title>
+            <img
+              src={"/images/AppLogo.png"}
+              className="lg:w-[80px] w-[60px]"
+              alt="Logo"
+            />
+            <Text className="mt-1" style={`text-center text-lg`}>
+              {isSignIn ? "Welcome back!" : "Join Techconnection?"}
+            </Text>
+            <Title style={`lg:text-4xl text-2xl w-max`}>
+              {isSignIn ? "Sign in" : "Create account"}
+            </Title>
           </div>
 
           <form onSubmit={isSignIn ? handleLogin : handleSubmit}>
-            <div className="relative w-full h-[200px]">
+            <div className="relative w-full lg:h-[200px] h-[215px] ">
               <div className={`flip-card ${isSignIn ? "rotate-y-180" : ""}`}>
                 <div className="flip-front">
-                  <div className="flex lg:flex-row flex-col  mb-4 space-x-4">
+                  <div className="flex lg:flex-row flex-col mb-4 lg:space-x-4 lg:space-y-0 space-y-4">
                     <CustomInput
                       type="text"
                       name="NomeExibicao"
@@ -214,7 +227,7 @@ export default function Home() {
                 </div>
 
                 <div className="flip-back">
-                  <div className="space-y-4">
+                  <div className="space-y-4 lg:py-0 py-9">
                     <CustomInput
                       type="email"
                       name="Email"
@@ -247,21 +260,29 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center mt-4 space-y-4 text-white">
-              <button className="mt-5 w-[50%] bg-[#74BDE8] text-white py-3 px-4 rounded-full hover:bg-[#5ca9d4] transition duration-300">
+              <button className="lg:mt-5 mt-8 lg:w-[50%] w-[95%] bg-[#74BDE8] text-white py-3 px-4 rounded-full hover:bg-[#5ca9d4] transition duration-300">
                 {isSignIn ? "Sign in" : "Sign up"}
               </button>
-              <Text>
+              <Text style={`text-base w-max`}>
                 {isSignIn ? (
                   <>
-                    New to Techconnection?{" "}
-                    <a href="#" className="text-[#74BDE8] hover:underline" onClick={toggleForm}>
+                    New to Techconnection?{""}
+                    <a
+                      href="#"
+                      className="text-[#74BDE8] hover:underline px-2"
+                      onClick={toggleForm}
+                    >
                       Create account
                     </a>
                   </>
                 ) : (
                   <>
                     Already a member?{" "}
-                    <a href="#" className="text-[#74BDE8] hover:underline" onClick={toggleForm}>
+                    <a
+                      href="#"
+                      className="text-[#74BDE8] hover:underline"
+                      onClick={toggleForm}
+                    >
                       Sign in
                     </a>
                   </>
@@ -284,14 +305,12 @@ export default function Home() {
                 </div>
               )}
             </div>
-
           </form>
         </div>
       </div>
-      <div className="flex-row mx-auto my-0 bg-black">
+      {/* <div className="flex-row mx-auto my-0 bg-black">
         <ProfileInfo />
-      </div>
+      </div> */}
     </>
-
   );
 }

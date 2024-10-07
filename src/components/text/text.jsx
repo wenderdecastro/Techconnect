@@ -1,8 +1,8 @@
 import React from "react";
 
-const Text = ({ children }) => {
+const Text = ({ children, style }) => {
     return (
-      <p className="text-xl text-primary-white mb-4">
+      <p className={`lg:text-xl text-primary-white mb-4 ${style}`}>
         {children}
       </p>
     );
