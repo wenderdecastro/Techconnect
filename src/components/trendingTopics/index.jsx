@@ -6,7 +6,6 @@ export default function TrendingTopics() {
     const [posts, setPosts] = useState([]);
     const [topics, setTopics] = useState([]);
 
-    // Função para buscar posts
     const getPosts = async () => {
         try {
             const response = await fetch("http://localhost:3001/Posts", {
@@ -27,34 +26,33 @@ export default function TrendingTopics() {
         }
     };
 
-    // Função para contar as hashtags mais frequentes (sem duplicação por post)
+
     const getTrendingTopics = (posts) => {
         const countWords = {};
 
         posts.forEach((post) => {
-            // Verifica se post.text está definido e não é nulo
-            if (post.text) {
-                // Use a regex para extrair todas as hashtags diretamente do texto
-                const words = post.text.match(/#\w+/g); // Captura todas as palavras que começam com '#'
 
-                // Se não houver hashtags, continue
+            if (post.text) {
+
+                const words = post.text.match(/#\w+/g);
+
+
                 if (!words) return;
 
-                const hashtagsUnicas = new Set(); // Set para garantir contagem única de hashtags por post
+                const hashtagsUnicas = new Set();
 
                 words.forEach((word) => {
-                    const lowerCaseWord = word.toLowerCase(); // Converte para minúsculas
-                    hashtagsUnicas.add(lowerCaseWord); // Adiciona ao Set (elimina duplicatas no mesmo post)
+                    const lowerCaseWord = word.toLowerCase();
+                    hashtagsUnicas.add(lowerCaseWord);
                 });
 
-                // Conta as hashtags únicas encontradas neste post
                 hashtagsUnicas.forEach((hashtag) => {
                     countWords[hashtag] = (countWords[hashtag] || 0) + 1;
                 });
             }
         });
 
-        // Ordena as hashtags por frequência e limita a 10 tópicos
+
         const orderedWords = Object.entries(countWords)
             .sort((a, b) => b[1] - a[1])
             .slice(0, 10);
@@ -66,12 +64,12 @@ export default function TrendingTopics() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getPosts(); // Espera a resposta de getPosts
+            const data = await getPosts();
             setPosts(data);
-            getTrendingTopics(data); // Passa os posts para contar as hashtags
+            getTrendingTopics(data);
         };
 
-        fetchData(); // Chama a função
+        fetchData();
     }, []);
 
     return (

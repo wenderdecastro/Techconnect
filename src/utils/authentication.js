@@ -14,8 +14,7 @@ export function getUser() {
     }
 }
 
-export function RedirectIfNotAuthenticated() {
-    const router = useRouter();
+export function RedirectIfNotAuthenticated(router) {
 
     useEffect(() => {
         if (!IsAuthenticated()) {
