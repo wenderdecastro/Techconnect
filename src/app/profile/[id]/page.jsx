@@ -104,7 +104,7 @@ const OtherPerfil = ({ params }) => {
             nomeUsuario={`@${user.nomeUsuario}`}
           />
 
-          <div className="flex justify-center w-[35%] h-[15%] bg-neutral-background ">
+          <div className="flex justify-center w-[45%] h-[15%] bg-neutral-background ">
             <SmallButton
               Inverse={followed === false}
               Style={`h-[5%] items-center px-1 py-1 hover:border-[#2b95d2] `}
@@ -146,7 +146,7 @@ const OtherPerfil = ({ params }) => {
             </div>
           ))
         ) : (
-          <Text style="bg-neutral-background">Nenhum post encontrado.</Text>
+          <Text style="flex justify-center md:md:justify-start md:md:ml-[5%]  bg-neutral-background ">Nenhum post encontrado.</Text>
         )}
       </div>
     </div>
