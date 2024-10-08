@@ -7,6 +7,7 @@ import { Post } from '@/components/post';
 import PostInput from '@/components/postInput';
 import TrendingTopics from '@/components/trendingTopics';
 import MenuBar from '@/components/menuBar';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
 
@@ -16,13 +17,14 @@ export default function Home() {
     const [posts, setPosts] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
     const [postText, setPostText] = useState();
-
+    const router = useRouter(); // Obtenha o router
 
     useEffect(() => {
         const userLogged = JSON.parse(localStorage.getItem('user'));
         if (userLogged) {
             setUser(userLogged); // Define o estado do usuário com as informações armazenadas
         }
+        console.log('userlogged', userLogged);
     }, []);
 
 
@@ -36,16 +38,16 @@ export default function Home() {
                     method: "GET"
                 });
                 const allUsers = await allUsersResponse.json();
-                setAllUsers(allUsers); // Armazena todos os usuários
+                setAllUsers(allUsers); 
 
                 // Fetch posts
                 const postResponse = await fetch("http://localhost:3001/Posts", {
                     method: "GET"
                 });
                 const data = await postResponse.json();
-                setPosts(data); // Define os posts
+                setPosts(data); 
 
-                console.log("all", allUsers);
+               
             } catch (error) {
                 console.error("Error fetching user and posts:", error);
             }
@@ -55,7 +57,10 @@ export default function Home() {
     }, []);
 
 
-
+    const handleLogout = () => {
+        localStorage.clear(); // Limpa o localStorage
+        router.push('/login#'); // Redireciona para a página de login
+      };
 
     const createPost = async (e) => {
 
@@ -129,7 +134,7 @@ export default function Home() {
                 <div className="grid grid-cols-[30%,40%,30%] h-[90%] ">
                     <div className="h-fill" >
 
-                        <MenuBar selected={"feed"} />
+                        <MenuBar selected={"feed"} NomeExibicao={user?.NomeExibicao|| "Usuário desconhecido"} NomeUsuario={user?.NomeUsuario || 'unknown_user'} FotoPerfilURL={user?.FotoPerfilURL || null} onLogOut={handleLogout}/>
                     </div>
 
                     <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
@@ -137,8 +142,8 @@ export default function Home() {
 
                         {posts.map((post) => {
                             // Encontre o usuário correspondente com base no userId do post
-                            const postUser = allUsers.find(user => user.id === post.userId);
-                            console.log('Post ID:', post.id, 'User ID:', post.userId); // Verifique os IDs aqui
+                            const postUser = allUsers.find(user => String(user.ID) === String(post.userId));
+                           
 
                             return (
                                 <Post
@@ -149,8 +154,9 @@ export default function Home() {
                                     encadeado={post.encadeado}
                                     userId={post.userId}
                                     date={post.date}
-                                    nomeExibicao={postUser?.NomeExibicao || 'Usuário desconhecido'} // Nome do usuário correspondente
-                                    nomeUsuario={postUser?.NomeUsuario || 'unknown_user'} // Nome de usuário correspondente
+                                    FotoPerfilURL={postUser?.FotoPerfilURL || null}
+                                    nomeExibicao={postUser?.NomeExibicao || 'Usuário desconhecido'} 
+                                    nomeUsuario={postUser?.NomeUsuario || 'unknown_user'} 
                                 />
                             );
                         })}

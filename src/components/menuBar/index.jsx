@@ -8,11 +8,15 @@ import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
 import { Menu_textProfile } from "../text";
 import { ProfileName } from "../texts";
+import { FaUser } from "react-icons/fa";
+import { useRouter } from "next/router";
 
-const MenuBar = ({ selected }) => {
+const MenuBar = ({ selected, NomeExibicao, NomeUsuario, FotoPerfilURL, onLogOut }) => {
   //useState para verficar se está selecionado ou não
   const [isClicked, setIsClicked] = useState(selected);
 
+
+ 
   return (
     <div class=" h-full py-2 flex flex-col justify-between ">
       <aside class="flex flex-col gap-5">
@@ -89,19 +93,23 @@ const MenuBar = ({ selected }) => {
       <section class=" w-3/4 py-12">
         <div class=" flex flex-row items-center border-[#74BDE8] border-2 w-full h-full rounded-2xl bg-white bg-opacity-5 gap-3 p-4">
           <div className="">
-            <Image
-              src={profilePicture}
-              width={75}
-              height={75}
-              alt="Imagem de perfil"
-              className="h-full rounded-full cursor-pointer aspect-square"
-            />
+            {FotoPerfilURL ? (
+              <Image
+                src={FotoPerfilURL}
+                width={75}
+                height={75}
+                alt="Imagem de perfil"
+                className="h-full rounded-full cursor-pointer aspect-square"
+              />
 
+            ) : (
+              <FaUser />
+            )}
           </div>
           <div class="flex-col flex gap-1 w-full">
-            <ProfileName fieldStyle={"gap-0"} nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} userStyle="w-auto" />
+            <ProfileName fieldStyle={"gap-0"} nomeExibicao={NomeExibicao} nomeUsuario={NomeUsuario} userStyle="w-auto" />
           </div>
-          <div class=" flex flex-col justify-center pr-5 cursor-pointer">
+          <div class=" flex flex-col justify-center pr-5 cursor-pointer" onClick={onLogOut}>
             <FiLogOut class="w-6 h-6" />
           </div>
         </div>

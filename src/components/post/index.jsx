@@ -1,7 +1,8 @@
 import next from "next";
 import { FaRegClock } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
-import { FaRegComment } from "react-icons/fa";
+import { FaRegComment,FaUser  } from "react-icons/fa";
+
 import { FiTrash } from "react-icons/fi";
 import { ProfileName, Text } from "../texts";
 import { PostButton } from "../postButton";
@@ -11,7 +12,7 @@ import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
 
-export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false , nomeExibicao, nomeUsuario}) => {
+export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false, nomeExibicao, nomeUsuario, FotoPerfilURL }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -35,11 +36,16 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
         {/* user infos */}
 
         <div className="h-fit w-[100%] flex gap-2">
-          <img
-            className="rounded-full size-12 aspect-square"
-            src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
-            alt="imagem de perfil do usuário logado"
-          />
+
+          {FotoPerfilURL ? (
+            <img
+              className="rounded-full size-12 aspect-square"
+              src={FotoPerfilURL}
+              alt="imagem de perfil do usuário logado"
+            />
+          ) : (
+            < FaUser />
+          )}
 
 
           <ProfileName nomeExibicao={nomeExibicao} nomeUsuario={nomeUsuario} />
