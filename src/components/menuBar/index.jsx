@@ -19,7 +19,7 @@ const MenuBar = ({ selected }) => {
 
   return (
     <>
-      <div className="flex flex-col justify-between h-[40%] py-2 ">
+      <div className="flex flex-col justify-between h-[97.5%] py-2 ">
         <aside className="flex flex-col gap-5">
           {/* <Image src={logoImg} width={100} height={100} alt="Imagem do logo" /> */}
 
@@ -71,11 +71,11 @@ const MenuBar = ({ selected }) => {
 
           </section>
         </aside>
-        <SmallButton Text={"Postar"} onClick={() => setIsModalOpen(!isModalOpen)} Style={"w-2/6 h-12  "} />
 
 
 
-        {isAuthenticated ? (<section className="w-3/4 py-12 ">
+
+        {!isAuthenticated ? (<section className="flex flex-col w-5/6 gap-12 py-12 sw-3/4 ">
           <div className=" flex flex-row items-center border-[#74BDE8] border-2 w-full h-full rounded-2xl  bg-white bg-opacity-5 gap-3 p-4">
             <div className="">
               <Image
