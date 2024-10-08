@@ -25,10 +25,10 @@
       "encadeado": false
     },
     {
-      "id": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
-      "date": 1727868080959,
+      "id": "5d3443d8-e77d-43e8-aeb4-153d69ba1e0e",
+      "date": "2024-10-04T13:05:01.175Z",
       "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "text": "teste",
+      "text": "testeas",
       "imagesURL": [],
       "encadeado": false
     },
@@ -64,7 +64,7 @@
     {
       "id": "adf745fe-216f-4e96-885a-5c0cea01534e",
       "date": "2024-10-03T13:17:39.025Z",
-      "userId": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
       "imagesURL": [
         "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-03T13:17:38.094Z.png"
       ],
@@ -93,47 +93,38 @@
     {
       "ID": "00000000-0000-0000-0000-000000000000",
       "Post_ID": "00000000-0000-0000-0000-000000000000",
-      "Usuario_ID": "00000000-0000-0000-0000-000000000000"
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "49d3"
     }
   ],
   "Usuario": [
     {
-      "ID": "00000000-0000-0000-0000-000000000000",
-      "NomeExibicao": "string_or_null",
-      "NomeUsuario": "string_or_null",
-      "Email": "string_or_null",
-      "Senha": "string_or_null",
-      "FotoPerfilURL": "string_or_null",
-      "FotoBannerURL": "string_or_null",
-      "id": "1f2a"
-    },
-    {
-      "id": "9fc1",
       "ID": "14f0ec0a-7d51-447b-8b09-596ccbeea7f5",
       "NomeExibicao": "",
       "NomeUsuario": "",
       "Email": "",
       "Senha": "",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "d2d3"
     },
     {
-      "id": "5b40",
       "ID": "12cd4c08-ec1d-4daf-8a70-4dddfd7f5288",
       "NomeExibicao": "",
       "NomeUsuario": "",
       "Email": "",
       "Senha": "",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "4be4"
     },
     {
       "id": "5b40",
       "ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
       "NomeExibicao": "Crisitano",
       "NomeUsuario": "Cristiano",
-      "Email": "fulanão@gmail.com",
-      "Senha": "123",
+      "Email": "fulanao@gmail.com",
+      "Senha": "123@a",
       "FotoPerfilURL": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F304555993563105792%2F&psig=AOvVaw1ndA9oV2rJUvhcfq8Dd2HR&ust=1728248547189000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMDM7t6R-IgDFQAAAAAdAAAAABAE",
       "FotoBannerURL": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.si.com%2Fsoccer%2F2016%2F05%2F28%2Fvideo-cristiano-ronaldo-yells-si-champions-league-final&psig=AOvVaw0GzXtC8tE0pkBHRauZIZ2s&ust=1728248574645000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjsnu-R-IgDFQAAAAAdAAAAABAE"
     },
@@ -148,62 +139,72 @@
       "FotoBannerURL": null
     },
     {
-      "id": "8087",
       "ID": "8c92ccb0-153e-4de4-b950-83ef86b03b5e",
       "NomeExibicao": "joao",
       "NomeUsuario": "oliveira",
       "Email": "Joao.oliveira@gmail.com",
       "Senha": "20562656",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "b713"
     },
     {
-      "id": "04f0",
       "ID": "3129c3e8-b3c0-410b-94f6-0192df92e484",
       "NomeExibicao": "joao",
       "NomeUsuario": "joao",
       "Email": "coisaloka@gmail.com",
       "Senha": "1234",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "bddc"
     },
     {
-      "id": "8cbc",
       "ID": "588cdd8f-f506-4481-b465-99071f40d3a8",
       "NomeExibicao": "joao",
       "NomeUsuario": "oliveira",
       "Email": "joao.oliveiira.pda@gmail.com",
       "Senha": "20562656",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "1c92"
     },
     {
-      "id": "2dcd",
       "ID": "5a634f80-5933-42c1-b5cd-22b075f1b2c0",
       "NomeExibicao": "zinnn",
       "NomeUsuario": "joao",
       "Email": "joao.zingameplay@gmail.com",
       "Senha": "20562656",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "afca"
     },
     {
-      "id": "1d52",
       "ID": "affbd439-a3c8-4e02-9258-c3aefdb62ee9",
       "NomeExibicao": "edu",
       "NomeUsuario": "dudu",
       "Email": "dudu@gmail.com",
       "Senha": "123456",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "21ca"
     },
     {
-      "id": "f77a",
       "ID": "c8cac05b-dd49-43dd-a023-4b8de5fb679d",
       "NomeExibicao": "teste15",
       "NomeUsuario": "teste",
       "Email": "teste@yahoo.com",
       "Senha": "123",
+      "FotoPerfilURL": null,
+      "FotoBannerURL": null,
+      "id": "31f2"
+    },
+    {
+      "id": "5712",
+      "ID": "f78dcafd-d2cb-4706-bc55-4b881cc49936",
+      "NomeExibicao": "Marcus",
+      "NomeUsuario": "MArcus",
+      "Email": "marcus@gmail.com",
+      "Senha": "1234",
       "FotoPerfilURL": null,
       "FotoBannerURL": null
     }
@@ -212,22 +213,26 @@
     {
       "ID": "3bc3c009-874d-4b82-93d7-8520920xm9c5",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7"
+      "Seguidor_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "id": "f5d2"
     },
     {
       "ID": "4bc3c009-874d-4035-93d7-e871a4cf12eb",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16"
+      "Seguidor_ID": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16",
+      "id": "b374"
     },
     {
       "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "606407ba-9dc9-4fe9-9a16-764faa81bab8"
+      "Seguidor_ID": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
+      "id": "f363"
     },
     {
       "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
       "Usuario_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
-      "Seguidor_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb"
+      "Seguidor_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "id": "8276"
     }
   ]
 }

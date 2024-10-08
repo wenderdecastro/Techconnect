@@ -7,19 +7,20 @@ import PostInput from '@/components/postInput';
 import TrendingTopics from '@/components/trendingTopics';
 import MenuBar from '@/components/menuBar';
 import { getUser, IsAuthenticated } from '@/utils/authentication';
-import CustomInput from '@/components/input/input';
-import { useRouter } from 'next/navigation';
 
-export default function Home() {
-
-    const router = useRouter();
+export default function Home({ params }) {
     const user = getUser();
     const [posts, setPosts] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
     const [postText, setPostText] = useState();
-    const [searchText, setSearchText] = useState("")
 
 
+    useEffect(() => {
+        const userLogged = JSON.parse(localStorage.getItem('user'));
+        if (userLogged) {
+            setUser(userLogged); // Define o estado do usuário com as informações armazenadas
+        }
+    }, []);
 
 
     useEffect(() => {
@@ -35,7 +36,19 @@ export default function Home() {
                 }
 
                 const data = await response.json();
-                setPosts(data);
+
+                const isHashtagSearch = params.query.startsWith('#');
+
+                const filtered = data.filter((post) => {
+                    return (
+                        post &&
+                        post.text &&
+                        new RegExp(`\\b${isHashtagSearch ? "#" : ""}${params.query}\\b`, 'i').test(post.text) // Using regex to match whole words
+                    );
+                });
+
+                console.log(params.text);
+                setPosts(filtered);
 
             } catch (error) {
                 console.error("Erro ao buscar os posts:", error);
@@ -46,68 +59,6 @@ export default function Home() {
 
     }, []);
 
-    const createPost = async (e) => {
-
-        e.preventDefault()
-
-        const postsUrl = []
-
-        console.log(selectedImages);
-
-
-        await Promise.all(selectedImages.map(async (image) => {
-            const urlImage = await CreateImagePost(image);
-            console.log(urlImage);
-            postsUrl.push(urlImage);
-        }));
-
-        console.log(postsUrl);
-
-
-
-        const newPost = {
-            id: uuid(),
-            date: moment().toDate(),
-            userId: 0,
-            text: postText,
-            imagesURL: postsUrl,
-            encadeado: false
-        };
-
-        console.log(newPost);
-        console.log(newPost.postsUrl);
-
-
-        try {
-            const response = await fetch("http://localhost:3001/Posts", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newPost),
-            });
-
-            if (!response.ok) {
-                throw new Error(response.status);
-            }
-
-            const data = await response.json();
-            setPosts((prevPosts) => [data, ...prevPosts]);
-        } catch (error) {
-            console.error("Error creating post:", error);
-        }
-
-        setPostText('');
-        setSelectedImages([]);
-
-    };
-
-    const handleSearch = (e) => {
-        if (e.key === 'Enter' && searchText.trim()) {
-            // Navigate to the search page with the entered hashtag
-            router.push(`/search/${searchText.trim()}`);
-        }
-    }
 
     return (
 
@@ -119,10 +70,7 @@ export default function Home() {
                         <img src='/images/AppLogo.png' className='h-full' />
                     </div>
                     <div className="">45%</div>
-                    <div className="h-[30%] flex items-center justify-center p-6">
-                        <CustomInput placeholder={"Pesquisa"} value={searchText} onChange={x => setSearchText(x.target.value)} handleKey={handleSearch} type='text' />
-
-                    </div>
+                    <div className="">30%</div>
                 </header>
 
                 <div className="grid grid-cols-[30%,40%,30%] h-[90%] ">
@@ -132,8 +80,6 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
-                        {IsAuthenticated() ? (<><PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} /></>) : null}
-
 
                         {posts.map((post, index) => {
                             return <Post loggedId={IsAuthenticated() && user.id} text={post.text} imagesURL={post.imagesURL} id={post.id} encadeado={post.encadeado} key={post.id} userId={post.userId} date={post.date} />
@@ -143,7 +89,8 @@ export default function Home() {
                     </div>
 
                     <div className="h-full ">
-                        <TrendingTopics />
+                        <>
+                        </>
                     </div>
                 </div>
 

@@ -11,10 +11,11 @@ import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
 
-export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false }) => {
+export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false, loggedId = null }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 
 
   const openModal = (index) => {
@@ -30,13 +31,13 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
 
     <>
 
-      <article className={` relative flex flex-col justify-between gap-6 px-5 py-5  transition-all ease-in-out w-[90%] h-fit rounded-2xl bg-neutral-gray ${detailed ? "" : "hover:bg-neutral-lighter_gray hover:scale-105"}  `}>
+      <article className={` relative flex flex-col justify-between gap-6 p-6  transition-all ease-in-out w-[90%] h-fit rounded-2xl bg-neutral-gray ${detailed ? "" : "hover:bg-neutral-lighter_gray hover:scale-105"}  `}>
         {!detailed && <Link href={`/post/${id}`} className="absolute top-0 left-0 z-0 w-full h-full cursor-default "></Link>}
         {/* user infos */}
 
         <div className="h-fit w-[100%] flex gap-2">
           <img
-            className="w-16 rounded-full size-16"
+            className="rounded-full size-12 aspect-square"
             src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
             alt="imagem de perfil do usuário logado"
           />
@@ -45,7 +46,7 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
           <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} />
 
           <span className="flex gap-2 text-sm text-center opacity-50 ">
-            <FaRegClock style={{ scale: "130%", paddingTop: "4.5%" }} />
+            <FaRegClock style={{ scale: "130%", paddingTop: "3.5%" }} />
             {moment(date).fromNow()}
           </span>
 
@@ -54,7 +55,7 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
         {/* post content */}
         <div className="flex flex-col gap-4">
           <Text>{text}</Text>
-          {!detailed ? (<>
+          {!detailed && imagesURL ? (<>
             {
               imagesURL.length > 0 && (
                 <>
@@ -71,7 +72,11 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
           </>
           ) :
             (
-              <ImageDisplay onClick={openModal} src={imagesURL[currentImageIndex]} />
+              <>
+                {imagesURL && <ImageDisplay onClick={openModal} src={imagesURL[currentImageIndex]} />}
+              </>
+
+
             )
           }
 
@@ -125,7 +130,7 @@ const TwoImagesDisplay = ({ images, onClick }) => (
 
 const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
   <div className="flex w-full h-full gap-4">
-    <div className="z-50 h-full cursor-pointer">
+    <div className="z-50 w-1/2 h-full cursor-pointer">
       <img
         className="object-cover w-full h-full rounded-2xl"
         src={images[0]}
@@ -133,7 +138,7 @@ const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
         onClick={() => onClick(0)}
       />
     </div>
-    <div className="flex flex-col h-full gap-4 ">
+    <div className="flex flex-col w-1/2 h-full gap-4">
       <div className="z-50 h-[50%] cursor-pointer">
 
         <img
@@ -146,7 +151,7 @@ const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
 
       <div className="w-full h-[50%] relative ">
         <img
-          className="object-cover w-full h-full rounded-2xl "
+          className="object-cover w-full h-full cursor-pointer rounded-2xl "
           src={images[2]}
           alt=""
           onClick={() => onClick(2)}

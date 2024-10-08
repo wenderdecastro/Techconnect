@@ -8,31 +8,32 @@ import { ProfileName, Text } from "@/components/texts";
 import React, { useEffect, useState } from "react";
 
 const OtherPerfil = ({ params }) => {
-  const [seguidores, setSeguidores] = useState([])
-  const [post, setPost] = useState([])
-  const [followed, setFollowed] = useState(false)
+  const [seguidores, setSeguidores] = useState([]);
+  const [post, setPost] = useState([]);
+  const [followed, setFollowed] = useState(false);
   const [user, setUser] = useState({
     nomeExibicao: "",
     nomeUsuario: "",
     fotoUrlPerfil: "",
-    FotoBannerURL: ""
+    FotoBannerURL: "",
   });
-  const [imagePost, setImagePost] = useState([])
+  const [imagePost, setImagePost] = useState([]);
 
   const getUser = async () => {
     try {
-      const response = await fetch("http://localhost:3000/Usuario?ID=" + params.id);
+      const response = await fetch(
+        "http://localhost:3000/Usuario?ID=" + params.id
+      );
       const data = await response.json();
 
-      console.log(data[0].NomeExibicao);
+      // console.log(data[0].NomeExibicao);
 
       setUser({
         nomeExibicao: data[0].NomeExibicao,
         nomeUsuario: data[0].NomeUsuario,
         fotoUrlPerfil: data[0].FotoPerfilURL,
-        FotoBannerURL: data[0].FotoBannerURL
+        FotoBannerURL: data[0].FotoBannerURL,
       });
-
     } catch (e) {
       console.log(e);
       alert("Erro inesperado, não foi possível obter o usuário");
@@ -41,46 +42,45 @@ const OtherPerfil = ({ params }) => {
 
   const Follow = async () => {
     if (followed === false) {
-      setFollowed(true)
+      setFollowed(true);
     } else {
-      setFollowed(false)
+      setFollowed(false);
     }
-  }
+  };
 
   const getFollow = async () => {
     try {
-      const response = await fetch("http://localhost:3000/UsuarioSeguidores?Usuario_ID=" + params.id);
+      const response = await fetch(
+        "http://localhost:3000/UsuarioSeguidores?Usuario_ID=" + params.id
+      );
       const data = await response.json();
       console.log(data.length);
-      setSeguidores(data.length)
-
+      setSeguidores(data.length);
     } catch (error) {
       console.log(e);
       alert("Erro inesperado, não foi possíve idenficar o seguidors");
     }
-  }
+  };
 
   const getPost = async () => {
-
     try {
-      const response = await fetch("http://localhost:3000/Posts?userId=" + params.id);
+      const response = await fetch(
+        "http://localhost:3000/Posts?userId=" + params.id
+      );
       const data = await response.json();
 
-      
-
-      setPost(data)
+      setPost(data);
     } catch (error) {
       console.log(error);
       alert("Erro ao carregar posts");
     }
-
-  }
+  };
 
   useEffect(() => {
-    getUser()
-    getFollow()
-    getPost()
-  }, [])
+    getUser();
+    getFollow();
+    getPost();
+  }, []);
 
   return (
     <div className="flex justify-center w-screen h-screen bg-black overflow-visible ">
@@ -112,35 +112,29 @@ const OtherPerfil = ({ params }) => {
               Text={followed === false ? "Seguir Perfil" : "Seguindo"}
               onClick={() => Follow()}
             />
-
           </div>
         </div>
 
         <div className="flex justify-between w-[40%] my-[5%] ml-[5%]">
-
           <div className="flex flex-row gap-2 ">
-            <Text >{seguidores}</Text>
+            <Text>{seguidores}</Text>
             <Text style="opacity-50">Seguidores</Text>
           </div>
 
           <div className="flex flex-row gap-2 ">
-            <Text >0</Text>
+            <Text>0</Text>
             <Text style="opacity-50">Likes</Text>
           </div>
 
           <div className="flex flex-row gap-2 ">
-            <Text >{post.length}</Text>
+            <Text>{post.length}</Text>
             <Text style="bg-[#0D0D0D] opacity-50">Posts</Text>
           </div>
-
-
         </div>
-
 
         {post.length > 0 ? (
           post.map((post, index) => (
             <div className="flex flex-col items-center justify-center py-10 border-t-2 bg-[#0D0D0D] border-opacity-30 border-primary-blue">
-
               <Post
                 text={post.text}
                 imagesURL={post.imagesURL}
@@ -150,14 +144,14 @@ const OtherPerfil = ({ params }) => {
                 userId={post.userId}
                 date={post.date}
               />
-
             </div>
           ))
         ) : (
-          <Text style="gap-3 bg-neutral-background "> Você possui nenhum post</Text>
+          <Text style="gap-3 bg-neutral-background ">
+            {" "}
+            Você possui nenhum post
+          </Text>
         )}
-
-
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 "use client";
 
+import { RedirectIfNotAuthenticated } from "@/utils/authentication";
 import { LargeButton, SmallButton } from "../button";
 import React, { useState, useRef } from "react";
 
-export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
+export default function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
     const [selectedImages, setSelectedImages] = useState([]);
     const textareaRef = useRef(null);
 
@@ -34,6 +35,8 @@ export function PostInput({ text, onChange, onSubmit, onImagesSelected }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        RedirectIfNotAuthenticated();
+
         onSubmit(e);
         setSelectedImages([]);
         text = "";

@@ -5,21 +5,21 @@ import { BlueBtn, Exit, SmallButton } from "../button/index";
 import { EditModal } from "../modal/editModal";
 import { useState } from "react";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores, posts}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     < >
       <div className="w-[35%] max-sm:w-screen max-sm:flex max-sm:flex-col max-sm:justify-center h-[50%] rounded-2xlbg-[#050505] absolute">
         <img
           className=" w-screen h-[35%] max-sm:h-[60%]"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqBtrIXtWRlH8-_PiILF6vcX4g35parF770can3nunijYw3g_"
+          src={bannerPicture}
           alt="Banner do perfil do usuário"
         />
         <Exit style={`max-sm:flex max-sm:justify-end  max-sm:gap-2 max-sm:mr-4 max-sm:pt-5 md:hidden`}/>
 
         <img
           className="relative -top-10 max-sm:-top-20 max-sm:z-45 mx-[40%] max-sm:mx-[40%] h-20 w-20 rounded-full ring-2  "
-          src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
+          src={profilePicture}
           alt="imagem de perfil do usuário logado"
         />
 
@@ -27,8 +27,8 @@ const ProfileInfo = (props) => {
           <ProfileName
             fieldStyle="bg-neutral-background ml-[3%] max-sm:items-center"
             nameStyle="bg-neutral-background text-xl "
-            nomeExibicao={"Fulano da Silva"}
-            nomeUsuario={"@Fulano"}
+            nomeExibicao={name}
+            nomeUsuario={`@${nameUser}`}
           />
           
 
@@ -45,7 +45,7 @@ const ProfileInfo = (props) => {
 
         <div className="flex justify-between w-[40%] my-[5%] ml-[5%] max-sm:ml-[20%] bg-neutral-background gap-4">
           <div className="flex flex-row gap-2 ">
-            <Text style="bg-neutral-background ">0</Text>
+            <Text style="bg-neutral-background ">{seguidores}</Text>
             <Text style="bg-neutral-background opacity-50">Seguidores</Text>
           </div>
 
@@ -55,7 +55,7 @@ const ProfileInfo = (props) => {
           </div>
 
           <div className="flex flex-row gap-2 ">
-            <Text style="bg-neutral-background ">0</Text>
+            <Text style="bg-neutral-background ">{posts}</Text>
             <Text style="bg-neutral-background opacity-50">Posts</Text>
           </div>
         </div>
