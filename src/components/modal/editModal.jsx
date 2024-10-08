@@ -59,14 +59,14 @@ export const EditModal = ({
   if (!isOpen) return null; // O modal só abre se isOpen for true
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed inset-3 bg-neutral-background flex justify-center items-center rounded-2xl border border-primary-blue">
       
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center w-[50%] h-fit rounded-2xl "
+        className="flex flex-col items-center justify-center w-[50%] max-md:w-full h-fit rounded-2xl "
       >
-        <div className="w-[50%] flex flex-col gap-5 py-16">
-          <Text style="text-3xl"> Editar Perfil </Text>
+        <div className="w-[50%] max-md:w-[90%] flex flex-col gap-5 max-md:gap-7 py-16">
+          <Text style="text-3xl max-md:text-2xl max-md:text-center"> Editar Perfil </Text>
 
           <textarea
             ref={textareaRef} // Attach the ref
@@ -95,9 +95,9 @@ export const EditModal = ({
             onInput={handleInput}
             rows={3}
           />
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between max-md:flex-col max-md:gap-5">
             {/* Editar Foto de perfil */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 max-md:gap-4  max-md:flex-row">
               <div className="flex flex-row gap-3">
                 <input
                   type="file"
@@ -140,7 +140,7 @@ export const EditModal = ({
               </div>
             </div>
 
-            <div className="flex flex-row  items-center gap-3 ">
+            <div className="flex flex-row  items-center gap-3  ">
               <SmallButton Text={"Salvar"} Inverse={true} Style={'border-2'}/>
               <Link Text={"Cancelar"} 
               Style={'text-opacity-75'}
