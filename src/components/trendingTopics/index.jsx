@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MediumText, Text } from '../texts';
+import Link from 'next/link';
 
 export default function TrendingTopics() {
     const [posts, setPosts] = useState([]);
@@ -86,10 +87,11 @@ export default function TrendingTopics() {
 }
 
 export function Topic({ word, count }) {
+    const query = word.startsWith("#") ? word.substring(1, word.length) : word
     return (
-        <div className="flex flex-col justify-between p-6 my-4 mb-2 bg-neutral-gray rounded-2xl">
+        <Link href={`search/${query}`} className="flex flex-col justify-between p-6 my-4 mb-2 bg-neutral-gray rounded-2xl">
             <Text style={""}>{word}</Text>
             <MediumText style={"opacity-50"} className="text-gray-500">{count} posts</MediumText>
-        </div>
+        </Link>
     );
 }

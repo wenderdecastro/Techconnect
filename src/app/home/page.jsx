@@ -19,9 +19,6 @@ export default function Home() {
     const [postText, setPostText] = useState();
     const [searchText, setSearchText] = useState("")
 
-
-
-
     useEffect(() => {
         const fetchPosts = async () => {
             try {

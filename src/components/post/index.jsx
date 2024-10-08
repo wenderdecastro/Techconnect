@@ -10,13 +10,51 @@ import moment from "moment";
 import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
+import { IsAuthenticated, RedirectIfNotAuthenticated } from "@/utils/authentication";
+import { useRouter } from "next/navigation";
 
-export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false, loggedId = null }) => {
+export const Post = ({ id, date, userId, text, imagesURL, initiallikes = [], encadeado, detailed = false, loggedId = null }) => {
+
+  const route = useRouter()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [likes, setLikes] = useState(initiallikes)
 
+  const handleLike = async (postId, userId) => {
+    if (!IsAuthenticated()) {
+      route.push("/login")
+      return
+    }
 
+    const hasLiked = likes.includes(userId);
+
+    setLikes((prevLikes) =>
+      hasLiked ? prevLikes.filter((id) => id !== userId) : [...prevLikes, userId]
+    );
+
+    try {
+      const response = await fetch(`http://localhost:3001/Posts/${postId}`);
+      const post = await response.json();
+
+      const updatedLikes = hasLiked
+        ? post.likes.filter((id) => id !== userId)
+        : [...(post.likes || []), userId];
+
+      await fetch(`http://localhost:3001/Posts/${postId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ likes: updatedLikes }),
+      });
+    } catch (error) {
+      console.error("Error updating likes:", error);
+      setLikes((prevLikes) =>
+        hasLiked ? [...prevLikes, userId] : prevLikes.filter((id) => id !== userId)
+      );
+    }
+  };
 
   const openModal = (index) => {
     setCurrentImageIndex(index);
@@ -85,10 +123,10 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
         </div>
 
         {/* likes-comentarios */}
-        <div className="flex w-[80%] gap-5 ">
-          <PostButton fieldStyle="w-[25%]">
-            <FaRegHeart style={{ scale: "150%", paddingTop: "5%" }} />
-            Curtir
+        <div className="flex w-[80%] gap-5 z-10 ">
+          <PostButton onClick={() => handleLike(id, loggedId)} style={"cursor-pointer"} fieldStyle="w-[25%]" >
+            <FaRegHeart style={{ scale: "120%", paddingBottom: "1%" }} />
+            {likes.includes(loggedId) ? "Unlike" : "Like"}
           </PostButton>
 
           <PostButton fieldStyle="w-[45%]">

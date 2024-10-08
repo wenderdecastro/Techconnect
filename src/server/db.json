@@ -14,7 +14,12 @@
       "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
       "text": "SIUUUUUUUU",
       "imagesURL": [],
-      "encadeado": false
+      "encadeado": false,
+      "likes": [
+        null,
+        null,
+        null
+      ]
     },
     {
       "id": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
@@ -137,7 +142,8 @@
     {
       "ID": "00000000-0000-0000-0000-000000000000",
       "Post_ID": "00000000-0000-0000-0000-000000000000",
-      "Usuario_ID": "00000000-0000-0000-0000-000000000000"
+      "Usuario_ID": "00000000-0000-0000-0000-000000000000",
+      "id": "bf29"
     }
   ],
   "Usuario": [
@@ -148,7 +154,8 @@
       "Email": "",
       "Senha": "",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "ce85"
     },
     {
       "ID": "12cd4c08-ec1d-4daf-8a70-4dddfd7f5288",
@@ -157,7 +164,8 @@
       "Email": "",
       "Senha": "",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "7d35"
     },
     {
       "ID": "838bac4c-5625-4ef5-8ecf-3950e2d10975",
@@ -166,7 +174,8 @@
       "Email": "coisinhafofa@gmail.com",
       "Senha": "coisinhafofa@gmail.com",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "7319"
     },
     {
       "ID": "8c92ccb0-153e-4de4-b950-83ef86b03b5e",
@@ -175,7 +184,8 @@
       "Email": "Joao.oliveira@gmail.com",
       "Senha": "20562656",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "2c78"
     },
     {
       "ID": "3129c3e8-b3c0-410b-94f6-0192df92e484",
@@ -184,7 +194,8 @@
       "Email": "coisaloka@gmail.com",
       "Senha": "1234",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "6fe1"
     },
     {
       "ID": "588cdd8f-f506-4481-b465-99071f40d3a8",
@@ -193,7 +204,8 @@
       "Email": "joao.oliveiira.pda@gmail.com",
       "Senha": "20562656",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "4461"
     },
     {
       "ID": "5a634f80-5933-42c1-b5cd-22b075f1b2c0",
@@ -202,7 +214,8 @@
       "Email": "joao.zingameplay@gmail.com",
       "Senha": "20562656",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "ed4f"
     },
     {
       "ID": "affbd439-a3c8-4e02-9258-c3aefdb62ee9",
@@ -211,7 +224,8 @@
       "Email": "dudu@gmail.com",
       "Senha": "123456",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "b52f"
     },
     {
       "ID": "c8cac05b-dd49-43dd-a023-4b8de5fb679d",
@@ -220,29 +234,34 @@
       "Email": "teste@yahoo.com",
       "Senha": "123",
       "FotoPerfilURL": null,
-      "FotoBannerURL": null
+      "FotoBannerURL": null,
+      "id": "a03b"
     }
   ],
   "UsuarioSeguidores": [
     {
       "ID": "3bc3c009-874d-4b82-93d7-8520920xm9c5",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7"
+      "Seguidor_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
+      "id": "3871"
     },
     {
       "ID": "4bc3c009-874d-4035-93d7-e871a4cf12eb",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16"
+      "Seguidor_ID": "0d88781c-68ee-41ac-99fa-f4cc5ad8cf16",
+      "id": "83a8"
     },
     {
       "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
       "Usuario_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
-      "Seguidor_ID": "606407ba-9dc9-4fe9-9a16-764faa81bab8"
+      "Seguidor_ID": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
+      "id": "41ab"
     },
     {
       "ID": "0e3e2d2f-c5f8-4035-874d-e871a4cf12eb",
       "Usuario_ID": "4bc3c009-874d-4b82-93d7-5520920cd8d7",
-      "Seguidor_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb"
+      "Seguidor_ID": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "id": "fa2f"
     }
   ]
 }
