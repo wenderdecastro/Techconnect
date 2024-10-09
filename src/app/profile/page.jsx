@@ -74,6 +74,43 @@ const Profile = (props) => {
     }
   };
 
+  const updateProfile = async () => {
+    try {
+      
+      console.log("Atualizando perfil...");
+      const usuarioLogado = getUser();
+      console.log(usuarioLogado);
+      // const usuarioLogadoObj = JSON.parse(usuarioLogado);
+  
+      // const response = await fetch(`http://localhost:3000/Usuario/${usuarioLogadoObj.ID}`, {
+      //   method: "PUT",
+      //   body: JSON.stringify(updatedUserData),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // });
+  
+      // if (!response.ok) {
+      //   throw new Error(`HTTP error! status: ${response.status}`);
+      // }
+  
+      // const updatedUser = await response.json();
+      // console.log("Perfil atualizado com sucesso:", updatedUser);
+  
+      setUserData({
+        userId: usuarioLogado.ID,
+        nomeExibicao: usuarioLogado.NomeExibicao,
+        nomeUsuario: usuarioLogado.NomeUsuario,
+        fotoUrlPerfil: usuarioLogado.FotoPerfilURL,
+        FotoBannerURL: usuarioLogado.FotoBannerURL
+      });
+  
+    } catch (error) {
+      console.error('Error updating profile:', error.message);
+      alert('Falha ao atualizar o perfil. Por favor, tente novamente.');
+    }
+  };
+
   const getFollowed = () => { };
 
   useEffect(() => {
@@ -113,6 +150,7 @@ const Profile = (props) => {
               seguidores={seguidores}
               posts={posts.length}
               SetUserData={setUserData}
+              updateProfile={updateProfile}
             />
 
 
@@ -120,7 +158,7 @@ const Profile = (props) => {
             {posts.length > 0 ? (
               posts.map((post, index) => (
                 <div className="flex flex-col items-center justify-center py-10 border-t-2 bg-[#0D0D0D] border-opacity-30 border-primary-blue">
-                  {/* <Post
+                  <Post
                     text={post.text}
                     imagesURL={post.imagesURL}
                     id={post.id}
@@ -131,7 +169,7 @@ const Profile = (props) => {
                     name={userData.nomeExibicao}
                     nameUser={userData.nomeUsuario}
                     profilePicture={userData.fotoUrlPerfil}
-                  /> */}
+                  />
                 </div>
               ))
             ) : (

@@ -5,17 +5,29 @@ import { BlueBtn, Exit, SmallButton } from "../button/index";
 import { EditModal } from "../modal/editModal";
 import { useState } from "react";
 
-const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores, posts, setUserData}) => {
+const ProfileInfo = ({
+  name,
+  nameUser,
+  profilePicture,
+  bannerPicture,
+  seguidores,
+  posts,
+  setUserData,
+  updateProfile,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    < >
-      <div className="w-[100%] max-sm:w-screen max-sm:flex max-sm:flex-col max-sm:justify-center h-[50%] rounded-2xlbg-[#050505] ">
+    <>
+      <div className="w-[100%] max-sm:w-screen max-sm:flex max-sm:flex-col max-sm:justify-center h-[50%] rounded-2xlbg-[#050505] max-sm:absolute">
         <img
           className=" w-screen h-[35%] max-sm:h-[60%]"
           src={bannerPicture}
           alt="Banner do perfil do usuário"
         />
-        <Exit style={`max-sm:flex max-sm:justify-end  max-sm:gap-2 max-sm:mr-4 max-sm:pt-5 md:hidden`}/>
+        <Exit
+          style={`max-sm:flex max-sm:justify-end  max-sm:gap-2 max-sm:mr-4 max-sm:pt-5 md:hidden`}
+        />
 
         <img
           className="relative -top-10 max-sm:-top-20 max-sm:z-45 mx-[40%] max-sm:mx-[40%] h-20 w-20 rounded-full ring-2  "
@@ -30,7 +42,6 @@ const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores,
             nomeExibicao={name}
             nomeUsuario={`@${nameUser}`}
           />
-          
 
           <div className=" flex w-auto max-sm:w-[35%] h-[20%] bg-neutral-background gap-4 max-sm:flex-col max-sm:items-center">
             <SmallButton
@@ -39,7 +50,7 @@ const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores,
               onClick={() => setIsModalOpen(true)}
             />
 
-            <Exit style={`max-sm:hidden`}/>
+            <Exit style={`max-sm:hidden`} />
           </div>
         </div>
 
@@ -60,7 +71,16 @@ const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores,
           </div>
         </div>
       </div>
-      <EditModal isOpen={isModalOpen} onClose={setIsModalOpen} SetUserData={setUserData} />
+      <EditModal
+        isOpen={isModalOpen}
+        onClose={setIsModalOpen}
+        SetUserData={setUserData}
+        updateProfile={updateProfile}
+        name={name}
+        nameUser={nameUser}
+        profilePicture={profilePicture}
+        bannerPicture={bannerPicture}
+      />
     </>
   );
 };

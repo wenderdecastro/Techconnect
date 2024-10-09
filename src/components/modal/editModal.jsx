@@ -6,190 +6,118 @@ import { Link, SmallButton } from "../button";
 import { Text } from "../texts";
 
 export const EditModal = ({
-  text,
-  onChange,
-  onSubmit,
-  onImagesSelected,
   isOpen,
   onClose,
-  setUserData
+  setUserData,
+  updateProfile,
+  name,
+  nameUser,
+  profilePicture,
+  bannerPicture,
 }) => {
-  const [selectedImages, setSelectedImages] = useState([]);
-  const textareaRef = useRef(null); // Create a ref for the textarea
+  const [nomeExibicao, setNomeExibicao] = useState(name);
+  const [nomeUsuario, setNomeUsuario] = useState(nameUser);
+  const [fotoPerfil, setFotoPerfil] = useState(profilePicture);
+  const [fotoBanner, setFotoBanner] = useState(bannerPicture);
 
-  const updateProfile = async () => {
+  const handleSave = async () => {
+    // Atualiza os dados do perfil
+    
+    // setUserData(updatedUserData);
+    // updateProfile(updatedUserData); // Passa os dados atualizados para a função updateProfile
+    
+    const usuarioLogadoObj = JSON.parse(updateProfile);
+    console.log(usuarioLogadoObj.ID);
+    const updatedUserData = {
+      NomeExibicao: nomeExibicao,
+      NomeUsuario: nomeUsuario,
+      FotoPerfilURL: fotoPerfil,
+      FotoBannerURL: fotoBanner,
+    };
+  
+    const response = await fetch(`http://localhost:3000/Usuario/${usuarioLogadoObj.ID}`, {
+      method: "PUT",
+      body: JSON.stringify(updatedUserData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-    try {
-      const usuarioLogado = getUser();
-      const usuarioLogadoObj = await JSON.parse(usuarioLogado);
-      const response = await fetch("http://localhost:3000/Usuario" + usuarioLogadoObj.ID, {
-        method: "PUT",
-        body: JSON.stringify(usuarioLogado)
-      })
-
-      setUserData(response)
-    } catch (error) {
-      console.log('Error:' + error);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  }
 
-  // // Handle image selection
-  // const handleImageChange = (e) => {
-  //   const files = Array.from(e.target.files);
+    const updatedUser = await response.json();
+    console.log("Perfil atualizado com sucesso:", updatedUser);
+    onClose(); // Fecha o modal após salvar
+  };
 
-  //   if (selectedImages.length > 10) {
-  //     alert("Você não pode postar mais de 10 imagens no mesmo post.");
-  //     return;
-  //   }
-
-  //   setSelectedImages((prevImages) => {
-  //     const updatedImages = [...prevImages, ...files];
-  //     onImagesSelected(updatedImages);
-  //     return updatedImages;
-  //   });
-  // };
-
-  // const handleRemoveImage = (imageToRemove) => {
-  //   console.log("Removing:", imageToRemove);
-  //   setSelectedImages((prevImages) => {
-  //     const updatedImages = prevImages.filter(
-  //       (image) => image !== imageToRemove
-  //     );
-  //     onImagesSelected(updatedImages);
-  //     return updatedImages;
-  //   });
-  // };
-
-  // const handleSubmit = () => {
-  //   e.preventDefault();
-  //   setSelectedImages([]);
-  //   onSubmit();
-  //   text = "";
-  // };
-
-  // // Function to handle textarea resizing
-  // const handleInput = () => {
-  //   textareaRef.current.style.height = "auto"; // Reset height
-  //   textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Set to scroll height
-  // };
-
-  if (!isOpen) return null; // O modal só abre se isOpen for true
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center w-[50%] h-fit rounded-2xl "
-      >
+      <form className="flex flex-col items-center justify-center w-[50%] h-fit rounded-2xl">
         <div className="w-[50%] flex flex-col gap-5 py-16">
-          <Text style="text-3xl"> Editar Perfil </Text>
+          <Text style="text-3xl">Editar Perfil</Text>
 
           <textarea
-            ref={textareaRef} // Attach the ref
             placeholder="Nome Exibição..."
-            className="w-full p-4 text-sm border-0 resize-none bg-neutral-lighter_gray border-neutral-lightest_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue placeholder-neutral-light_gray"
-            value={text}
-            onChange={onChange}
-            // onInput={handleInput}
+            className="w-full p-4 text-sm bg-neutral-lighter_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue"
+            value={nomeExibicao}
+            onChange={(e) => setNomeExibicao(e.target.value)}
             rows={1}
           />
           <textarea
-            ref={textareaRef} // Attach the ref
             placeholder="@Username..."
-            className="w-full p-4 text-sm border-0 resize-none bg-neutral-lighter_gray border-neutral-lightest_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue placeholder-neutral-light_gray"
-            value={text}
-            onChange={onChange}
-            // onInput={handleInput}
+            className="w-full p-4 text-sm bg-neutral-lighter_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue"
+            value={nomeUsuario}
+            onChange={(e) => setNomeUsuario(e.target.value)}
             rows={1}
           />
-          <textarea
-            ref={textareaRef} // Attach the ref
-            placeholder="Bio..."
-            className="w-full p-4 text-sm border-0 resize-none bg-neutral-lighter_gray border-neutral-lightest_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue placeholder-neutral-light_gray"
-            value={text}
-            onChange={onChange}
-            // onInput={handleInput}
-            rows={3}
-          />
+
           <div className="flex items-center justify-between">
-            {/* Editar Foto de perfil */}
+            {/* Editar Foto de perfil e banner */}
             <div className="flex flex-col gap-2">
               <div className="flex flex-row gap-3">
                 <input
                   type="file"
                   accept="image/*"
-                  id="imageUpload"
+                  id="bannerUpload"
                   className="hidden"
-                  multiple
-                  // onChange={handleImageChange}
+                  onChange={(e) =>
+                    setFotoBanner(URL.createObjectURL(e.target.files[0]))
+                  }
                 />
-
-                <label htmlFor="imageUpload" className="cursor-pointer">
-                  {selectedImages.length >= 10 ? null : (
-                    <img
-                      src="/icons/images.png"
-                      className="w-6 h-6 aspect-square"
-                      alt="Upload"
-                    />
-                  )}
+                <label htmlFor="bannerUpload" className="cursor-pointer">
+                  <img src={fotoBanner} className="w-6 h-6" alt="Banner" />
                 </label>
-
                 <p>Banner</p>
               </div>
               <div className="flex flex-row gap-3">
                 <input
                   type="file"
                   accept="image/*"
-                  id="imageUpload"
+                  id="profileUpload"
                   className="hidden"
-                  multiple
-                  // onChange={handleImageChange}
+                  onChange={(e) =>
+                    setFotoPerfil(URL.createObjectURL(e.target.files[0]))
+                  }
                 />
-
-                <label htmlFor="imageUpload" className="cursor-pointer">
-                  {selectedImages.length >= 10 ? null : (
-                    <CgProfile className="w-6 h-6 aspect-square" alt="Upload" />
-                  )}
+                <label htmlFor="profileUpload" className="cursor-pointer">
+                  <CgProfile className="w-6 h-6" />
                 </label>
-
                 <p>Foto de Perfil</p>
               </div>
             </div>
 
-            <div className="flex flex-row items-center gap-3 ">
-              <SmallButton Text={"Salvar"} Inverse={true} Style={'border-2'} />
-              <Link Text={"Cancelar"}
-                Style={'text-opacity-75'}
-                onClick={() => onClose(false)} />
+            <div className="flex flex-row items-center gap-3">
+              <SmallButton Text={"Salvar"} onClick={() => handleSave()} />
+              <Link Text={"Cancelar"} onClick={() => onClose(false)} />
             </div>
           </div>
-
-          {selectedImages.length > 0 && (
-            <div className="flex w-full gap-5 overflow-x-auto">
-              {selectedImages.map((image, index) => (
-                <div key={index} className="relative">
-                  <div className="relative flex w-12 h-12 group">
-                    <img
-                      src={URL.createObjectURL(image)}
-                      alt={`Selected ${index}`}
-                      className="object-cover w-full h-full transition duration-300 ease-in-out transform rounded-lg group-hover:bg-primary-red"
-                    />
-                    <div
-                      className="absolute top-0 left-0 flex items-center justify-center w-full h-full text-white transition-opacity duration-300 ease-in-out rounded-lg opacity-0 cursor-pointer group-hover:opacity-100 bg-primary-red"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleRemoveImage(image);
-                      }}
-                    >
-                      ✕
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       </form>
     </div>
   );
 };
+
