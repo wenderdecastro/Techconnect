@@ -46,7 +46,7 @@ const Profile = (props) => {
       const usuarioLogadoObj = await JSON.parse(usuarioLogado);
       const response = await fetch(
         "http://localhost:3000/UsuarioSeguidores?Usuario_ID=" +
-          usuarioLogadoObj.ID
+        usuarioLogadoObj.ID
       );
       const data = await response.json();
       // console.log(data.length);
@@ -74,7 +74,7 @@ const Profile = (props) => {
     }
   };
 
-  const getFollowed = () => {};
+  const getFollowed = () => { };
 
   useEffect(() => {
     gotUserData();
@@ -94,10 +94,17 @@ const Profile = (props) => {
 
         <div className={`grid grid-cols-[30%,40%,30%] h-[90%]  `}>
           <div className="  h-fill ">
-            <MenuBar selected={"perfil"} />
+            <MenuBar
+              name={userData.nomeExibicao}
+              nameUser={userData.nomeUsuario}
+              profilePicture={userData.fotoUrlPerfil}
+              selected={"perfil"}
+            />
           </div>
 
           <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
+
+
             <ProfileInfo
               name={userData.nomeExibicao}
               nameUser={userData.nomeUsuario}
@@ -106,6 +113,8 @@ const Profile = (props) => {
               seguidores={seguidores}
               posts={posts.length}
             />
+
+
 
             {posts.length > 0 ? (
               posts.map((post, index) => (
@@ -118,6 +127,9 @@ const Profile = (props) => {
                     key={post.id}
                     userId={post.userId}
                     date={post.date}
+                    name={userData.nomeExibicao}
+                    nameUser={userData.nomeUsuario}
+                    profilePicture={userData.fotoUrlPerfil}
                   />
                 </div>
               ))

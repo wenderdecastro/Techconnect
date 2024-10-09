@@ -11,7 +11,7 @@ import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
 
-export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false, loggedId = null }) => {
+export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, name,detailed = false, loggedId = null }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

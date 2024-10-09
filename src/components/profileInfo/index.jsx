@@ -9,7 +9,7 @@ const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores,
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     < >
-      <div className="w-[35%] max-sm:w-screen max-sm:flex max-sm:flex-col max-sm:justify-center h-[50%] rounded-2xlbg-[#050505] absolute">
+      <div className="w-[100%] max-sm:w-screen max-sm:flex max-sm:flex-col max-sm:justify-center h-[50%] rounded-2xlbg-[#050505] ">
         <img
           className=" w-screen h-[35%] max-sm:h-[60%]"
           src={bannerPicture}

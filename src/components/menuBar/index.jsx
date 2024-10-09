@@ -2,17 +2,24 @@
 import next from "next";
 import Image from "next/image";
 import logoImg from "./../../../public/images/AppLogo.png";
-import profilePicture from "./../../../public/images/MessiProfilePicture.jpg";
 import Link from "next/link";
 import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
 import { ProfileName } from "../texts";
 import { IsAuthenticated } from "@/utils/authentication";
 
-const MenuBar = ({ selected }) => {
+const MenuBar = ({ selected, name, nameUser, profilePicture,  }) => {
   //useState para verficar se está selecionado ou não
   const [isClicked, setIsClicked] = useState(selected);
   const [isAuthenticated, setIsAuthenticated] = useState(IsAuthenticated())
+
+
+
+
+
+
+  
+  
 
   return (
     <div className="flex flex-col justify-between h-full py-2 max-sm:hidden">
@@ -71,17 +78,15 @@ const MenuBar = ({ selected }) => {
       {isAuthenticated ? (<section className="w-3/4 py-12 ">
         <div className=" flex flex-row items-center border-[#74BDE8] border-2 w-full h-full rounded-2xl bg-white bg-opacity-5 gap-3 p-4">
           <div className="">
-            <Image
+            <img
               src={profilePicture}
-              width={75}
-              height={75}
               alt="Imagem de perfil"
               className="h-full rounded-full cursor-pointer aspect-square"
             />
 
           </div>
           <div className="flex flex-col w-full gap-1">
-            <ProfileName fieldStyle={"gap-0"} nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} userStyle="w-auto" />
+            <ProfileName fieldStyle={"gap-0"} nomeExibicao={name} nomeUsuario={`@ ${nameUser}`} userStyle="w-auto" />
           </div>
           <div className="flex flex-col justify-center pr-5 cursor-pointer ">
             <FiLogOut className="w-6 h-6" />
