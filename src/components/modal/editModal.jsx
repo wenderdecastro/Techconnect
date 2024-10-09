@@ -12,49 +12,66 @@ export const EditModal = ({
   onImagesSelected,
   isOpen,
   onClose,
+  setUserData
 }) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const textareaRef = useRef(null); // Create a ref for the textarea
 
-  // Handle image selection
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
+  const updateProfile = async () => {
 
-    if (selectedImages.length > 10) {
-      alert("Você não pode postar mais de 10 imagens no mesmo post.");
-      return;
+    try {
+      const usuarioLogado = getUser();
+      const usuarioLogadoObj = await JSON.parse(usuarioLogado);
+      const response = await fetch("http://localhost:3000/Usuario" + usuarioLogadoObj.ID, {
+        method: "PUT",
+        body: JSON.stringify(usuarioLogado)
+      })
+
+      setUserData(response)
+    } catch (error) {
+      console.log('Error:' + error);
     }
+  }
 
-    setSelectedImages((prevImages) => {
-      const updatedImages = [...prevImages, ...files];
-      onImagesSelected(updatedImages);
-      return updatedImages;
-    });
-  };
+  // // Handle image selection
+  // const handleImageChange = (e) => {
+  //   const files = Array.from(e.target.files);
 
-  const handleRemoveImage = (imageToRemove) => {
-    console.log("Removing:", imageToRemove);
-    setSelectedImages((prevImages) => {
-      const updatedImages = prevImages.filter(
-        (image) => image !== imageToRemove
-      );
-      onImagesSelected(updatedImages);
-      return updatedImages;
-    });
-  };
+  //   if (selectedImages.length > 10) {
+  //     alert("Você não pode postar mais de 10 imagens no mesmo post.");
+  //     return;
+  //   }
 
-  const handleSubmit = () => {
-    e.preventDefault();
-    setSelectedImages([]);
-    onSubmit();
-    text = "";
-  };
+  //   setSelectedImages((prevImages) => {
+  //     const updatedImages = [...prevImages, ...files];
+  //     onImagesSelected(updatedImages);
+  //     return updatedImages;
+  //   });
+  // };
 
-  // Function to handle textarea resizing
-  const handleInput = () => {
-    textareaRef.current.style.height = "auto"; // Reset height
-    textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Set to scroll height
-  };
+  // const handleRemoveImage = (imageToRemove) => {
+  //   console.log("Removing:", imageToRemove);
+  //   setSelectedImages((prevImages) => {
+  //     const updatedImages = prevImages.filter(
+  //       (image) => image !== imageToRemove
+  //     );
+  //     onImagesSelected(updatedImages);
+  //     return updatedImages;
+  //   });
+  // };
+
+  // const handleSubmit = () => {
+  //   e.preventDefault();
+  //   setSelectedImages([]);
+  //   onSubmit();
+  //   text = "";
+  // };
+
+  // // Function to handle textarea resizing
+  // const handleInput = () => {
+  //   textareaRef.current.style.height = "auto"; // Reset height
+  //   textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`; // Set to scroll height
+  // };
 
   if (!isOpen) return null; // O modal só abre se isOpen for true
 
@@ -73,7 +90,7 @@ export const EditModal = ({
             className="w-full p-4 text-sm border-0 resize-none bg-neutral-lighter_gray border-neutral-lightest_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue placeholder-neutral-light_gray"
             value={text}
             onChange={onChange}
-            onInput={handleInput}
+            // onInput={handleInput}
             rows={1}
           />
           <textarea
@@ -82,7 +99,7 @@ export const EditModal = ({
             className="w-full p-4 text-sm border-0 resize-none bg-neutral-lighter_gray border-neutral-lightest_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue placeholder-neutral-light_gray"
             value={text}
             onChange={onChange}
-            onInput={handleInput}
+            // onInput={handleInput}
             rows={1}
           />
           <textarea
@@ -91,7 +108,7 @@ export const EditModal = ({
             className="w-full p-4 text-sm border-0 resize-none bg-neutral-lighter_gray border-neutral-lightest_gray rounded-2xl focus:outline-none focus:ring-1 focus:ring-primary-blue placeholder-neutral-light_gray"
             value={text}
             onChange={onChange}
-            onInput={handleInput}
+            // onInput={handleInput}
             rows={3}
           />
           <div className="flex items-center justify-between">
@@ -104,7 +121,7 @@ export const EditModal = ({
                   id="imageUpload"
                   className="hidden"
                   multiple
-                  onChange={handleImageChange}
+                  // onChange={handleImageChange}
                 />
 
                 <label htmlFor="imageUpload" className="cursor-pointer">
@@ -126,7 +143,7 @@ export const EditModal = ({
                   id="imageUpload"
                   className="hidden"
                   multiple
-                  onChange={handleImageChange}
+                  // onChange={handleImageChange}
                 />
 
                 <label htmlFor="imageUpload" className="cursor-pointer">

@@ -38,12 +38,15 @@ export default function Home({ params }) {
                 const data = await response.json();
 
                 const isHashtagSearch = params.query.startsWith('#');
+                const query = isHashtagSearch ? params.query.substring(1) : params.query.toLowerCase();
+
+
 
                 const filtered = data.filter((post) => {
                     return (
                         post &&
                         post.text &&
-                        new RegExp(`\\b${isHashtagSearch ? "#" : ""}${params.query}\\b`, 'i').test(post.text) // Using regex to match whole words
+                        new RegExp(`\\b${query}\\b`, 'i').test(post.text)
                     );
                 });
 

@@ -14,7 +14,12 @@
       "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
       "text": "SIUUUUUUUU",
       "imagesURL": [],
-      "encadeado": false
+      "encadeado": false,
+      "likes": [
+        null,
+        null,
+        null
+      ]
     },
     {
       "id": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
@@ -146,7 +151,7 @@
       "Senha": "20562656",
       "FotoPerfilURL": null,
       "FotoBannerURL": null,
-      "id": "b713"
+      "id": "2c78"
     },
     {
       "ID": "3129c3e8-b3c0-410b-94f6-0192df92e484",

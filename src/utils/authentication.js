@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export function IsAuthenticated() {
     if (typeof window !== "undefined") {
@@ -13,11 +14,15 @@ export function getUser() {
     }
 }
 
-export function RedirectIfNotAuthenticated() {
-    var route = useRouter();
-    if (IsAuthenticated()) return null;
-    else route.push("/login")
+export function RedirectIfNotAuthenticated(router) {
+
+    useEffect(() => {
+        if (!IsAuthenticated()) {
+            router.push("/login");
+        }
+    }, [router]);
 }
+
 
 export function ExecuteIfIsAuthenticated(action) {
     var route = useRouter();

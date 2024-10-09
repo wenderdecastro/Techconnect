@@ -5,7 +5,7 @@ import { BlueBtn, Exit, SmallButton } from "../button/index";
 import { EditModal } from "../modal/editModal";
 import { useState } from "react";
 
-const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores, posts}) => {
+const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores, posts, setUserData}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     < >
@@ -60,7 +60,7 @@ const ProfileInfo = ({name, nameUser, profilePicture, bannerPicture, seguidores,
           </div>
         </div>
       </div>
-      <EditModal isOpen={isModalOpen} onClose={setIsModalOpen} />
+      <EditModal isOpen={isModalOpen} onClose={setIsModalOpen} SetUserData={setUserData} />
     </>
   );
 };

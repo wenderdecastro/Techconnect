@@ -112,6 +112,7 @@ const Profile = (props) => {
               bannerPicture={userData.FotoBannerURL}
               seguidores={seguidores}
               posts={posts.length}
+              SetUserData={setUserData}
             />
 
 
@@ -119,7 +120,7 @@ const Profile = (props) => {
             {posts.length > 0 ? (
               posts.map((post, index) => (
                 <div className="flex flex-col items-center justify-center py-10 border-t-2 bg-[#0D0D0D] border-opacity-30 border-primary-blue">
-                  <Post
+                  {/* <Post
                     text={post.text}
                     imagesURL={post.imagesURL}
                     id={post.id}
@@ -130,7 +131,7 @@ const Profile = (props) => {
                     name={userData.nomeExibicao}
                     nameUser={userData.nomeUsuario}
                     profilePicture={userData.fotoUrlPerfil}
-                  />
+                  /> */}
                 </div>
               ))
             ) : (

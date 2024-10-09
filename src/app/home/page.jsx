@@ -3,12 +3,13 @@ import { v4 as uuid } from 'uuid';
 import React, { useEffect, useState } from "react";
 import { CreateImagePost } from '@/utils/azure/config';
 import { Post } from '@/components/post';
-import PostInput from '@/components/postInput';
+import { PostInput } from '@/components/postInput';
 import TrendingTopics from '@/components/trendingTopics';
 import MenuBar from '@/components/menuBar';
 import { getUser, IsAuthenticated } from '@/utils/authentication';
 import CustomInput from '@/components/input/input';
 import { useRouter } from 'next/navigation';
+import { Text } from '@/components/texts';
 
 export default function Home() {
 
@@ -18,8 +19,6 @@ export default function Home() {
     const [selectedImages, setSelectedImages] = useState([]);
     const [postText, setPostText] = useState();
     const [searchText, setSearchText] = useState("")
-
-
 
 
     useEffect(() => {
@@ -114,11 +113,12 @@ export default function Home() {
 
         <div className="flex justify-center w-screen bg-neutral-background">
             <div className="w-[90%] h-screen overflow-hidden " >
-                <header className=" grid grid-cols-[30%,40%,30%] h-[12.5%] ">
-                    <div className="h-[30%]">
+                <header className=" grid grid-cols-[30%,40%,30%] h-[10%] m-4">
+                    <div className="h-[30%] flex items-center gap-2">
                         <img src='/images/AppLogo.png' className='h-full' />
+                        <Text>Techconnect</Text>
                     </div>
-                    <div className="">45%</div>
+                    <div className=""></div>
                     <div className="h-[30%] flex items-center justify-center p-6">
                         <CustomInput placeholder={"Pesquisa"} value={searchText} onChange={x => setSearchText(x.target.value)} handleKey={handleSearch} type='text' />
 
