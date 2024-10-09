@@ -11,7 +11,7 @@
     {
       "id": "4c39777b-f471-4e07-b99f-2b6b7b438210",
       "date": 1727788854265,
-      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "userId": "838bac4c-5625-4ef5-8ecf-3950e2d10975",
       "text": "SIUUUUUUUU",
       "imagesURL": [],
       "encadeado": false,
@@ -24,7 +24,7 @@
     {
       "id": "606407ba-9dc9-4fe9-9a16-764faa81bab8",
       "date": 1727868080959,
-      "userId": "0e3e2d2f-c5f8-4035-8e03-e871a4cf12eb",
+      "userId": "8c92ccb0-153e-4de4-b950-83ef86b03b5e",
       "text": "teste",
       "imagesURL": [],
       "encadeado": false
@@ -37,6 +37,7 @@
       "imagesURL": [],
       "encadeado": false
     },
+   
     {
       "id": "dc93874e-0719-40f3-9501-c4907fd3a8e1",
       "date": "2024-10-04T13:28:02.682Z",
@@ -81,6 +82,7 @@
       ],
       "encadeado": false
     },
+  
     {
       "id": "10ee9599-bf63-41b8-bccc-7779d11eed4a",
       "date": "2024-10-04T13:36:55.790Z",
@@ -148,34 +150,14 @@
   ],
   "Usuario": [
     {
-      "ID": "14f0ec0a-7d51-447b-8b09-596ccbeea7f5",
-      "NomeExibicao": "",
-      "NomeUsuario": "",
-      "Email": "",
-      "Senha": "",
-      "FotoPerfilURL": null,
-      "FotoBannerURL": null,
-      "id": "ce85"
-    },
-    {
-      "ID": "12cd4c08-ec1d-4daf-8a70-4dddfd7f5288",
-      "NomeExibicao": "",
-      "NomeUsuario": "",
-      "Email": "",
-      "Senha": "",
-      "FotoPerfilURL": null,
-      "FotoBannerURL": null,
-      "id": "7d35"
-    },
-    {
+      "id": "7e63",
       "ID": "838bac4c-5625-4ef5-8ecf-3950e2d10975",
       "NomeExibicao": "coisa loka ",
       "NomeUsuario": "coisinha fofa",
       "Email": "coisinhafofa@gmail.com",
       "Senha": "coisinhafofa@gmail.com",
-      "FotoPerfilURL": null,
-      "FotoBannerURL": null,
-      "id": "7319"
+      "FotoPerfilURL": "https://techconnectstorageacc.blob.core.windows.net/techconnectimages/2024-10-04T13:28:01.318Z.png",
+      "FotoBannerURL": null
     },
     {
       "ID": "8c92ccb0-153e-4de4-b950-83ef86b03b5e",

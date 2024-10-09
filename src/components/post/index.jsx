@@ -1,21 +1,22 @@
-import next from "next";
-import { FaLink, FaLinkSlash, FaRegClock } from "react-icons/fa6";
-import { FaExternalLinkAlt, FaLifeRing, FaRegHeart } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
-import { FiTrash } from "react-icons/fi";
+import { FaRegClock } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa";
+import { FaRegComment, FaUser } from "react-icons/fa";
+
 import { ProfileName, Text } from "../texts";
 import { PostButton } from "../postButton";
-import Image from "next/image";
 import moment from "moment";
 import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
-import { IsAuthenticated, RedirectIfNotAuthenticated } from "@/utils/authentication";
+import { IsAuthenticated } from "@/utils/authentication";
 import { useRouter } from "next/navigation";
 import { CgLink } from "react-icons/cg";
 import { PostModal } from "../postInput";
 
-export const Post = ({ id, date, userId, text, imagesURL, initiallikes = [], encadeado, detailed = false, loggedId = null }) => {
+export const Post = ({ id, date, text, imagesURL, initiallikes = [], detailed = false, loggedId = null, nomeExibicao, nomeUsuario, FotoPerfilURL }) => {
 
   const route = useRouter()
 
@@ -80,14 +81,19 @@ export const Post = ({ id, date, userId, text, imagesURL, initiallikes = [], enc
         {/* user infos */}
 
         <div className="h-fit w-[100%] flex gap-2">
-          <img
-            className="rounded-full size-12 aspect-square"
-            src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
-            alt="imagem de perfil do usuário logado"
-          />
+
+          {FotoPerfilURL ? (
+            <img
+              className="rounded-full size-12 aspect-square"
+              src={FotoPerfilURL}
+              alt="imagem de perfil do usuário logado"
+            />
+          ) : (
+            < FaUser />
+          )}
 
 
-          <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} />
+          <ProfileName nomeExibicao={nomeExibicao} nomeUsuario={nomeUsuario} />
 
           <span className="flex gap-2 text-sm text-center opacity-50 ">
             <FaRegClock style={{ scale: "130%", paddingTop: "3.5%" }} />
