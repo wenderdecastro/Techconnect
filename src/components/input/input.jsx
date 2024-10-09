@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const emailDomains = ["gmail.com", "hotmail.com", "yahoo.com", "outlook.com"];
 
-const CustomInput = ({ type = 'text', placeholder, size = 'md', value, onChange }) => {
+const CustomInput = ({ type = 'text', placeholder, size = 'md', value, onChange, handleKey }) => {
   const sizeClasses = {
     sm: 'p-2 text-sm',
     md: 'p-3 text-base',
@@ -47,18 +47,19 @@ const CustomInput = ({ type = 'text', placeholder, size = 'md', value, onChange 
     <div className="relative w-full">
       <input
         type={type}
+        onKeyDown={handleKey}
         value={inputValue}
         onChange={handleChange}
         placeholder={placeholder}
-        className={`w-full bg-[#191919] text-white border border-[#74BDE8] rounded-full focus:outline-none focus:ring-2 focus:ring-[#74BDE8] ${sizeClasses[size]} placeholder-white ${type === "date" ? "custom-datepicker" : ""
+        className={`w-full bg-[#191919] text-white border border-[#74BDE8] pl-6 rounded-full focus:outline-none focus:ring-2 focus:ring-[#74BDE8] ${sizeClasses[size]} placeholder-neutral-light_gray ${type === "date" ? "custom-datepicker" : ""
           }`}
       />
       {showSuggestions && suggestions.length > 0 && (
-        <ul className="absolute z-10 bg-white border border-gray-300 rounded-lg w-full mt-1 max-h-60 overflow-auto">
+        <ul className="absolute z-10 w-full mt-1 overflow-auto bg-white border border-gray-300 rounded-lg max-h-60">
           {suggestions.map((domain, index) => (
             <li
               key={index}
-              className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+              className="px-4 py-2 cursor-pointer hover:bg-gray-200"
               onClick={() => handleSuggestionClick(domain)}
             >
               {`${inputValue.split('@')[0]}@${domain}`}

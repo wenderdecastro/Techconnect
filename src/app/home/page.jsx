@@ -1,43 +1,66 @@
 "use client";
 import { v4 as uuid } from 'uuid';
-import { PostInput } from "@/components/input";
+
 import React, { useEffect, useState } from "react";
-import { CreateImagePost } from '@/utils/azure/config';
-import { Post } from "@/components/post";
-import moment from 'moment';
-import Link from 'next/link';
+
+import { Post } from '@/components/post';
+import { PostInput } from '@/components/postInput';
+import TrendingTopics from '@/components/trendingTopics';
+import MenuBar from '@/components/menuBar';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
 
-    const [user, setUser] = useState();
+    const [allUsers, setAllUsers] = useState([]);
+
+    const [user, setUser] = useState(null);
     const [posts, setPosts] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
     const [postText, setPostText] = useState();
+    const router = useRouter(); // Obtenha o router
+
+    useEffect(() => {
+        const userLogged = JSON.parse(localStorage.getItem('user'));
+        if (userLogged) {
+            setUser(userLogged); // Define o estado do usuário com as informações armazenadas
+        }
+        console.log('userlogged', userLogged);
+    }, []);
 
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchUserAndPosts = async () => {
             try {
-                const response = await fetch("http://localhost:3001/Posts", {
+
+
+                // Fetch all users
+                const allUsersResponse = await fetch("http://localhost:3001/Usuario", {
                     method: "GET"
                 });
+                const allUsers = await allUsersResponse.json();
+                setAllUsers(allUsers);
 
-                if (!response.ok) {
-                    console.log("Erro ao carregar os posts.");
-                    return;
-                }
-
-                const data = await response.json();
+                // Fetch posts
+                const postResponse = await fetch("http://localhost:3001/Posts", {
+                    method: "GET"
+                });
+                const data = await postResponse.json();
                 setPosts(data);
 
+
             } catch (error) {
-                console.error("Erro ao buscar os posts:", error);
+                console.error("Error fetching user and posts:", error);
             }
         };
 
-        fetchPosts();
-
+        fetchUserAndPosts(); // Chama a função para buscar dados na inicialização
     }, []);
+
+
+    const handleLogout = () => {
+        localStorage.clear(); // Limpa o localStorage
+        router.push('/login#'); // Redireciona para a página de login
+    };
 
     const createPost = async (e) => {
 
@@ -49,7 +72,7 @@ export default function Home() {
 
 
         await Promise.all(selectedImages.map(async (image) => {
-            const urlImage = await CreateImagePost(image);
+            const urlImage = await Create(image);
             console.log(urlImage);
             postsUrl.push(urlImage);
         }));
@@ -61,7 +84,7 @@ export default function Home() {
         const newPost = {
             id: uuid(),
             date: moment().toDate(),
-            userId: 0,
+            userId: user.id,
             text: postText,
             imagesURL: postsUrl,
             encadeado: false
@@ -95,35 +118,68 @@ export default function Home() {
 
     };
 
+    const handleSearch = (e) => {
+        if (e.key === 'Enter' && searchText.trim()) {
+            // Navigate to the search page with the entered hashtag
+            router.push(`/search/${searchText.trim()}`);
+        }
+    }
+
     return (
 
 
         <div className="flex justify-center w-screen bg-neutral-background">
             <div className="w-[90%] h-screen overflow-hidden " >
-                <header className=" grid grid-cols-[30%,40%,30%] h-[12.5%] ">
-                    <div className="h-[30%]">
+                <header className=" grid grid-cols-[30%,40%,30%] h-[10%] m-4">
+                    <div className="h-[30%] flex items-center gap-2">
                         <img src='/images/AppLogo.png' className='h-full' />
+                        <Text>Techconnect</Text>
                     </div>
-                    <div className="">45%</div>
-                    <div className="">30%</div>
+                    <div className=""></div>
+                    <div className="h-[30%] flex items-center justify-center p-6">
+                        <CustomInput placeholder={"Pesquisa"} value={searchText} onChange={x => setSearchText(x.target.value)} handleKey={handleSearch} type='text' />
+
+                    </div>
                 </header>
 
                 <div className="grid grid-cols-[30%,40%,30%] h-[90%] ">
-                    <div className="h-fill" >30%</div>
+                    <div className="h-fill" >
+
+                        <MenuBar selected={"feed"} NomeExibicao={user?.NomeExibicao || "Usuário desconhecido"} NomeUsuario={user?.NomeUsuario || 'unknown_user'} FotoPerfilURL={user?.FotoPerfilURL || null} onLogOut={handleLogout} />
+                    </div>
 
                     <div className="flex flex-col items-center overflow-y-scroll h-[97.5%] gap-y-6 ">
-                        <PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} />
+                        {IsAuthenticated() ? (<><PostInput onSubmit={(e) => createPost(e)} text={postText} onChange={x => setPostText(x.target.value)} onImagesSelected={setSelectedImages} /></>) : null}
 
-                        {posts.map((post, index) => {
-                            return <Post text={post.text} imagesURL={post.imagesURL} id={post.id} encadeado={post.encadeado} key={post.id} userId={post.userId} date={post.date} />
 
+                        {posts.map((post) => {
+                            // Encontre o usuário correspondente com base no userId do post
+                            const postUser = allUsers.find(user => String(user.ID) === String(post.userId));
+
+                            return (
+                                <Post
+                                    loggedId={IsAuthenticated() && user.id}
+                                    key={post.id}
+                                    text={post.text}
+                                    imagesURL={post.imagesURL}
+                                    id={post.id}
+                                    encadeado={post.encadeado}
+                                    userId={post.userId}
+                                    date={post.date}
+                                    FotoPerfilURL={postUser?.FotoPerfilURL || null}
+                                    nomeExibicao={postUser?.NomeExibicao || 'Usuário desconhecido'}
+                                    nomeUsuario={postUser?.NomeUsuario || 'unknown_user'}
+                                />
+                            );
                         })}
+
+
+
                         <div className='mb-12' />
                     </div>
 
                     <div className="h-full ">
-                        <>
-                        </>
+                        <TrendingTopics />
                     </div>
                 </div>
 
