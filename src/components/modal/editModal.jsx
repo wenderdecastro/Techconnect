@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { CgProfile } from "react-icons/cg";
-import { PostInput } from "../input";
+// import { PostInput } from "../input";
 import { Link, SmallButton } from "../button";
 import { Text } from "../texts";
 

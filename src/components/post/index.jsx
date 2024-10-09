@@ -1,20 +1,62 @@
-import next from "next";
+
 import { FaRegClock } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
-import { FaRegComment } from "react-icons/fa";
-import { FiTrash } from "react-icons/fi";
+import { FaRegComment, FaUser } from "react-icons/fa";
+
 import { ProfileName, Text } from "../texts";
 import { PostButton } from "../postButton";
-import Image from "next/image";
 import moment from "moment";
 import ImageModal from "../modals/imageVisualizer";
 import { useState } from "react";
 import Link from "next/link";
+import { IsAuthenticated } from "@/utils/authentication";
+import { useRouter } from "next/navigation";
+import { CgLink } from "react-icons/cg";
+import { PostModal } from "../postInput";
 
-export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages, detailed = false }) => {
+export const Post = ({ id, date, text, imagesURL, initiallikes = [], detailed = false, loggedId = null, nomeExibicao, nomeUsuario, FotoPerfilURL }) => {
+
+  const route = useRouter()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [likes, setLikes] = useState(initiallikes)
+
+  const handleLike = async (postId, userId) => {
+    if (!IsAuthenticated()) {
+      route.push("/login")
+      return
+    }
+
+    const hasLiked = likes.includes(userId);
+
+    setLikes((prevLikes) =>
+      hasLiked ? prevLikes.filter((id) => id !== userId) : [...prevLikes, userId]
+    );
+
+    try {
+      const response = await fetch(`http://localhost:3000/Posts/${postId}`);
+      const post = await response.json();
+
+      const updatedLikes = hasLiked
+        ? post.likes.filter((id) => id !== userId)
+        : [...(post.likes || []), userId];
+
+      await fetch(`http://localhost:3000/Posts/${postId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ likes: updatedLikes }),
+      });
+    } catch (error) {
+      console.error("Error updating likes:", error);
+      setLikes((prevLikes) =>
+        hasLiked ? [...prevLikes, userId] : prevLikes.filter((id) => id !== userId)
+      );
+    }
+  };
+
 
 
   const openModal = (index) => {
@@ -26,26 +68,33 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
     setIsModalOpen(false);
   };
 
+  const [isPostModalOpen, setIsPostModalOpen] = useState(false)
+
   return (
 
     <>
 
-      <article className={` relative flex flex-col justify-between gap-6 px-5 py-5  transition-all ease-in-out w-[90%] h-fit rounded-2xl bg-neutral-gray ${detailed ? "" : "hover:bg-neutral-lighter_gray hover:scale-105"}  `}>
+      <article className={` relative flex flex-col justify-between gap-6 p-6  transition-all ease-in-out w-[90%] h-fit rounded-2xl bg-neutral-gray ${detailed ? "" : "hover:bg-neutral-lighter_gray hover:scale-105"}  `}>
         {!detailed && <Link href={`/post/${id}`} className="absolute top-0 left-0 z-0 w-full h-full cursor-default "></Link>}
         {/* user infos */}
 
         <div className="h-fit w-[100%] flex gap-2">
-          <img
-            className="w-16 rounded-full size-16"
-            src="https://i.pinimg.com/originals/0c/bb/31/0cbb31514710d619571766987c0670c6.jpg"
-            alt="imagem de perfil do usuário logado"
-          />
+
+          {FotoPerfilURL ? (
+            <img
+              className="rounded-full size-12 aspect-square"
+              src={FotoPerfilURL}
+              alt="imagem de perfil do usuário logado"
+            />
+          ) : (
+            < FaUser />
+          )}
 
 
-          <ProfileName nomeExibicao={"Fulano da Silva"} nomeUsuario={"@Fulano"} />
+          <ProfileName nomeExibicao={nomeExibicao} nomeUsuario={nomeUsuario} />
 
           <span className="flex gap-2 text-sm text-center opacity-50 ">
-            <FaRegClock style={{ scale: "130%", paddingTop: "4.5%" }} />
+            <FaRegClock style={{ scale: "130%", paddingTop: "3.5%" }} />
             {moment(date).fromNow()}
           </span>
 
@@ -54,7 +103,7 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
         {/* post content */}
         <div className="flex flex-col gap-4">
           <Text>{text}</Text>
-          {!detailed ? (<>
+          {!detailed && imagesURL ? (<>
             {
               imagesURL.length > 0 && (
                 <>
@@ -71,7 +120,11 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
           </>
           ) :
             (
-              <ImageDisplay onClick={openModal} src={imagesURL[currentImageIndex]} />
+              <>
+                {imagesURL && <ImageDisplay onClick={openModal} src={imagesURL[currentImageIndex]} />}
+              </>
+
+
             )
           }
 
@@ -80,15 +133,19 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
         </div>
 
         {/* likes-comentarios */}
-        <div className="flex w-[80%] gap-5 ">
-          <PostButton fieldStyle="w-[25%]">
-            <FaRegHeart style={{ scale: "150%", paddingTop: "5%" }} />
-            Curtir
+        <div className="flex w-[80%] gap-5 z-10 ">
+          <PostButton onClick={() => handleLike(id, loggedId)} style={"cursor-pointer"} fieldStyle="w-[25%]" >
+            <FaRegHeart />
+            {likes.includes(loggedId) ? "Unlike" : "Like"}
           </PostButton>
 
-          <PostButton fieldStyle="w-[45%]">
-            <FaRegComment style={{ scale: "150%", paddingTop: "1%" }} />
+          <PostButton fieldStyle="w-[45%]" onClick={() => setIsPostModalOpen(!isPostModalOpen)}>
+            <FaRegComment />
             777 Comentarios
+          </PostButton>
+
+          <PostButton fieldStyle="self-end">
+            <CgLink style={{}} />
           </PostButton>
         </div>
       </article >
@@ -99,7 +156,10 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
           currentIndex={currentImageIndex}
           onClose={closeModal}
         />
-      )}</>
+      )}
+
+      <PostModal isModalOpen={isPostModalOpen} setIsModalOpen={setIsPostModalOpen} />
+    </>
 
 
 
@@ -108,13 +168,13 @@ export const Post = ({ id, date, userId, text, imagesURL, encadeado, viewImages,
 
 
 const ImageDisplay = ({ src, onClick }) => (
-  <div className="w-[100%] h-[100%] z-50 cursor-pointer " onClick={() => onClick(0)}>
+  <div className="w-[100%] h-[100%] z-40 cursor-pointer " onClick={() => onClick(0)}>
     <img className="w-[100%] h-[100%] rounded-2xl" src={src} alt="" />
   </div>
 );
 
 const TwoImagesDisplay = ({ images, onClick }) => (
-  <div className="z-50 flex object-cover w-full h-full gap-4 cursor-pointer">
+  <div className="z-40 flex object-cover w-full h-full gap-4 cursor-pointer">
     {images.map((src, index) => (
       <div className="w-1/2 h-full" key={index} onClick={() => onClick(index)}>
         <img className="w-[100%] h-[100%] rounded-2xl object-cover" src={src} alt="" />
@@ -125,7 +185,7 @@ const TwoImagesDisplay = ({ images, onClick }) => (
 
 const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
   <div className="flex w-full h-full gap-4">
-    <div className="z-50 h-full cursor-pointer">
+    <div className="z-40 w-1/2 h-full cursor-pointer">
       <img
         className="object-cover w-full h-full rounded-2xl"
         src={images[0]}
@@ -133,8 +193,8 @@ const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
         onClick={() => onClick(0)}
       />
     </div>
-    <div className="flex flex-col h-full gap-4 ">
-      <div className="z-50 h-[50%] cursor-pointer">
+    <div className="flex flex-col w-1/2 h-full gap-4">
+      <div className="z-40 h-[50%] cursor-pointer">
 
         <img
           className="object-cover w-full h-[100%] rounded-2xl"
@@ -146,7 +206,7 @@ const ThreeOrMoreImagesDisplay = ({ images, onClick }) => (
 
       <div className="w-full h-[50%] relative ">
         <img
-          className="object-cover w-full h-full rounded-2xl "
+          className="object-cover w-full h-full cursor-pointer rounded-2xl "
           src={images[2]}
           alt=""
           onClick={() => onClick(2)}
